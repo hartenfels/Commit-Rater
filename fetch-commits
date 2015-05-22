@@ -13,10 +13,10 @@ use Pod::Usage;
 
 my %opts;
 GetOptions \%opts, qw(
-    user|u=s
-    repo|r=s
+       user|u=s
+       repo|r=s
     verbose|v
-    help|h
+       help|h
 ) or pod2usage(2);
 
 pod2usage(-exitval => 0, -verbose => 2) if $opts{help};
