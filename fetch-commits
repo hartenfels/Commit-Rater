@@ -15,6 +15,7 @@ my %opts;
 GetOptions \%opts, qw(
        user|u=s
        repo|r=s
+      token|t=s
     verbose|v
        help|h
 ) or pod2usage(2);
@@ -31,6 +32,7 @@ my $cache_dir = "__cache/$user/$repo";
 make_path $cache_dir if not -d $cache_dir;
 
 my $pithub = Pithub->new(user => $user, repo => $repo);
+$pithub->token($opts{token}) if exists $opts{token};
 
 
 sub cache(&$@)
@@ -142,6 +144,17 @@ Specify which GitHub repository belonging to which user should be checked.
 For  example, tho check the repository at
 L<https://github.com/101companies/101worker>, you'd use
 C<--user=101companies --repo=101worker>.
+
+=item --token=TOKEN, -t TOKEN
+
+The personal access token to use for the API calls. You can generate one of
+these at L<https://github.com/settings/tokens>. The token does not require
+access to any scopes.
+
+It is I<highly recommended> that you use this parameter, because without it,
+GitHub will rate limit you to 60 requests per hour, which probably isn't
+enough to do anything useful. If you provide a token, the limit is raised to
+5000 requests per hour, which is a bit more usable.
 
 =item --verbose, -v
 
