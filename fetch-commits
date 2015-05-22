@@ -1,0 +1,156 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Data::Dumper;
+use File::Path  qw(make_path);
+use File::Slurp qw(slurp write_file);
+use File::Spec::Functions;
+use Getopt::Long;
+use JSON::MaybeXS;
+use Pithub;
+use Pod::Usage;
+
+
+my %opts;
+GetOptions \%opts, qw(
+    user|u=s
+    repo|r=s
+    verbose|v
+    help|h
+) or pod2usage(2);
+
+pod2usage(-exitval => 0, -verbose => 2) if $opts{help};
+
+my ($user, $repo) = @opts{qw(user repo)};
+pod2usage(1) unless length $user && length $repo;
+
+
+my $verbose = $opts{verbose};
+
+my $cache_dir = "__cache/$user/$repo";
+make_path $cache_dir if not -d $cache_dir;
+
+my $pithub = Pithub->new(user => $user, repo => $repo);
+
+
+sub cache(&$@)
+{
+    my ($callback, $key, @args) = @_;
+
+    my $cache = catfile $cache_dir, join '_', map { tr{/}{.}r } $key, @args;
+    my $return;
+
+    if (-e $cache)
+    {
+        print "uncaching $cache\n" if $verbose;
+        $return = decode_json scalar slurp $cache;
+    }
+    else
+    {
+        print "fetching $cache\n" if $verbose;
+
+        my $res = $callback->(@args);
+        $res->auto_pagination(1);
+
+        while (my $row = $res->next)
+        {
+            die "API error at ${\$res->request->uri}: ${\$res->raw_content}\n"
+                if not $res->success;
+            push @$return, $row;
+        }
+
+        print "caching $cache\n" if $verbose;
+        write_file $cache => encode_json($return);
+    }
+
+    wantarray ? @$return : $return->[0]
+}
+
+sub fetch_commit_list
+{
+    cache { $pithub->repos->commits->list } fetch_commit_list => ();
+}
+
+sub fetch_commit
+{
+    cache { $pithub->repos->commits->get(sha => @_) } fetch_commit => @_;
+}
+
+
+my %user_data;
+my @users;
+
+sub get_user
+{
+    my $uid;
+
+    for (@_)
+    {
+        if (exists $user_data{$_})
+        {
+            $uid = $user_data{$_};
+            last;
+        }
+    }
+
+    $uid = push @users, scalar @users if not defined $uid;
+    $user_data{$_} = $uid for @_;
+
+    $uid
+}
+
+
+my %commits;
+for (fetch_commit_list)
+{
+    my $commit = fetch_commit($_->{sha});
+    my $author = $commit->{commit}{author};
+    my $key    = get_user($author->{name}, $author->{email});
+    push @{$commits{$key}}, $commit->{sha};
+}
+
+for my $uid (sort keys %commits)
+{
+    for (sort keys %user_data)
+    {
+        print $_, "\n" if $user_data{$_} == $uid;
+    }
+    print "    $_\n" for @{$commits{$uid}};
+}
+
+
+__END__
+
+=head1 NAME
+
+fetch-commits - Fetch commit info from Github.
+
+=head1 SYNOPSIS
+
+fetch-commits --user=USER --repo=REPO [OPTIONS]
+
+=head1 OPTIONS
+
+=over
+
+=item --user=USER, -u USER
+
+=item --repo=REPO, -r REPO
+
+Specify which GitHub repository belonging to which user should be checked.
+
+For  example, tho check the repository at
+L<https://github.com/101companies/101worker>, you'd use
+C<--user=101companies --repo=101worker>.
+
+=item --verbose, -v
+
+Spews a bunch of debug information while running.
+
+=item --help, -h
+
+Show this usage information.
+
+=back
+
+=cut
