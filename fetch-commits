@@ -69,14 +69,10 @@ sub cache(&$@)
 }
 
 sub fetch_commit_list
-{
-    cache { $pithub->repos->commits->list } fetch_commit_list => ();
-}
+{   cache { $pithub->repos->commits->list } fetch_commit_list => () }
 
 sub fetch_commit
-{
-    cache { $pithub->repos->commits->get(sha => @_) } fetch_commit => @_;
-}
+{   cache { $pithub->repos->commits->get(sha => @_) } fetch_commit => @_ }
 
 
 my %user_data;
