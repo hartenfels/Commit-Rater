@@ -2,110 +2,82 @@
 use strict;
 use warnings;
 use Data::Dumper;
-use File::Path  qw(make_path);
-use File::Slurp qw(slurp write_file);
-use File::Spec::Functions;
+use File::Path            qw(make_path);
+use File::Spec::Functions qw(catfile);
 use Getopt::Long;
-use JSON::MaybeXS;
-use Pithub;
+use Git::Repository;
+use List::Util            qw(first);
+use Log::Message::Simple;
 use Pod::Usage;
 
 
 my %opts;
-GetOptions \%opts, qw(
-       user|u=s
-       repo|r=s
-      token|t=s
-    verbose|v
-       help|h
-) or pod2usage(2);
+GetOptions \%opts, qw(remote|r=s verbose|v help|h) or pod2usage(2);
+
+if (@ARGV)
+{
+    my $args = join ' ', @ARGV;
+    warn "Excessive arguments: $args\n";
+    pod2usage(2);
+}
 
 pod2usage(-exitval => 0, -verbose => 2) if $opts{help};
 
-my ($user, $repo) = @opts{qw(user repo)};
-pod2usage(1) unless length $user && length $repo;
-
 
 my $verbose = $opts{verbose};
-
-my $cache_dir = "__cache/$user/$repo";
-make_path $cache_dir if not -d $cache_dir;
-
-my $pithub = Pithub->new(user => $user, repo => $repo);
-$pithub->token($opts{token}) if exists $opts{token};
+$Log::Message::Simple::MSG_FH = \*STDERR;
 
 
-sub cache(&$@)
-{
-    my ($callback, $key, @args) = @_;
-
-    my $cache = catfile $cache_dir, join '_', map { tr{/}{.}r } $key, @args;
-    my $return;
-
-    if (-e $cache)
-    {
-        print "uncaching $cache\n" if $verbose;
-        $return = decode_json scalar slurp $cache;
-    }
-    else
-    {
-        print "fetching $cache\n" if $verbose;
-
-        my $res = $callback->(@args);
-        $res->auto_pagination(1);
-
-        while (my $row = $res->next)
-        {
-            die "API error at ${\$res->request->uri}: ${\$res->raw_content}\n"
-                if not $res->success;
-            push @$return, $row;
-        }
-
-        print "caching $cache\n" if $verbose;
-        write_file $cache => encode_json($return);
-    }
-
-    wantarray ? @$return : $return->[0]
-}
-
-sub fetch_commit_list
-{   cache { $pithub->repos->commits->list } fetch_commit_list => () }
-
-sub fetch_commit
-{   cache { $pithub->repos->commits->get(sha => @_) } fetch_commit => @_ }
+my $remote  = $opts{remote} or pod2usage(1);
+my $dir     = '__repos/' . $remote =~ s/\W/_/gr;
 
 
-my %user_data;
-my @users;
+my $repo;
+
+sub git
+{   ($repo || 'Git::Repository')->run(@_, {fatal => '!0'}) }
+
+
+my (%user_data, @users);
 
 sub get_user
 {
+    my $key = first { exists $user_data{$_} } @_;
+
     my $uid;
+    if (defined $key)
+    {   $uid = $user_data{$key} }
+    else
+    {   $uid = push @users, scalar @users }
 
-    for (@_)
-    {
-        if (exists $user_data{$_})
-        {
-            $uid = $user_data{$_};
-            last;
-        }
-    }
-
-    $uid = push @users, scalar @users if not defined $uid;
     $user_data{$_} = $uid for @_;
 
     $uid
 }
 
 
-my %commits;
-for (fetch_commit_list)
+if (!-d $dir)
 {
-    my $commit = fetch_commit($_->{sha});
-    my $author = $commit->{commit}{author};
-    my $key    = get_user($author->{name}, $author->{email});
-    push @{$commits{$key}}, $commit->{sha};
+    msg "Cloning `$remote` into `$dir`...", $verbose;
+    git 'clone', '-q', $remote, $dir;
 }
+
+chdir $dir or die "Couldn't cd into work tree $dir: $!\n";
+
+$repo = Git::Repository->new;
+
+msg "Pulling `$remote`...", $verbose;
+git 'pull';
+
+
+my %commits;
+
+for (git 'log', '--format=format:%H%x00%aN%x00%aE')
+{
+    my ($sha, $name, $mail) = split "\0";
+    push @{$commits{get_user($name, $mail)}}, $sha;
+}
+
 
 for my $uid (sort keys %commits)
 {
@@ -121,36 +93,19 @@ __END__
 
 =head1 NAME
 
-fetch-commits - Fetch commit info from Github.
+fetch-commits - Fetch commit info from a git repository.
 
 =head1 SYNOPSIS
 
-fetch-commits --user=USER --repo=REPO [OPTIONS]
+fetch-commits --remote=REPO [OPTIONS]
 
 =head1 OPTIONS
 
 =over
 
-=item --user=USER, -u USER
+=item --remote=REPO, -r REPO
 
-=item --repo=REPO, -r REPO
-
-Specify which GitHub repository belonging to which user should be checked.
-
-For  example, tho check the repository at
-L<https://github.com/101companies/101worker>, you'd use
-C<--user=101companies --repo=101worker>.
-
-=item --token=TOKEN, -t TOKEN
-
-The personal access token to use for the API calls. You can generate one of
-these at L<https://github.com/settings/tokens>. The token does not require
-access to any scopes.
-
-It is I<highly recommended> that you use this parameter, because without it,
-GitHub will rate limit you to 60 requests per hour, which probably isn't
-enough to do anything useful. If you provide a token, the limit is raised to
-5000 requests per hour, which is a bit more usable.
+The path to the remote repository from which to extract the commit info.
 
 =item --verbose, -v
 
