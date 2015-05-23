@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use Data::Dumper;
+use Encode                qw(decode);
 use File::Path            qw(make_path);
 use File::Spec::Functions qw(catfile);
 use Getopt::Long;
@@ -80,7 +81,7 @@ my %commits;
 
 for (git 'log', '--format=format:%H%x00%aN%x00%aE')
 {
-    my ($sha, $name, $mail) = split "\0";
+    my ($sha, $name, $mail) = split "\0", decode('UTF-8', $_), 3;
     my $user = get_user($name, $mail);
     push @{$commits{$user}}, $sha;
 }
@@ -96,7 +97,7 @@ for my $uid (0 .. $#users)
     };
 }
 
-print JSON->new->canonical->pretty->encode(\@out);
+print JSON->new->utf8->canonical->pretty->encode(\@out);
 
 
 __END__
