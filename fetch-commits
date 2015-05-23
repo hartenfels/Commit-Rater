@@ -30,7 +30,7 @@ $Log::Message::Simple::MSG_FH = \*STDERR;
 
 
 my $remote  = $opts{remote} or pod2usage(1);
-my $dir     = '__repos/' . $remote =~ s/\W/_/gr;
+my $dir     = catfile '__repos/', $remote =~ s/\W/_/gr;
 
 
 my $repo;
