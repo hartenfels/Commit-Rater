@@ -47,9 +47,14 @@ sub get_user
 
     my $uid;
     if (defined $key)
-    {   $uid = $user_data{$key} }
+    {
+        $uid = $user_data{$key};
+    }
     else
-    {   $uid = push @users, scalar @users }
+    {
+        $uid = @users;
+        push @users, $uid;
+    }
 
     $user_data{$_} = $uid for @_;
 
