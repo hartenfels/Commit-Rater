@@ -97,8 +97,8 @@ my @out;
 for my $uid (0 .. $#users)
 {
     push @out, {
-        author => [grep { $user_data{$_} == $uid } sort keys %user_data],
-        commit => $commits{$uid}
+        author  => [grep { $user_data{$_} == $uid } sort keys %user_data],
+        commits => $commits{$uid}
     };
 }
 
