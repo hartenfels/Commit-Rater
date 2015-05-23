@@ -79,11 +79,16 @@ git 'pull';
 
 my %commits;
 
-for (git 'log', '--format=format:%H%x00%aN%x00%aE')
+for (git 'log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P')
 {
-    my ($sha, $name, $mail) = split "\0", decode('UTF-8', $_), 3;
-    my $user = get_user($name, $mail);
-    push @{$commits{$user}}, $sha;
+    my $line = decode 'UTF-8', $_;
+    my ($sha, $name, $mail, $message, $parents) = split "\0", $line, 5;
+
+    push @{$commits{get_user($name, $mail)}}, {
+        sha     => $sha,
+        parents => [split ' ', $parents],
+        message => $message,
+    };
 }
 
 
