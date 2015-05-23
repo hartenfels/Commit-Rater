@@ -113,7 +113,28 @@ fetch-commits - Fetch commit info from a git repository.
 
 =head1 SYNOPSIS
 
-fetch-commits --remote=REPO [OPTIONS]
+    fetch-commits --remote=REPO [OPTIONS]
+
+=head1 DESCRIPTION
+
+This will C<git clone> the given remote repository into the F<__repos> folder
+in your current directory, if necessary. Otherwise, it will only C<git pull>
+the recent changes.
+
+It will then frobnicate a bit and eventually output a JSON list with each entry
+consisting of a list of names and e-mail addresses for the author and a list of
+commits that this author made. There may be more than just one name and one
+e-mail address per author, because git isn't exactly consistent with them.
+
+=head2 Example Usage
+
+Fetch commits from a GitHub repository:
+
+    fetch-commits --remote=https://github.com/101companies/101worker.git
+
+Fetch commits from a local git repository:
+
+    fetch-commits --remote=~/Commit-Rater
 
 =head1 OPTIONS
 
@@ -125,7 +146,7 @@ The path to the remote repository from which to extract the commit info.
 
 =item --verbose, -v
 
-Spews a bunch of debug information while running.
+Spews a bunch of debug information to stderr while running.
 
 =item --help, -h
 
