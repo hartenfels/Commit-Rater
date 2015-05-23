@@ -6,6 +6,7 @@ use File::Path            qw(make_path);
 use File::Spec::Functions qw(catfile);
 use Getopt::Long;
 use Git::Repository;
+use JSON;
 use List::Util            qw(first);
 use Log::Message::Simple;
 use Pod::Usage;
@@ -75,18 +76,22 @@ my %commits;
 for (git 'log', '--format=format:%H%x00%aN%x00%aE')
 {
     my ($sha, $name, $mail) = split "\0";
-    push @{$commits{get_user($name, $mail)}}, $sha;
+    my $user = get_user($name, $mail);
+    push @{$commits{$user}}, $sha;
 }
 
 
-for my $uid (sort keys %commits)
+my @out;
+
+for my $uid (0 .. $#users)
 {
-    for (sort keys %user_data)
-    {
-        print $_, "\n" if $user_data{$_} == $uid;
-    }
-    print "    $_\n" for @{$commits{$uid}};
+    push @out, {
+        author => [grep { $user_data{$_} == $uid } sort keys %user_data],
+        commit => $commits{$uid}
+    };
 }
+
+print JSON->new->canonical->pretty->encode(\@out);
 
 
 __END__
