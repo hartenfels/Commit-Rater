@@ -74,6 +74,7 @@ if (exists $opts{users})
     for (@$mapping)
     {
         my $key = ($_->{name} // '') . $; . ($_->{email} // '');
+        die "Duplicate rule: $key\n"         if exists $users{$key};
         $users{$key}{name } = $_->{to_name } if exists $_->{to_name };
         $users{$key}{email} = $_->{to_email} if exists $_->{to_email};
     }
@@ -180,6 +181,66 @@ Fetch commits from a local git repository:
 =item --remote=REPO, -r REPO
 
 The path to the remote repository from which to extract the commit info.
+
+=item --users=USERS-FILE, -u USERS-FILE
+
+Path to a JSON file that maps names and e-mails in commits to different names
+and e-mails. This is used in case people authored commits with inconsistent
+author data.
+
+Here's a sample file:
+
+    [
+        {
+            "name"     : "fred",
+            "to_name"  : "Frederick Smith"
+        },
+        {
+            "email"    : "bob@freemailer.net",
+            "to_email" : "robert-miller@work.com"
+        },
+        {
+            "name"     : "Mary Walt",
+            "email"    : "mary-walt@work.com",
+            "to_name"  : "Mary Walt-Smith",
+            "to_email" : "mary-walt-smith@work.com"
+        }
+    ]
+
+This file will map any commits done with the name C<fred> to
+C<Frederick Smith>, without changing whatever e-mail is associated with the
+commits. The next example is analogous, except with the e-mail address instead
+of the name. The final example will map both the name and e-mail address of
+the commit, but only if both of them match the given values.
+
+You can combine C<name>, C<email>, C<to_name> and C<to_email> freely, so
+something like this is allowed and will change the e-mail address of the commit
+if the name of the commit matches C<Frederick Smith>:
+
+    [
+        {
+            "name"     : "Frederick Smith",
+            "to_email" : "fred-smith-23@work.com"
+        }
+    ]
+
+If multiple rules would match a commit, the precedence is as follows:
+
+=over
+
+=item
+
+C<name> and C<email>
+
+=item
+
+just C<name>
+
+=item
+
+just C<email>
+
+=back
 
 =item --verbose, -v
 
