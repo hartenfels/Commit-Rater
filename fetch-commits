@@ -45,7 +45,6 @@ if (exists $opts{users})
         $users{$key}{email} = $_->{to_email} if exists $_->{to_email};
     }
 }
-print STDERR JSON->new->utf8->pretty->canonical->encode(\%users);
 
 
 my $remote  = $opts{remote} or pod2usage(1);
