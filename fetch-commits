@@ -8,6 +8,7 @@ use File::Slurp           qw(slurp);
 use Getopt::Long;
 use Git::Repository;
 use JSON;
+use JSV::Validator;
 use List::Util            qw(first);
 use Log::Message::Simple;
 use Pod::Usage;
@@ -35,10 +36,42 @@ my $verbose = $opts{verbose};
 $Log::Message::Simple::MSG_FH = \*STDERR;
 
 
+my $json = JSON->new->utf8->canonical->pretty;
+
+
 my %users;
 if (exists $opts{users})
 {
-    for (@{decode_json scalar slurp $opts{users}})
+    my $mapping = decode_json scalar slurp $opts{users};
+    my %schema  = (
+        type  => 'array',
+        items => {
+            type                 => 'object',
+            additionalProperties => 0,
+            properties           => {
+                name     => {type => 'string'},
+                email    => {type => 'string'},
+                to_email => {type => 'string'},
+                to_name  => {type => 'string'},
+            },
+            allOf                => [
+                {anyOf => [
+                    {required => [   'name' ]},
+                    {required => [   'email']},
+                ]},
+                {anyOf => [
+                    {required => ['to_name' ]},
+                    {required => ['to_email']},
+                ]},
+            ],
+        },
+    );
+
+    my $result = JSV::Validator->new(environment => 'draft4')
+                               ->validate(\%schema, $mapping);
+    die "Validation failed:\n", $json->encode($result->errors) if not $result;
+
+    for (@$mapping)
     {
         my $key = ($_->{name} // '') . $; . ($_->{email} // '');
         $users{$key}{name } = $_->{to_name } if exists $_->{to_name };
@@ -106,7 +139,7 @@ for (sort keys %commits)
     };
 }
 
-print JSON->new->utf8->canonical->pretty->encode(\@out);
+print $json->encode(\@out);
 
 
 __END__
