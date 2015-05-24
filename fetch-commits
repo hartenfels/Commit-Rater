@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
-use Data::Dumper;
 use Encode                qw(decode);
 use File::Path            qw(make_path);
 use File::Spec::Functions qw(catfile);
@@ -96,8 +95,10 @@ my @out;
 
 for my $uid (0 .. $#users)
 {
+    my @author = grep { $user_data{$_} == $uid } sort keys %user_data;
     push @out, {
-        author  => [grep { $user_data{$_} == $uid } sort keys %user_data],
+        names   => [grep { $_ !~ /\@/ } @author],
+        emails  => [grep { $_ =~ /\@/ } @author],
         commits => $commits{$uid}
     };
 }
