@@ -83,9 +83,7 @@ for (git 'log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P')
     my $map = $users{$key} // $users{"$name$;"} // $users{"$;$email"};
     if (defined $map)
     {
-        print STDERR "$name = $map->{name }\n" if defined $map->{name };
         $name  = $map->{name } if defined $map->{name };
-        print STDERR "$email = $map->{email}\n" if defined $map->{email};
         $email = $map->{email} if defined $map->{email};
     }
 
