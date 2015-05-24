@@ -79,15 +79,14 @@ for (git 'log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P')
     my $line = decode 'UTF-8', $_;
     my ($sha, $name, $email, $message, $parents) = split "\0", $line, 5;
 
-    my $key = "$name$;$email";
-    my $map = $users{$key} // $users{"$name$;"} // $users{"$;$email"};
+    my $map = $users{"$name$;$email"} // $users{"$name$;"} // $users{"$;$email"};
     if (defined $map)
     {
         $name  = $map->{name } if defined $map->{name };
         $email = $map->{email} if defined $map->{email};
     }
 
-    push @{$commits{$key}}, {
+    push @{$commits{"$name$;$email"}}, {
         sha     => $sha,
         parents => [split ' ', $parents],
         message => $message,
