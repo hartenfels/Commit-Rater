@@ -105,6 +105,7 @@ msg "Pulling `$remote`...", $verbose;
 git 'pull';
 
 
+msg 'Extracting commits...', $verbose;
 my %commits;
 
 for (git 'log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P')
@@ -127,6 +128,7 @@ for (git 'log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P')
 }
 
 
+msg 'Formatting output data...', $verbose;
 my @out;
 
 for (sort keys %commits)
@@ -139,6 +141,7 @@ for (sort keys %commits)
     };
 }
 
+msg 'Writing JSON...', $verbose;
 print $json->encode(\@out);
 
 
