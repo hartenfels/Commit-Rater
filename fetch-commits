@@ -9,7 +9,6 @@ use Getopt::Long;
 use Git::Repository;
 use JSON;
 use JSV::Validator;
-use List::Util            qw(first);
 use Log::Message::Simple;
 use Pod::Usage;
 
