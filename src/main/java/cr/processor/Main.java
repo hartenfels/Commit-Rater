@@ -21,7 +21,7 @@ class Main {
     }
 
     public static float averageCommitMessageLength(List<Commit> commits) {
-        int sum = 0;
+        float sum = 0;
         for (Commit commit : commits) {
             sum += commit.getMessage().length();
         }
@@ -30,7 +30,7 @@ class Main {
 
 
     public static float averageCommitMessageWords(List<Commit> commits) {
-        int sum = 0;
+        float sum = 0;
         for (Commit commit : commits) {
             sum += commit.getMessage().split("\\s+").length;
         }
@@ -68,7 +68,7 @@ class Main {
     }
 
     public static float percentWithCommitMessage(List<Commit> commits) {
-        int sum = 0;
+        float sum = 0;
         for (Commit commit : commits) {
             if (commit.getMessage() == null || commit.getMessage().matches("(\\s|-)*")){
                 sum++;
