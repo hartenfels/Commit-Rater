@@ -85,6 +85,6 @@ class Main {
                 sum++;
             }
         }
-        return 1 - sum / commits.size();
+        return sum / commits.size();
     }
 }
