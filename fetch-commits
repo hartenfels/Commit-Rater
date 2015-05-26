@@ -9,7 +9,6 @@ use Getopt::Long;
 use Git::Repository;
 use JSON;
 use JSV::Validator;
-use List::Util            qw(first);
 use Log::Message::Simple;
 use Pod::Usage;
 
@@ -106,8 +105,25 @@ msg "Pulling `$remote`...", $verbose;
 git 'pull';
 
 
-my %commits;
+msg 'Extracting commits...', $verbose;
 
+sub diff
+{
+    my ($sha) = @_;
+
+    my %diff;
+    for (git 'show', '--format=format:', '--name-status', $sha)
+    {
+        next unless /\S/;
+        my ($op, $file) = split ' ', $_, 2;
+        $diff{$file} = $op;
+    }
+
+    \%diff
+}
+
+
+my %commits;
 for (git 'log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P')
 {
     my $line = decode 'UTF-8', $_;
@@ -124,12 +140,14 @@ for (git 'log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P')
         sha     => $sha,
         parents => [split ' ', $parents],
         message => $message,
+        diff    => diff($sha),
     };
 }
 
 
-my @out;
+msg 'Formatting output data...', $verbose;
 
+my @out;
 for (sort keys %commits)
 {
     my ($name, $email) = split $;, $_, 2;
@@ -140,6 +158,7 @@ for (sort keys %commits)
     };
 }
 
+msg 'Writing JSON...', $verbose;
 print $json->encode(\@out);
 
 
