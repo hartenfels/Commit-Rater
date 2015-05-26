@@ -2,6 +2,8 @@ $script = <<SCRIPT
 sudo apt-get install -y carton
 sudo apt-get install -y perl-doc
 sudo apt-get install -y git
+git config --global user.name "vagrant"
+git config --global user.email "vagrant@vagrant.vg"
 SCRIPT
 
 
