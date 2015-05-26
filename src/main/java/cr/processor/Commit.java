@@ -7,8 +7,7 @@ public class Commit {
     private String[] parents;
     private String message;
 
-    public Commit() {
-    }
+    public Commit() {}
 
     public Commit(String sha, String[] parents, String message) {
 

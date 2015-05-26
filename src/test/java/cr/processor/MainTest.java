@@ -13,8 +13,8 @@ public class MainTest {
     @Before
     public void setup() {
         testAuthor = new Author();
-        testAuthor.setName(new String[]{"Littlefinger"});
-        testAuthor.setEmail(new String[]{"littlefinger@kingslanding.net"});
+        testAuthor.setName("Littlefinger");
+        testAuthor.setEmail("littlefinger@kingslanding.net");
         testAuthor.setCommits(new ArrayList<>());
         testAuthor.getCommits().add(new Commit("a", new String[]{}, "Initial commit"));
         testAuthor.getCommits().add(new Commit("b", new String[]{"a"}, "Removes member Varys from small council"));

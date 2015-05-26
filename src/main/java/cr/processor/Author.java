@@ -1,36 +1,34 @@
 package cr.processor;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Author {
-    private String[] names;
-    private String[] emails;
+    private String name;
+    private String email;
     private List<Commit> commits;
 
-    public Author() {
-    }
+    public Author() {}
 
-    public Author(String[] names, String[] emails, List<Commit> commits) {
-        this.names = names;
-        this.emails = emails;
+    public Author(String name, String email, List<Commit> commits) {
+        this.name = name;
+        this.email = email;
         this.commits = commits;
     }
 
-    public String[] getNames() {
-        return names;
+    public String getName() {
+        return name;
     }
 
-    public void setName(String[] name) {
-        this.names = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String[] getEmails() {
-        return emails;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmail(String[] email) {
-        this.emails = email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<Commit> getCommits() {
@@ -44,8 +42,8 @@ public class Author {
     @Override
     public String toString() {
         return "Author{" +
-                "names=" + Arrays.toString(names) +
-                ", emails=" + Arrays.toString(emails) +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", commits=" + commits +
                 '}';
     }
