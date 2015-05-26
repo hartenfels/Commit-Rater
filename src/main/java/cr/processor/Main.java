@@ -13,7 +13,8 @@ class Main {
         List<Author> authors = mapper.readValue(new File("out/cr.json"), new TypeReference<List<Author>>() {});
         for (Author author : authors) {
             System.out.printf("%s (%s, %s commits):%n", author.getName(), author.getEmail(), author.getCommits().size());
-            System.out.println("    Average commit length: " + averageCommitMessageLength(author.getCommits()));
+            System.out.println("    Average commit message length: " + averageCommitMessageLength(author.getCommits()));
+            System.out.println("    Average commit message words: " + averageCommitMessageWords(author.getCommits()));
         }
     }
 
@@ -21,6 +22,15 @@ class Main {
         int sum = 0;
         for (Commit commit : commits) {
             sum += commit.getMessage().length();
+        }
+        return sum / commits.size();
+    }
+
+
+    public static float averageCommitMessageWords(List<Commit> commits) {
+        int sum = 0;
+        for (Commit commit : commits) {
+            sum += commit.getMessage().split("\\s+").length;
         }
         return sum / commits.size();
     }
