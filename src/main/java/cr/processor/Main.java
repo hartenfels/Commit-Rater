@@ -17,6 +17,7 @@ class Main {
             System.out.println("    Average commit message words: " + averageCommitMessageWords(author.getCommits()));
             System.out.println("    Time analysis: " + timeAnalysis(author.getCommits()));
             System.out.println("    Percent with commit message: " + percentWithCommitMessage(author.getCommits()));
+            System.out.println("    Percent with trailing period: " + percentWithTrailingPeriod(author.getCommits()));
         }
     }
 
@@ -71,6 +72,16 @@ class Main {
         float sum = 0;
         for (Commit commit : commits) {
             if (commit.getMessage() == null || commit.getMessage().matches("(\\s|-)*")){
+                sum++;
+            }
+        }
+        return 1 - sum / commits.size();
+    }
+
+    public static float percentWithTrailingPeriod(List<Commit> commits) {
+        float sum = 0;
+        for (Commit commit : commits) {
+            if (commit.getMessage().endsWith(".")) {
                 sum++;
             }
         }
