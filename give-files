@@ -19,6 +19,7 @@ if (@ARGV)
 }
 
 pod2usage(-exitval => 0, -verbose => 2) if $opts{help};
+die "Missing repo parameter.\n" if not length $opts{repo};
 
 
 my $repo = Git::Repository->new(work_tree => $opts{repo});
@@ -41,6 +42,45 @@ __END__
 
 =head1 NAME
 
-give-files
+give-files - diff specific files from a git repo.
+
+=head1 SYNOPSIS
+
+Run this to start the service:
+
+    give-files --repo=PATH-TO-GIT-REPO
+
+It will then wait to receive lines of input on STDIN, which are formatted as
+follows:
+
+    $sha1^@$sha2^@$file
+
+Where C<$sha1> and C<$sha2> are the old and new commit respectively, C<$file>
+is the file you want to get a diff for and C<^@> is a C<NUL> character.
+
+It will then output a diff in JSON format, followed by a C<NUL> marking the end
+of the output. Here's a self-describing sample output:
+
+    [
+        ["u", "an unchanged line.", "an unchanged line"  ],
+        ["c", "the old line",       "a modified line"    ],
+        ["+", "",                   "a newly added lines"],
+        ["-", "a removed line",     ""                   ]
+    ]
+    ^@
+
+=head1 OPTIONS
+
+=over
+
+=item --repo=PATH-TO-REPO, -r PATH-TO-REPO
+
+The path to the local git repository where the files should be taken from.
+
+=item --help, -h
+
+Show this usage information.
+
+=back
 
 =cut
