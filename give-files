@@ -1,0 +1,48 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Getopt::Long;
+use Git::Repository;
+use JSON;
+use Pod::Usage;
+
+
+my %opts;
+GetOptions \%opts, qw(repo|r=s help|h) or pod2usage(2);
+
+if (@ARGV)
+{
+    my $args = join ' ', @ARGV;
+    warn "Excessive arguments: $args\n";
+    pod2usage(2);
+}
+
+pod2usage(-exitval => 0, -verbose => 2) if $opts{help};
+
+
+my $repo = Git::Repository->new(work_tree => $opts{repo});
+my $json = JSON->new->utf8->canonical->pretty;
+
+while (<STDIN>)
+{
+    chomp;
+    my ($sha1, $sha2, $file) = split "\0", $_, 3;
+
+    my $file1 = $repo->run(show => "$sha1:$file");
+    my $file2 = $repo->run(show => "$sha2:$file");
+
+    my %out = (
+        file1 => $file1,
+        file2 => $file2,
+    );
+    print $json->encode(\%out), "\0\n";
+}
+
+
+__END__
+
+=head1 NAME
+
+give-files
+
+=cut
