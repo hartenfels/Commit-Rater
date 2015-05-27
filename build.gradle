@@ -1,6 +1,9 @@
 apply plugin: 'java'
 sourceCompatibility = 1.8
 
+apply plugin: 'application'
+mainClassName = "cr.processor.Main"
+
 repositories {
     mavenCentral()
 }

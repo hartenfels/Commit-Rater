@@ -5,19 +5,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 class Main {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        List<Author> authors = mapper.readValue(new File("out/local.json"), new TypeReference<List<Author>>() {});
+        List<Author> authors = mapper.readValue(new File("out/cr.json"), new TypeReference<List<Author>>() {});
         for (Author author : authors) {
-            System.out.printf("%s (%s, %s commits):%n", author.getName(), author.getEmail(), author.getCommits().size());
+            System.out.printf("%s (%s, %s commits including %s merges):%n", author.getName(), author.getEmail(), author.getCommits().size(), removeMerges(author.getCommits()).size());
             System.out.println("    Average commit message length: " + averageCommitMessageLength(author.getCommits()));
             System.out.println("    Average commit message words: " + averageCommitMessageWords(author.getCommits()));
             System.out.println("    Time analysis: " + timeAnalysis(author.getCommits()));
             System.out.println("    Percent with commit message: " + percentWithCommitMessage(author.getCommits()));
             System.out.println("    Percent with trailing period: " + percentWithTrailingPeriod(author.getCommits()));
+            System.out.println("    Percent merges: " + percentMerges(author.getCommits()));
         }
     }
 
@@ -86,5 +88,19 @@ class Main {
             }
         }
         return sum / commits.size();
+    }
+
+    public static float percentMerges(List<Commit> commits) {
+        return ((float) removeMerges(commits).size()) / commits.size();
+    }
+
+    public static List<Commit> removeMerges(List<Commit> commits) {
+        ArrayList<Commit> result = new ArrayList<>();
+        for (Commit commit : commits) {
+            if (commit.getMessage().toLowerCase().startsWith("merge")) {
+                result.add(commit);
+            }
+        }
+        return result;
     }
 }
