@@ -1,3 +1,4 @@
+requires 'Algorithm::Diff';
 requires 'File::Slurp';
 requires 'Git::Repository';
 requires 'JSON';

@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use Algorithm::Diff qw(sdiff);
 use Getopt::Long;
 use Git::Repository;
 use JSON;
@@ -28,14 +29,11 @@ while (<STDIN>)
     chomp;
     my ($sha1, $sha2, $file) = split "\0", $_, 3;
 
-    my $file1 = $repo->run(show => "$sha1:$file");
-    my $file2 = $repo->run(show => "$sha2:$file");
+    my @file1 = $repo->run(show => "$sha1:$file");
+    my @file2 = $repo->run(show => "$sha2:$file");
+    my @diff  = sdiff(\@file1, \@file2);
 
-    my %out = (
-        file1 => $file1,
-        file2 => $file2,
-    );
-    print $json->encode(\%out), "\0\n";
+    print $json->encode(\@diff), "\0\n";
 }
 
 
