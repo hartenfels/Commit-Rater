@@ -3,6 +3,7 @@ cpanfile.snapshot
 local
 .vagrant
 out/
+*.png
 
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion

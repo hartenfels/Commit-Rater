@@ -2,11 +2,14 @@ package cr.processor;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.*;
 
 class Main {
     public static void main(String[] args) throws IOException {
@@ -22,6 +25,7 @@ class Main {
             System.out.println("    Percent merges: " + percentMerges(author.getCommits()));
             System.out.println("    Average file actions: " + averageFileActions(author.getCommits()));
         }
+        wordRanksPlot(authors);
     }
 
     public static float averageCommitMessageLength(List<Commit> commits) {
@@ -47,7 +51,7 @@ class Main {
             String firstWord = commit.getMessage().split("\\s+")[0];
             if (firstWord.endsWith("s")) {
                 result.present++;
-            } else if (firstWord.endsWith("d")){
+            } else if (firstWord.endsWith("d")) {
                 result.past++;
             } else {
                 result.indetermined++;
@@ -74,7 +78,7 @@ class Main {
     public static float percentWithCommitMessage(List<Commit> commits) {
         float sum = 0;
         for (Commit commit : commits) {
-            if (commit.getMessage() == null || commit.getMessage().matches("(\\s|-)*")){
+            if (commit.getMessage() == null || commit.getMessage().matches("(\\s|-)*")) {
                 sum++;
             }
         }
@@ -111,5 +115,37 @@ class Main {
             sum += commit.getDiff().size();
         }
         return sum / commits.size();
+    }
+
+    public static void wordRanksPlot(List<Author> authors) throws IOException {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+        for (Author author : authors) {
+            Map<Integer, Integer> occurrances = new TreeMap<>(); // Number of words -> Messages with that number of words
+            for (Commit commit : author.getCommits()) {
+                int words = commit.getMessage().split("\\s+").length;
+                if (occurrances.get(words) != null) {
+                    occurrances.put(words, occurrances.get(words) + 1);
+                } else {
+                    occurrances.put(words, 1);
+                }
+            }
+
+            for (Integer words : occurrances.keySet()) {
+                dataset.addValue(occurrances.get(words), author.getName(), words);
+            }
+
+            System.out.println("occurrances = " + occurrances);
+        }
+
+        JFreeChart lineChart = ChartFactory.createBarChart("Commit message words per rank.", "ranks", "words", dataset);
+        BufferedImage bufferedImage = lineChart.createBufferedImage(1028, 726);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream.toByteArray();
+        InputStream in = new ByteArrayInputStream(byteArray);
+        BufferedImage image = ImageIO.read(in);
+        File outputfile = new File("image.png");
+        ImageIO.write(image, "png", outputfile);
     }
 }
