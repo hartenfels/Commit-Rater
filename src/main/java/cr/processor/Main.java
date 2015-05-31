@@ -20,6 +20,7 @@ class Main {
             System.out.println("    Percent with commit message: " + percentWithCommitMessage(author.getCommits()));
             System.out.println("    Percent with trailing period: " + percentWithTrailingPeriod(author.getCommits()));
             System.out.println("    Percent merges: " + percentMerges(author.getCommits()));
+            System.out.println("    Average file actions: " + averageFileActions(author.getCommits()));
         }
     }
 
@@ -102,5 +103,13 @@ class Main {
             }
         }
         return result;
+    }
+
+    public static float averageFileActions(List<Commit> commits) {
+        float sum = 0;
+        for (Commit commit : commits) {
+            sum += commit.getDiff().size();
+        }
+        return sum / commits.size();
     }
 }
