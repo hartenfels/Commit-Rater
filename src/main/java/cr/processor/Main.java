@@ -26,7 +26,7 @@ class Main {
         ObjectMapper mapper = new ObjectMapper();
         List<Author> authors = mapper.readValue(input.toString(), new TypeReference<List<Author>>() {});
         for (Author author : authors) {
-            if (author.getCommits().size() < 20) {
+            if (author.getCommits().size() < 8) {
                 System.out.printf("Skipping author %s with only %s commits%n", author.getName(), author.getCommits().size());
                 continue;
             }
