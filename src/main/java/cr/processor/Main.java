@@ -16,8 +16,15 @@ import java.util.TreeMap;
 
 class Main {
     public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder input = new StringBuilder();
+        String line;
+        while ((line = br.readLine()) != null) {
+            input.append(line);
+        }
+
         ObjectMapper mapper = new ObjectMapper();
-        List<Author> authors = mapper.readValue(new BufferedInputStream(System.in), new TypeReference<List<Author>>() {});
+        List<Author> authors = mapper.readValue(input.toString(), new TypeReference<List<Author>>() {});
         for (Author author : authors) {
             if (author.getCommits().size() < 20) {
                 System.out.printf("Skipping author %s with only %s commits%n", author.getName(), author.getCommits().size());
