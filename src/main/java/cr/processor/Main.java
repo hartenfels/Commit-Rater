@@ -14,8 +14,12 @@ import java.util.*;
 class Main {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        List<Author> authors = mapper.readValue(new File("out/cr.json"), new TypeReference<List<Author>>() {});
+        List<Author> authors = mapper.readValue(new File("out/bk.json"), new TypeReference<List<Author>>() {});
         for (Author author : authors) {
+            if (author.getCommits().size() < 20) {
+                System.out.printf("Skipping author %s with only %s commits%n", author.getName(), author.getCommits().size());
+                continue;
+            }
             System.out.printf("%s (%s, %s commits including %s merges):%n", author.getName(), author.getEmail(), author.getCommits().size(), removeMerges(author.getCommits()).size());
             System.out.println("    Average commit message length: " + averageCommitMessageLength(author.getCommits()));
             System.out.println("    Average commit message words: " + averageCommitMessageWords(author.getCommits()));
@@ -135,10 +139,10 @@ class Main {
                 dataset.addValue(occurrances.get(words), author.getName(), words);
             }
 
-            System.out.println("occurrances = " + occurrances);
+            //System.out.println("occurrances = " + occurrances);
         }
 
-        JFreeChart lineChart = ChartFactory.createBarChart("Commit message words per rank.", "ranks", "words", dataset);
+        JFreeChart lineChart = ChartFactory.createLineChart3D("Commit message words per rank.", "ranks", "words", dataset);
         BufferedImage bufferedImage = lineChart.createBufferedImage(1028, 726);
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
