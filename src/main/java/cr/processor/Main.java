@@ -9,12 +9,15 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 class Main {
     public static void main(String[] args) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        List<Author> authors = mapper.readValue(new File("out/bk.json"), new TypeReference<List<Author>>() {});
+        List<Author> authors = mapper.readValue(new BufferedInputStream(System.in), new TypeReference<List<Author>>() {});
         for (Author author : authors) {
             if (author.getCommits().size() < 20) {
                 System.out.printf("Skipping author %s with only %s commits%n", author.getName(), author.getCommits().size());
