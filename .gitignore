@@ -4,6 +4,7 @@ local
 .vagrant
 out/
 *.png
+*.csv
 
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
