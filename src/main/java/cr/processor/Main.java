@@ -201,37 +201,11 @@ class Main {
         int a = 1;
         for (Author author : occurrancesPerAuthor.keySet()) {
             table[0][a] = author.getName();
-
             for (Integer wordCount : occurrancesPerAuthor.get(author).keySet()) {
                 table[wordCount + 1][a] = occurrancesPerAuthor.get(author).get(wordCount).toString();
             }
-
             a++;
         }
-
-
-
-
-
-
-//        List<List<String>> table = new ArrayList<>(maxWordCount + 2);
-//        for (int i = 0; i < maxWordCount; i++) {
-//            int rowLength = occurrancesPerAuthor.keySet().size() + 1;
-//            ArrayList<String> row = new ArrayList<>();
-//            row.add()
-//            for (int j = 0; j < rowLength; j++) {
-//            }
-//            table.add(row);
-//        }
-//        table.get(0).add("Rank");
-//        for (Author author : occurrancesPerAuthor.keySet()) {
-//            table.get(0).add(author.getName());
-//        }
-//        for (Author author : occurrancesPerAuthor.keySet()) {
-//            for (Integer wordCount : occurrancesPerAuthor.get(author).keySet()) {
-//                table.get(wordCount)
-//            }
-//        }
 
         try {
             toCSV(table, "wordCounts.csv");
