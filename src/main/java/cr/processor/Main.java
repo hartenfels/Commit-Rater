@@ -23,110 +23,19 @@ class Main {
 
         ObjectMapper mapper = new ObjectMapper();
         List<Author> authors = mapper.readValue(input.toString(), new TypeReference<List<Author>>() {});
+        List<AuthorData> authorDatas = new ArrayList<>();
+
         for (Author author : authors) {
             if (author.getCommits().size() < 8) {
-                System.out.printf("Skipping author %s with only %s commits%n", author.getName(), author.getCommits().size());
+//                System.out.printf("Skipping author %s with only %s commits%n", author.getName(), author.getCommits().size());
                 continue;
             }
-            System.out.printf("%s (%s, %s commits including %s merges):%n", author.getName(), author.getEmail(), author.getCommits().size(), removeMerges(author.getCommits()).size());
-            System.out.println("    Average commit message length: " + averageCommitMessageLength(author.getCommits()));
-            System.out.println("    Average commit message words: " + averageCommitMessageWords(author.getCommits()));
-            System.out.println("    Time analysis: " + timeAnalysis(author.getCommits()));
-            System.out.println("    Percent with commit message: " + percentWithCommitMessage(author.getCommits()));
-            System.out.println("    Percent with trailing period: " + percentWithTrailingPeriod(author.getCommits()));
-            System.out.println("    Percent merges: " + percentMerges(author.getCommits()));
-            System.out.println("    Average file actions: " + averageFileActions(author.getCommits()));
+            authorDatas.add(new AuthorData(author));
         }
-        wordRanksPlot(authors);
-    }
 
-    public static float averageCommitMessageLength(List<Commit> commits) {
-        float sum = 0;
-        for (Commit commit : commits) {
-            sum += commit.getMessage().length();
-        }
-        return sum / commits.size();
-    }
+        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(authorDatas));
 
-
-    public static float averageCommitMessageWords(List<Commit> commits) {
-        float sum = 0;
-        for (Commit commit : commits) {
-            sum += commit.getMessage().split("\\s+").length;
-        }
-        return sum / commits.size();
-    }
-
-    public static TimeAnalysisResult timeAnalysis(List<Commit> commits) {
-        TimeAnalysisResult result = new TimeAnalysisResult();
-        for (Commit commit : commits) {
-            String firstWord = commit.getMessage().split("\\s+")[0];
-            if (firstWord.endsWith("s")) {
-                result.present++;
-            } else if (firstWord.endsWith("d")) {
-                result.past++;
-            } else {
-                result.indetermined++;
-            }
-        }
-        return result;
-    }
-
-    private static class TimeAnalysisResult {
-        public int past;
-        public int present;
-        public int indetermined;
-
-        @Override
-        public String toString() {
-            return "TimeAnalysisResult{" +
-                    "past=" + past +
-                    ", present=" + present +
-                    ", indetermined=" + indetermined +
-                    '}';
-        }
-    }
-
-    public static float percentWithCommitMessage(List<Commit> commits) {
-        float sum = 0;
-        for (Commit commit : commits) {
-            if (commit.getMessage() == null || commit.getMessage().matches("(\\s|-)*")) {
-                sum++;
-            }
-        }
-        return 1 - sum / commits.size();
-    }
-
-    public static float percentWithTrailingPeriod(List<Commit> commits) {
-        float sum = 0;
-        for (Commit commit : commits) {
-            if (commit.getMessage().endsWith(".")) {
-                sum++;
-            }
-        }
-        return sum / commits.size();
-    }
-
-    public static float percentMerges(List<Commit> commits) {
-        return ((float) removeMerges(commits).size()) / commits.size();
-    }
-
-    public static List<Commit> removeMerges(List<Commit> commits) {
-        ArrayList<Commit> result = new ArrayList<>();
-        for (Commit commit : commits) {
-            if (commit.getMessage().toLowerCase().startsWith("merge")) {
-                result.add(commit);
-            }
-        }
-        return result;
-    }
-
-    public static float averageFileActions(List<Commit> commits) {
-        float sum = 0;
-        for (Commit commit : commits) {
-            sum += commit.getDiff().size();
-        }
-        return sum / commits.size();
+//        wordRanksPlot(authors);
     }
 
     public static void wordRanksPlot(List<Author> authors) throws IOException {
@@ -167,9 +76,9 @@ class Main {
     }
 
     public static void occurrancesPerAuthorToCSV(Map<Author, Map<Integer, Integer>> occurrancesPerAuthor) {
-        for (Author author : occurrancesPerAuthor.keySet()) {
-            System.out.println("occurrance[" + author.getName() + "] = " + occurrancesPerAuthor.get(author));
-        }
+//        for (Author author : occurrancesPerAuthor.keySet()) {
+//            System.out.println("occurrance[" + author.getName() + "] = " + occurrancesPerAuthor.get(author));
+//        }
 
         int maxWordCount = 0;
         for (Author author : occurrancesPerAuthor.keySet()) {
@@ -181,7 +90,7 @@ class Main {
         }
         int numberOfAuthors = occurrancesPerAuthor.keySet().size();
 
-        System.out.println("maxWordCount = " + maxWordCount);
+        //System.out.println("maxWordCount = " + maxWordCount);
 
         // Initialize the table
         String[][] table = new String[maxWordCount + 1 + 1][];
