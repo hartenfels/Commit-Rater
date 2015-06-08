@@ -26,7 +26,7 @@ class Main {
         List<AuthorData> authorDatas = new ArrayList<>();
 
         Runtime runtime = Runtime.getRuntime();
-        Process process = runtime.exec(new String[]{"carton", "exec", "./give-files", "-r", fetchInput.getLocal()});
+        Process process = runtime.exec(new String[]{"carton", "exec", "./give-files", "-r", "--cap", "1000000", fetchInput.getLocal()});
         BufferedReader diffToolReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         BufferedWriter diffToolWriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
 
