@@ -25,14 +25,24 @@ die "Missing repo parameter.\n" if not length $opts{repo};
 my $repo = Git::Repository->new(work_tree => $opts{repo});
 my $json = JSON->new->utf8->canonical->pretty;
 
+unlink 'DIAGNOSTICS';
+sub diag
+{
+    open my $log, '>>', 'DIAGNOSTICS';
+    print {$log} @_, "\n";
+    close $log;
+}
+
 while (<STDIN>)
 {
     chomp;
     my ($sha1, $sha2, $file) = split "\0", $_, 3;
+    diag "$sha1 $sha2 $file";
 
     my @file1 = $repo->run(show => "$sha1:$file");
     my @file2 = $repo->run(show => "$sha2:$file");
 
+    diag "    diffing...";
     my @diff;
     for (sdiff(\@file1, \@file2))
     {
@@ -45,8 +55,10 @@ while (<STDIN>)
         };
     }
 
+    diag "    jsoning...";
     print $json->encode(\@diff), "\0\n";
     STDOUT->flush;
+    diag "    done!";
 }
 
 
