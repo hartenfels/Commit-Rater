@@ -32,7 +32,7 @@ while (<STDIN>)
 
     my @file1 = $repo->run(show => "$sha1:$file");
     my @file2 = $repo->run(show => "$sha2:$file");
-    my @diff  = sdiff(\@file1, \@file2);
+    my @diff  = grep { $_->[0] ne 'u' } sdiff(\@file1, \@file2);
 
     print $json->encode(\@diff), "\0\n";
     STDOUT->flush;
@@ -63,10 +63,9 @@ It will then output a diff in JSON format, followed by a C<NUL> marking the end
 of the output. Here's a self-describing sample output:
 
     [
-        ["u", "an unchanged line.", "an unchanged line"  ],
-        ["c", "the old line",       "a modified line"    ],
-        ["+", "",                   "a newly added lines"],
-        ["-", "a removed line",     ""                   ]
+        ["c", "the old line",       "a modified line"   ],
+        ["+", "",                   "a newly added line"],
+        ["-", "a removed line",     ""                  ]
     ]
     ^@
 
