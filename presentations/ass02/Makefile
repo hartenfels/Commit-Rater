@@ -4,7 +4,8 @@ presentation.pdf: presentation.tex $(wildcard img/*)
 
 clean:
 	rm -f presentation.log presentation.aux presentation.nav \
-	      presentation.out presentation.snm presentation.toc
+	      presentation.out presentation.snm presentation.toc \
+	      presentation.vrb
 
 realclean: clean
 	rm -f presentation.pdf
