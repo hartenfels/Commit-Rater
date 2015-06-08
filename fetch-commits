@@ -162,7 +162,7 @@ msg 'Writing JSON...', $verbose;
 print $json->encode({
     remote  => $remote,
     local   => $dir,
-    commits => \@out,
+    authors => \@out,
 });
 
 

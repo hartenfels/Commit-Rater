@@ -1,6 +1,5 @@
 package cr.processor;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.jfree.chart.ChartFactory;
@@ -14,28 +13,55 @@ import java.util.*;
 
 class Main {
     public static void main(String[] args) throws IOException {
+        // Read input from fetcher
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder input = new StringBuilder();
         String line;
         while ((line = br.readLine()) != null) {
             input.append(line);
         }
-
         ObjectMapper mapper = new ObjectMapper();
-        List<Author> authors = mapper.readValue(input.toString(), new TypeReference<List<Author>>() {});
+        FetchInput fetchInput = mapper.readValue(input.toString(), FetchInput.class);
         List<AuthorData> authorDatas = new ArrayList<>();
 
-        for (Author author : authors) {
+        // Analyze authors
+        for (Author author : fetchInput.getAuthors()) {
             if (author.getCommits().size() < 8) {
-//                System.out.printf("Skipping author %s with only %s commits%n", author.getName(), author.getCommits().size());
                 continue;
             }
             authorDatas.add(new AuthorData(author));
         }
 
-        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(authorDatas));
+        //System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(authorDatas));
 
-//        wordRanksPlot(authors);
+        // Diff tool analysis
+        Runtime runtime = Runtime.getRuntime();
+        Process process = runtime.exec(new String[]{"carton", "exec", "./give-files", "-r", fetchInput.getLocal()});
+        BufferedReader diffToolReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        BufferedReader diffToolErrorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+        BufferedWriter diffToolWriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+
+        line = "";
+
+        String out = fetchInput.getAuthors().get(0).getCommits().get(0).getSha()
+                + "\0"
+                + fetchInput.getAuthors().get(0).getCommits().get(1).getSha()
+                + "\0"
+                + fetchInput.getAuthors().get(0).getCommits().get(1).getDiff().keySet().iterator().next()
+                + "\n";
+        diffToolWriter.write(out);
+        diffToolWriter.flush();
+
+//        while ((line = diffToolErrorReader.readLine()) != null) {
+//            System.err.println(line);
+//        }
+
+        while (!(line = diffToolReader.readLine()).contains("\0")) {
+            System.out.println(line);
+        }
+
+        diffToolReader.close();
+        diffToolWriter.close();
     }
 
     public static void wordRanksPlot(List<Author> authors) throws IOException {
@@ -97,7 +123,7 @@ class Main {
         for (int i = 0; i < maxWordCount + 1 + 1; i++) {
             table[i] = new String[numberOfAuthors + 1];
 
-            for(int j = 0; j < numberOfAuthors + 1; j++) {
+            for (int j = 0; j < numberOfAuthors + 1; j++) {
                 if (j == 0) {
                     table[i][j] = i - 1 + "";
                 } else {
