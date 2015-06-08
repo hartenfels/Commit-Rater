@@ -1,7 +1,6 @@
 \documentclass[slidestop,usenames,dvipsnames]{beamer}
 \usepackage[utf8]{inputenc}
-\usepackage{xcolor}
-\usepackage{tikz}
+\usepackage{fancyvrb}
 \usepackage[absolute,overlay]{textpos}
 
 \title{Commit Rater}
@@ -136,6 +135,28 @@
         \fitem[Research Question:] Frustration Levels of Developers
         \fitem[Data Source:] Commit Messages on GitHub
         \fitem[Technologies Used:] \url{githubarchive.org}, List of Curse Words
+    \end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+    \framecount{Related Work}
+    \pause\vfill
+
+    \Large\begin{Verbatim}[fontfamily=cmss]
+Sentiment Analysis of Commit Comments in GitHub: An Empirical Studya
+    \end{Verbatim}
+
+    \normalsize
+    \begin{description}
+        \fitem[Research Questions:] Relation of Emotions to
+        \begin{itemize}
+            \fitem Programming Language
+            \fitem Day of the Week or Time of Day
+            \fitem Team's Geographical Distribution
+            \fitem Project Approval
+        \end{itemize}
+        \fitem[Data Source:] 29 of top-starred GitHub projects
+        \fitem[Technologies Used:] SentiStrength
     \end{description}
 \end{frame}
 
