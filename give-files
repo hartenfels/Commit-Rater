@@ -9,7 +9,7 @@ use Pod::Usage;
 
 
 my %opts;
-GetOptions \%opts, qw(repo|r=s help|h) or pod2usage(2);
+GetOptions \%opts, qw(repo|r=s cap|c=i help|h) or pod2usage(2);
 
 if (@ARGV)
 {
@@ -24,26 +24,18 @@ die "Missing repo parameter.\n" if not length $opts{repo};
 
 my $repo = Git::Repository->new(work_tree => $opts{repo});
 my $json = JSON->new->utf8->canonical->pretty;
+my $cap  = $opts{cap};
 
-unlink 'DIAGNOSTICS';
-sub diag
+
+sub build_diff
 {
-    open my $log, '>>', 'DIAGNOSTICS';
-    print {$log} @_, "\n";
-    close $log;
-}
+    for (defined $cap ? @_ : ())
+    {   return [] if $repo->run('cat-file' => -s => $_) > $cap }
 
-while (<STDIN>)
-{
-    chomp;
-    my ($sha1, $sha2, $file) = split "\0", $_, 3;
-    diag "$sha1 $sha2 $file";
-
-    my @file1 = $repo->run(show => "$sha1:$file");
-    my @file2 = $repo->run(show => "$sha2:$file");
-
-    diag "    diffing...";
+    my @file1 = $repo->run(show => shift);
+    my @file2 = $repo->run(show => shift);
     my @diff;
+
     for (sdiff(\@file1, \@file2))
     {
         my ($op, $old, $new) = @$_;
@@ -55,10 +47,16 @@ while (<STDIN>)
         };
     }
 
-    diag "    jsoning...";
-    print $json->encode(\@diff), "\0\n";
+    \@diff
+}
+
+
+while (<STDIN>)
+{
+    chomp;
+    my ($sha1, $sha2, $file) = split "\0", $_, 3;
+    print $json->encode(build_diff("$sha1:$file", "$sha2:$file")), "\0\n";
     STDOUT->flush;
-    diag "    done!";
 }
 
 
@@ -99,6 +97,11 @@ of the output. Here's a self-describing sample output:
 =item --repo=PATH-TO-REPO, -r PATH-TO-REPO
 
 The path to the local git repository where the files should be taken from.
+
+=item --cap=BYTES, -c BYTES
+
+Cap the maximum size for files to diff. Any file that is larger than this cap
+will be skipped and the output will be an empty JSON list (C<[]>).
 
 =item --help, -h
 
