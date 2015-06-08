@@ -63,10 +63,10 @@ It will then output a diff in JSON format, followed by a C<NUL> marking the end
 of the output. Here's a self-describing sample output:
 
     [
-        ["u", "an unchanged line.", "an unchanged line"  ],
-        ["c", "the old line",       "a modified line"    ],
-        ["+", "",                   "a newly added lines"],
-        ["-", "a removed line",     ""                   ]
+        ["u", "an unchanged line.", "an unchanged line" ],
+        ["c", "the old line",       "a modified line"   ],
+        ["+", "",                   "a newly added line"],
+        ["-", "a removed line",     ""                  ]
     ]
     ^@
 
