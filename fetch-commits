@@ -159,7 +159,11 @@ for (sort keys %commits)
 }
 
 msg 'Writing JSON...', $verbose;
-print $json->encode(\@out);
+print $json->encode({
+    remote  => $remote,
+    local   => $dir,
+    commits => \@out,
+});
 
 
 __END__
