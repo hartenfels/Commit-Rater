@@ -33,7 +33,7 @@ public class AuthorData {
         List<Commit> commits = author.getCommits();
 
         this.commits = commits.size();
-        merges = commits.size() - filterMerges(commits).size();
+        merges = filterMerges(commits).size();
         averageCommitMessageLength = averageCommitMessageLength(commits);
         averageCommitMessageWords = averageCommitMessageWords(commits);
         commitMessageWords = commitMessageWords(commits);
@@ -122,6 +122,11 @@ public class AuthorData {
         return ((float) filterMerges(commits).size()) / commits.size();
     }
 
+    /**
+     * Removes all commits that are *not* merges
+     * @param commits A list of commits with commit messages
+     * @return A list of merges
+     */
     public static List<Commit> filterMerges(List<Commit> commits) {
         ArrayList<Commit> result = new ArrayList<>();
         for (Commit commit : commits) {
