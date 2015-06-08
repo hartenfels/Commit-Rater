@@ -1,4 +1,5 @@
-presentation.pdf: presentation.tex
+presentation.pdf: presentation.tex $(wildcard img/*)
+	pdflatex presentation.tex
 	pdflatex presentation.tex
 
 clean:
