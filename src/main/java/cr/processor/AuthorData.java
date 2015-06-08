@@ -2,6 +2,8 @@ package cr.processor;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import cr.processor.input.Author;
+import cr.processor.input.Commit;
 
 import java.io.*;
 import java.util.ArrayList;

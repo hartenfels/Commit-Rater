@@ -1,7 +1,9 @@
 package cr.processor;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import cr.processor.input.Author;
+import cr.processor.input.Commit;
+import cr.processor.input.FetchInput;
 import org.apache.commons.lang3.StringUtils;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
