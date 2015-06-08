@@ -39,34 +39,44 @@ class Main {
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec(new String[]{"carton", "exec", "./give-files", "-r", fetchInput.getLocal()});
         BufferedReader diffToolReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        BufferedReader diffToolErrorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
         BufferedWriter diffToolWriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
 
-        line = "";
+        Author arthur = fetchInput.getAuthors().get(0);
+        for (int c = 1; c < arthur.getCommits().size(); c++) {
+            Commit prevCommit = arthur.getCommits().get(c - 1);
+            Commit commit = arthur.getCommits().get(c);
 
-        String out = fetchInput.getAuthors().get(0).getCommits().get(0).getSha()
-                + "\0"
-                + fetchInput.getAuthors().get(0).getCommits().get(1).getSha()
-                + "\0"
-                + fetchInput.getAuthors().get(0).getCommits().get(1).getDiff().keySet().iterator().next()
-                + "\n";
-        diffToolWriter.write(out);
-        diffToolWriter.flush();
+            if (commit.getParents().length > 1) {
+//                System.out.println(commit.getSha() + " has more than one parent, skipping");
+                continue; // Skip merges
+            }
 
-//        while ((line = diffToolErrorReader.readLine()) != null) {
-//            System.err.println(line);
-//        }
+            for (String fileName : commit.getDiff().keySet()) {
+                if (!commit.getDiff().get(fileName).equals("M")) {
+                    continue; // Skip files that are created or deleted
+                }
 
-        StringBuilder diffToolInput = new StringBuilder();
-        while (!(line = diffToolReader.readLine()).contains("\0")) {
-            diffToolInput.append(line);
+                String out = prevCommit.getSha()
+                        + "\0"
+                        + commit.getSha()
+                        + "\0"
+                        + fileName
+                        + "\n";
+                System.out.printf("%n----%s%n", out);
+                diffToolWriter.write(out);
+                diffToolWriter.flush();
+
+                StringBuilder diffToolInput = new StringBuilder();
+                while (!(line = diffToolReader.readLine()).contains("\0")) {
+                    diffToolInput.append(line);
+                }
+                List<LineDiff> lineDiffs = mapper.readValue(diffToolInput.toString(), new TypeReference<List<LineDiff>>() {});
+                System.out.println("lineDiffs = " + lineDiffs);
+            }
         }
-        List<LineDiff> lineDiffs = mapper.readValue(diffToolInput.toString(), new TypeReference<List<LineDiff>>(){});
 
         diffToolReader.close();
         diffToolWriter.close();
-
-        System.out.println("lineDiffs = " + lineDiffs);
     }
 
     public static void wordRanksPlot(List<Author> authors) throws IOException {
