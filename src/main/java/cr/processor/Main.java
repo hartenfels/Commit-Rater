@@ -1,5 +1,6 @@
 package cr.processor;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.jfree.chart.ChartFactory;
@@ -56,12 +57,16 @@ class Main {
 //            System.err.println(line);
 //        }
 
+        StringBuilder diffToolInput = new StringBuilder();
         while (!(line = diffToolReader.readLine()).contains("\0")) {
-            System.out.println(line);
+            diffToolInput.append(line);
         }
+        List<LineDiff> lineDiffs = mapper.readValue(diffToolInput.toString(), new TypeReference<List<LineDiff>>(){});
 
         diffToolReader.close();
         diffToolWriter.close();
+
+        System.out.println("lineDiffs = " + lineDiffs);
     }
 
     public static void wordRanksPlot(List<Author> authors) throws IOException {
