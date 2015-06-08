@@ -35,6 +35,7 @@ while (<STDIN>)
     my @diff  = sdiff(\@file1, \@file2);
 
     print $json->encode(\@diff), "\0\n";
+    STDOUT->flush;
 }
 
 
