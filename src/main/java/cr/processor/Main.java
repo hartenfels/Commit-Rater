@@ -25,64 +25,15 @@ class Main {
         FetchInput fetchInput = mapper.readValue(input.toString(), FetchInput.class);
         List<AuthorData> authorDatas = new ArrayList<>();
 
-        Runtime runtime = Runtime.getRuntime();
-        Process process = runtime.exec(new String[]{"carton", "exec", "./give-files", "-r", "--cap", "1000000", fetchInput.getLocal()});
-        BufferedReader diffToolReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        BufferedWriter diffToolWriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
-
         // Analyze authors
         for (Author author : fetchInput.getAuthors()) {
             if (author.getCommits().size() < 8) {
                 continue;
             }
-            authorDatas.add(new AuthorData(author));
-
-            // Diff analysis
-            for (int c = 1; c < author.getCommits().size(); c++) {
-                Commit commit = author.getCommits().get(c);
-                if (commit.getParents().length > 1) {
-                    System.out.println(commit.getSha() + " has more than one parent, skipping");
-                    continue; // Skip merges
-                }
-
-                for (String fileName : commit.getDiff().keySet()) {
-                    if (!commit.getDiff().get(fileName).equals("M")) {
-                        continue; // Skip files that are created or deleted
-                    }
-
-                    String out = commit.getParents()[0]
-                            + "\0"
-                            + commit.getSha()
-                            + "\0"
-                            + fileName
-                            + "\n";
-                    System.out.printf("%n----%s%n", out);
-                    diffToolWriter.write(out);
-                    diffToolWriter.flush();
-
-                    StringBuilder diffToolInput = new StringBuilder();
-                    try {
-                        while (!(line = diffToolReader.readLine()).contains("\0")) {
-                            diffToolInput.append(line);
-                        }
-                    } catch (NullPointerException e) {
-                        BufferedReader errorStream = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-                        String eline;
-                        while ((eline = errorStream.readLine()) != null) {
-                            System.err.println(eline);
-                        }
-                        throw e;
-                    }
-                    List<LineDiff> lineDiffs = mapper.readValue(diffToolInput.toString(), new TypeReference<List<LineDiff>>() {});
-                    System.out.println("lineDiffs = " + lineDiffs);
-                }
-            }
+            authorDatas.add(new AuthorData(author, fetchInput.getLocal()));
         }
 
-        //System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(authorDatas));
-
-        diffToolReader.close();
-        diffToolWriter.close();
+        System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(authorDatas));
     }
 
     public static void wordRanksPlot(List<Author> authors) throws IOException {

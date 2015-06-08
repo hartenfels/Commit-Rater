@@ -1,5 +1,9 @@
 package cr.processor;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -20,15 +24,16 @@ public class AuthorData {
     public float commitsWithMessage;
     public float commitsWithTrailingPeriod;
     public float averageFileActions;
+    public WhitespaceAnalysisResult whitespaceAnalysisResult;
 
-    public AuthorData(Author author) {
+    public AuthorData(Author author, String local) {
         name = author.getName();
         email = author.getEmail();
 
         List<Commit> commits = author.getCommits();
 
         this.commits = commits.size();
-        merges = commits.size() - removeMerges(commits).size();
+        merges = commits.size() - filterMerges(commits).size();
         averageCommitMessageLength = averageCommitMessageLength(commits);
         averageCommitMessageWords = averageCommitMessageWords(commits);
         commitMessageWords = commitMessageWords(commits);
@@ -37,6 +42,11 @@ public class AuthorData {
         commitsWithMessage = percentWithCommitMessage(commits);
         commitsWithTrailingPeriod = percentWithTrailingPeriod(commits);
         averageFileActions = averageFileActions(commits);
+        try {
+            whitespaceAnalysisResult = whitespaceAnalysisResult(commits, local);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -109,10 +119,10 @@ public class AuthorData {
     }
 
     public static float percentMerges(List<Commit> commits) {
-        return ((float) removeMerges(commits).size()) / commits.size();
+        return ((float) filterMerges(commits).size()) / commits.size();
     }
 
-    public static List<Commit> removeMerges(List<Commit> commits) {
+    public static List<Commit> filterMerges(List<Commit> commits) {
         ArrayList<Commit> result = new ArrayList<>();
         for (Commit commit : commits) {
             if (commit.getMessage().toLowerCase().startsWith("merge")) {
@@ -141,5 +151,98 @@ public class AuthorData {
             }
         }
         return occurrances;
+    }
+
+    public static WhitespaceAnalysisResult whitespaceAnalysisResult(List<Commit> commits, String local) throws IOException {
+        Runtime runtime = Runtime.getRuntime();
+        Process process = runtime.exec(new String[]{"carton", "exec", "./give-files", "-c", "1000000", "-r", local});
+        BufferedReader diffToolReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        BufferedWriter diffToolWriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+        ObjectMapper mapper = new ObjectMapper();
+
+        WhitespaceAnalysisResult whitespaceAnalysisResult = new WhitespaceAnalysisResult();
+        for (Commit commit : commits) {
+            float numberOfWSChanges = 0;
+            int linesChanged = 0;
+
+            if (commit.getParents().length > 1) {
+                //System.out.println(commit.getSha() + " has more than one parent, skipping");
+                continue; // Skip merges
+            }
+
+            // Iterate over all changed files in commit
+            for (String fileName : commit.getDiff().keySet()) {
+                if (!commit.getDiff().get(fileName).equals("M")) {
+                    continue; // Skip files that are created or deleted
+                }
+
+                // Prepare input for external diff tool
+                String out = commit.getParents()[0]
+                        + "\0"
+                        + commit.getSha()
+                        + "\0"
+                        + fileName
+                        + "\n";
+                diffToolWriter.write(out);
+                diffToolWriter.flush();
+
+                // Get diff from external diff tool
+                StringBuilder diffToolInput = new StringBuilder();
+                String line = "";
+                try {
+                    while (!(line = diffToolReader.readLine()).contains("\0")) {
+                        diffToolInput.append(line);
+                    }
+                } catch (NullPointerException e) {
+                    BufferedReader errorStream = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+                    String eline;
+                    while ((eline = errorStream.readLine()) != null) {
+                        System.err.println(eline);
+                    }
+                    throw e;
+                }
+                List<LineDiff> lineDiffs = mapper.readValue(diffToolInput.toString(), new TypeReference<List<LineDiff>>() {});
+
+                // For every line test if the change made was a whitespace change
+                for (LineDiff lineDiff : lineDiffs) {
+                    String newTrimmed = lineDiff.getNewLine().replaceAll("\\s", "");
+                    String oldTrimmed = lineDiff.getOldLine().replaceAll("\\s", "");
+                    switch (lineDiff.getOp()) {
+                        case "c": // Changed
+                            // lineDiff.getNewLine() != lineDiff.getOldLine() is given
+                            if (newTrimmed.equals(oldTrimmed)) {
+                                numberOfWSChanges++;
+                            }
+                            break;
+                        case "+": // Added. oldLine == ""
+                            if (newTrimmed.equals("")) {
+                                // If the new line is WS only, the change was a WS change
+                                numberOfWSChanges++;
+                            }
+                            break;
+                        case "-": // Deleted. newLine == ""
+                            if (oldTrimmed.equals("")) {
+                                // If the old line was WS only, the change was a WS change
+                                numberOfWSChanges++;
+                            }
+                            break;
+                    }
+                    linesChanged++;
+                }
+            }
+
+            // Categorize commit according to thresholds
+            float percentWhitespaceChanges = numberOfWSChanges / linesChanged;
+            if (percentWhitespaceChanges > WhitespaceAnalysisResult.WHITESPACE_THRESHOLD) {
+                whitespaceAnalysisResult.whitespaceChanges++;
+            } else if (percentWhitespaceChanges > WhitespaceAnalysisResult.MIXED_THRESHOLD) {
+                whitespaceAnalysisResult.mixedChanges++;
+            } else {
+                whitespaceAnalysisResult.codeChanges++;
+            }
+        }
+        diffToolReader.close();
+        diffToolWriter.close();
+        return whitespaceAnalysisResult;
     }
 }
