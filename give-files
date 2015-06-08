@@ -32,7 +32,7 @@ while (<STDIN>)
 
     my @file1 = $repo->run(show => "$sha1:$file");
     my @file2 = $repo->run(show => "$sha2:$file");
-    my @diff  = sdiff(\@file1, \@file2);
+    my @diff  = grep { $_->[0] ne 'u' } sdiff(\@file1, \@file2);
 
     print $json->encode(\@diff), "\0\n";
     STDOUT->flush;
