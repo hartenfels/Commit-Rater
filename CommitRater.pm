@@ -13,7 +13,7 @@ sub rate
 {
     my ($self) = @_;
     $self->repo->update;
-    print $self->repo->map_commits(sub { "$_->{sha}\n" });
+    $self->repo->each_commit(sub { print "$_->{sha}\n" });
 }
 
 

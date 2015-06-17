@@ -61,20 +61,21 @@ sub update
 }
 
 
-sub map_commits
+sub each_commit
 {
     my ($self, $callback) = @_;
-
-    map
+    my $format = '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P';
+    for my $raw_line ($self->repo->git('log', $format))
     {
-        my $line = decode('UTF-8', $_);
+        my $line = decode('UTF-8', $raw_line);
 
         my %commit;
         @commit{qw(sha name email message parents)} = split "\0", $line, 5;
         $commit{parents} = [split ' ', $commit{parents}];
 
-        do { local $_ = \%commit; $callback->() }
-    } $self->repo->git('log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P')
+        local $_ = \%commit;
+        $callback->();
+    }
 }
 
 
