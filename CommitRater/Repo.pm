@@ -1,6 +1,8 @@
 package CommitRater::Repo;
 use Moose;
-use File::Path qw(remove_tree);
+use Encode                qw(decode);
+use File::Path            qw(remove_tree);
+use File::Spec::Functions qw(catfile);
 use CommitRater::Git::Repository;
 
 
@@ -13,7 +15,8 @@ has remote => (
 has local => (
     is       => 'ro',
     isa      => 'Str',
-    required => 1,
+    lazy     => 1,
+    default  => sub { catfile '__repos/', shift->remote =~ s/\W/_/gr },
 );
 
 has repo => (
@@ -55,6 +58,23 @@ sub update
     }
 
     $self->clone;
+}
+
+
+sub map_commits
+{
+    my ($self, $callback) = @_;
+
+    map
+    {
+        my $line = decode('UTF-8', $_);
+
+        my %commit;
+        @commit{qw(sha name email message parents)} = split "\0", $line, 5;
+        $commit{parents} = [split ' ', $commit{parents}];
+
+        do { local $_ = \%commit; $callback->() }
+    } $self->repo->git('log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P');
 }
 
 
