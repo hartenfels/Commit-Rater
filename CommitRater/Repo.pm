@@ -74,7 +74,7 @@ sub map_commits
         $commit{parents} = [split ' ', $commit{parents}];
 
         do { local $_ = \%commit; $callback->() }
-    } $self->repo->git('log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P');
+    } $self->repo->git('log', '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P')
 }
 
 
