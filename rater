@@ -1,0 +1,40 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use Getopt::Long;
+use File::Spec::Functions qw(catfile);
+use Pod::Usage;
+use CommitRater::Repo;
+
+
+my %opts;
+GetOptions \%opts, qw(
+     remote|r=s
+       help|h
+) or pod2usage(2);
+
+if (@ARGV)
+{
+    my $args = join ' ', @ARGV;
+    warn "Excessive arguments: $args\n";
+    pod2usage(2);
+}
+
+pod2usage(-exitval => 0, -verbose => 2) if $opts{help};
+
+
+my $remote = $opts{remote} or pod2usage(1);
+my $local  = catfile '__repos/', $remote =~ s/\W/_/gr;
+
+
+__END__
+
+=head1 NAME
+
+rater
+
+=head1 SYNOPSIS
+
+    rater --remote=REMOTE
+
+=cut
