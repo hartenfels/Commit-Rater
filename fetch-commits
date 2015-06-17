@@ -94,7 +94,7 @@ sub git
 if (!-d $dir)
 {
     msg "Cloning `$remote` into `$dir`...", $verbose;
-    git 'clone', '-q', $remote, $dir;
+    git 'clone', '-nq', $remote, $dir;
 }
 
 chdir $dir or die "Couldn't cd into work tree $dir: $!\n";
