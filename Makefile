@@ -1,8 +1,8 @@
-install: cpanfile
+install: local
+
+local: cpanfile
 	carton install
 	touch local
-
-local: install
 
 
 test: local
