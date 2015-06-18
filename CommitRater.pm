@@ -1,6 +1,6 @@
 package CommitRater;
 use Moose;
-use feature    qw(state);
+use feature    qw(fc state);
 use List::Util qw(all any);
 use Lingua::EN::Tagger;
 
@@ -40,7 +40,7 @@ sub rate_commit
 {
     my ($commit, $results) = @_;
 
-    my $author = $results->{$commit->{email}} //= {default_result};
+    my $author = $results->{fc $commit->{email}} //= {default_result};
     my $rules  = rate_message(@{$commit->{message}});
 
     while (my ($k, $v) = each %$rules)
