@@ -72,15 +72,8 @@ run_git($local,
 lives_ok { $repo->update } 'pull modified repo via update';
 
 
-run_git($local,
-    [qw(checkout -q --orphan dummy)],
-    [qw(add -A)],
-    [qw(commit -qm), 'Destroy everything'],
-    [qw(branch -D master)],
-    [qw(branch -m master)],
-    [qw(push -qf origin master)],
-);
 *CommitRater::Repo::remove_tree = sub {};
+*CommitRater::Repo::pull        = sub { die };
 throws_ok { $repo->update } qr/Pull failed and can't remove/,
           'failing pull and not being able to delete repo dir dies';
 
