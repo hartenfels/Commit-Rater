@@ -1,19 +1,25 @@
 use Test::Most;
+use File::Temp;
+use Git::Repository;
 use CommitRater;
 
 
-my @commits;
+my  $test_dir  = File::Temp->newdir;
+my $commit_dir = "$test_dir/local";
+my $clone_dir  = "$test_dir/clone";
+
+
+Git::Repository->run(init => $commit_dir);
+my $local = Git::Repository->new(work_tree => $commit_dir);
+
+
 sub commit
 {
     my ($email, $message) = @_;
-
-    my @lines = $message =~ "\n" ? split "\n", $message : ($message);
-    chomp for @lines;
-
-    push @commits, {
-        email   => $email,
-        message => \@lines,
-    }
+    $email =~ /([^@]+)/;
+    $local->run(qw(config --local user.name),  $1);
+    $local->run(qw(config --local user.email), $email);
+    $local->run(qw(commit --allow-empty --allow-empty-message -qm), $message);
 }
 
 commit 'dev@elo.per', <<'END_OF_MESSAGE';
@@ -37,8 +43,9 @@ commit 'j@i.m', <<'END_OF_MESSAGE';
 END_OF_MESSAGE
 
 
-my %results;
-CommitRater::rate_commit($_, \%results) for @commits;
+my $repo  = CommitRater::Repo->new(local => $clone_dir, remote => $commit_dir);
+my $rater = CommitRater->new(repo => $repo);
+
 
 sub result
 {
@@ -50,7 +57,7 @@ sub result
     }
 }
 
-is_deeply \%results, {
+is_deeply $rater->rate, {
     'dev@elo.per' => {
         empty_second_line  => result(1, 1, 1),
         subject_limit      => result(2, 1, 0),
