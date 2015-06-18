@@ -5,7 +5,6 @@ use Getopt::Long;
 use Pod::Usage;
 use JSON;
 use CommitRater;
-use CommitRater::Repo;
 
 
 my %opts;

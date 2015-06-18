@@ -3,6 +3,7 @@ use Moose;
 use feature    qw(fc state);
 use List::Util qw(all any);
 use Lingua::EN::Tagger;
+use CommitRater::Repo;
 
 
 has repo => (
