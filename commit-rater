@@ -35,10 +35,10 @@ __END__
 
 =head1 NAME
 
-rater
+commit-rater
 
 =head1 SYNOPSIS
 
-    rater --remote=REMOTE
+    commit-rater --remote=REMOTE
 
 =cut
