@@ -109,6 +109,65 @@ DISTRIBUTIONS
       Sub::Install 0.921
       strict 0
       warnings 0
+  Devel-Cover-1.18
+    pathname: P/PJ/PJCJ/Devel-Cover-1.18.tar.gz
+    provides:
+      Devel::Cover 1.18
+      Devel::Cover::Annotation::Git 1.18
+      Devel::Cover::Annotation::Random 1.18
+      Devel::Cover::Annotation::Svk 1.18
+      Devel::Cover::Branch 1.18
+      Devel::Cover::Collection 1.18
+      Devel::Cover::Collection::Template::Provider 1.18
+      Devel::Cover::Condition 1.18
+      Devel::Cover::Condition_and_2 1.18
+      Devel::Cover::Condition_and_3 1.18
+      Devel::Cover::Condition_or_2 1.18
+      Devel::Cover::Condition_or_3 1.18
+      Devel::Cover::Condition_xor_4 1.18
+      Devel::Cover::Criterion 1.18
+      Devel::Cover::DB 1.18
+      Devel::Cover::DB::Criterion undef
+      Devel::Cover::DB::Digests 1.18
+      Devel::Cover::DB::File 1.18
+      Devel::Cover::DB::IO 1.18
+      Devel::Cover::DB::IO::JSON 1.18
+      Devel::Cover::DB::IO::Sereal 1.18
+      Devel::Cover::DB::IO::Storable 1.18
+      Devel::Cover::DB::Run 1.18
+      Devel::Cover::DB::Structure 1.18
+      Devel::Cover::Html_Common 1.18
+      Devel::Cover::Inc undef
+      Devel::Cover::Op 1.18
+      Devel::Cover::Pod 1.18
+      Devel::Cover::Report::Compilation 1.18
+      Devel::Cover::Report::Html 1.18
+      Devel::Cover::Report::Html_basic 1.18
+      Devel::Cover::Report::Html_basic::Template::Provider 1.18
+      Devel::Cover::Report::Html_minimal 1.18
+      Devel::Cover::Report::Html_subtle 1.18
+      Devel::Cover::Report::Html_subtle::Template::Provider 1.18
+      Devel::Cover::Report::Json 1.18
+      Devel::Cover::Report::Sort 1.18
+      Devel::Cover::Report::Text 1.18
+      Devel::Cover::Report::Text2 1.18
+      Devel::Cover::Report::Vim 1.18
+      Devel::Cover::Report::Vim::Template::Provider 1.18
+      Devel::Cover::Statement 1.18
+      Devel::Cover::Subroutine 1.18
+      Devel::Cover::Test 1.18
+      Devel::Cover::Time 1.18
+      Devel::Cover::Truth_Table 1.18
+      Devel::Cover::Truth_Table::Row undef
+      Devel::Cover::Util 1.18
+      Devel::Cover::Web 1.18
+    requirements:
+      Digest::MD5 0
+      ExtUtils::MakeMaker 0
+      HTML::Entities 3.69
+      Storable 0
+      Test::More 0
+      Test::Warn 0
   Devel-GlobalDestruction-0.13
     pathname: H/HA/HAARG/Devel-GlobalDestruction-0.13.tar.gz
     provides:

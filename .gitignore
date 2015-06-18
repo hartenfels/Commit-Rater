@@ -1,7 +1,7 @@
 __repos
 local
+cover_db
 .vagrant
-out/
 *.png
 *.csv
 

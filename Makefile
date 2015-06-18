@@ -1,6 +1,9 @@
 test: local
 	carton exec -- prove
 
+cover: local
+	carton exec -- cover -test -ignore_re \.t$$ -ignore_re local/
+
 
 install: local
 

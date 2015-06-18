@@ -1,3 +1,4 @@
+requires 'Devel::Cover';
 requires 'Git::Repository';
 requires 'JSON';
 requires 'Lingua::EN::Tagger';
