@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use Getopt::Long;
 use Pod::Usage;
+use JSON;
 use CommitRater;
 use CommitRater::Repo;
 
@@ -26,7 +27,8 @@ pod2usage(-exitval => 0, -verbose => 2) if $opts{help};
 my $remote = $opts{remote} or pod2usage(1);
 my $repo   = CommitRater::Repo->new(remote => $remote);
 my $rater  = CommitRater->new(repo => $repo);
-$rater->rate;
+
+print JSON->new->utf8->pretty->canonical->encode($rater->rate);
 
 
 __END__
