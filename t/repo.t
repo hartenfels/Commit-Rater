@@ -40,8 +40,9 @@ spew("$local_dir/$_", "$_\n") for @files;
 
 
 run_git($local,
-    [qw(config --local user.name  commit-rater)],
-    [qw(config --local user.email commit-rater@example.com)],
+    [qw(config --local user.name    commit-rater)],
+    [qw(config --local user.email   commit-rater@example.com)],
+    [qw(config --local push.default simple)],
     [qw(add), @files],
     [qw(commit -qm), 'Add test files'],
     [qw(remote add origin), $remote_dir],
