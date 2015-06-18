@@ -1,5 +1,6 @@
 package CommitRater;
 use Moose;
+use feature    qw(state);
 use List::Util qw(all any);
 use Lingua::EN::Tagger;
 
@@ -50,11 +51,10 @@ sub rate_commit
 }
 
 
-our $tagger = Lingua::EN::Tagger->new;
-
 sub rate_message
 {
     no warnings 'uninitialized';
+    state $tagger = Lingua::EN::Tagger->new;
     my ($subject, @body) = @_;
 
     my %result;
