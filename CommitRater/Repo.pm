@@ -64,14 +64,19 @@ sub update
 sub each_commit
 {
     my ($self, $callback) = @_;
-    my $format = '--format=format:%H%x00%aN%x00%aE%x00%s%x00%P';
-    for my $raw_line ($self->repo->git('log', $format))
+    my  $repo             = $self->repo;
+
+    for my $raw ($repo->git('log', '--format=%H%x00%aN%x00%aE%x00%P'))
     {
-        my $line = decode('UTF-8', $raw_line);
+        my $line = decode('UTF-8', $raw);
 
         my %commit;
-        @commit{qw(sha name email message parents)} = split "\0", $line, 5;
+        @commit{qw(sha name email parents)} = split "\0", $line, 5;
         $commit{parents} = [split ' ', $commit{parents}];
+
+        my @message = $repo->git('log', '--format=%B', '-n', 1, $commit{sha});
+        $#message-- until @message == 1 || length $message[-1];
+        $commit{message} = \@message;
 
         local $_ = \%commit;
         $callback->();
