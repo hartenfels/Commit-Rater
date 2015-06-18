@@ -39,7 +39,7 @@ sub clone
 sub pull
 {
     my ($self) = @_;
-    $self->repo->git('pull');
+    $self->repo->git(qw(pull -q));
 }
 
 sub update
@@ -50,7 +50,7 @@ sub update
     if (-e $local)
     {
         # try to pull
-        eval { return $self->pull };
+        return if eval { $self->pull; 1 };
         # didn't work, delete the repo and re-clone
         $self->clear_repo;
         remove_tree($local);
