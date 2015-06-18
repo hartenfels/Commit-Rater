@@ -35,12 +35,12 @@ sub rate
 
 
 sub default_result { map { $_ => {pass => 0, fail => 0, undef => 0} } RULES }
-use Data::Dumper;
+
 sub rate_commit
 {
     my ($commit, $results) = @_;
 
-    my $author = $results->{$commit->{name}}{$commit->{email}} //= {default_result};
+    my $author = $results->{$commit->{email}} //= {default_result};
     my $rules  = rate_message(@{$commit->{message}});
 
     while (my ($k, $v) = each %$rules)

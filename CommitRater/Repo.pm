@@ -66,12 +66,12 @@ sub each_commit
     my ($self, $callback) = @_;
     my  $repo             = $self->repo;
 
-    for my $raw ($repo->git('log', '--format=%H%x00%aN%x00%aE%x00%P'))
+    for my $raw ($repo->git('log', '--format=%H%x00%aE%x00%P'))
     {
         my $line = decode('UTF-8', $raw);
 
         my %commit;
-        @commit{qw(sha name email parents)} = split "\0", $line, 5;
+        @commit{qw(sha email parents)} = split "\0", $line, 5;
         $commit{parents} = [split ' ', $commit{parents}];
 
         my @message = $repo->git('log', '--format=%B', '-n', 1, $commit{sha});
