@@ -70,15 +70,11 @@ sub each_commit
     {
         my $line = decode('UTF-8', $raw);
 
-        my %commit;
-        @commit{qw(sha email parents)} = split "\0", $line, 5;
-        $commit{parents} = [split ' ', $commit{parents}];
+        local $_ = {};
+        @{$_}{qw(sha email parents)} = split "\0", $line, 5;
+        $_->{parents} = [split ' ', $_->{parents}];
+        $_->{message} = [$repo->git('log', '--format=%B', '-n', 1, $_->{sha})];
 
-        my @message = $repo->git('log', '--format=%B', '-n', 1, $commit{sha});
-        $#message-- until @message == 1 || length $message[-1];
-        $commit{message} = \@message;
-
-        local $_ = \%commit;
         $callback->();
     }
 }
