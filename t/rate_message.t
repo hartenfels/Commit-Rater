@@ -63,11 +63,11 @@ rate_ok 'commit message in the middle', {
     capitalize_subject => 1,
     no_period_subject  => 1,
     imperative_subject => 0,
-    body_limit         => 1,
+    body_limit         => 0,
     body_used          => 1,
 }, <<END_OF_MESSAGE;
 Bug
-This fixes bug good.
+This fixes that super nasty bug that came up in the last meeting for real now
 END_OF_MESSAGE
 
 
