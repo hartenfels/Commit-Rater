@@ -57,7 +57,7 @@ sub result
     }
 }
 
-is_deeply $rater->rate, {
+my $expected = {
     'dev@elo.per' => {
         empty_second_line  => result(1, 1, 1),
         subject_limit      => result(2, 1, 0),
@@ -76,7 +76,34 @@ is_deeply $rater->rate, {
         body_limit         => result(0, 0, 1),
         body_used          => result(0, 1, 0),
     },
-}, 'rate_commit aggregates expected results';
+};
+
+is_deeply $rater->rate,        $expected, 'rate aggregates expected results';
+
+
+is_deeply $rater->rate(2), {
+    'dev@elo.per' => {
+        empty_second_line  => result(0, 1, 0),
+        subject_limit      => result(1, 0, 0),
+        capitalize_subject => result(1, 0, 0),
+        no_period_subject  => result(1, 0, 0),
+        imperative_subject => result(0, 1, 0),
+        body_limit         => result(0, 1, 0),
+        body_used          => result(1, 0, 0),
+    },
+    'j@i.m'       => {
+        empty_second_line  => result(0, 0, 1),
+        subject_limit      => result(1, 0, 0),
+        capitalize_subject => result(0, 1, 0),
+        no_period_subject  => result(1, 0, 0),
+        imperative_subject => result(0, 1, 0),
+        body_limit         => result(0, 0, 1),
+        body_used          => result(0, 1, 0),
+    },
+}, 'rate with limit handles only recent commits';
+
+is_deeply $rater->rate(10000), $expected,
+          'limit larger than number of commits aggregates all commits';
 
 
 done_testing

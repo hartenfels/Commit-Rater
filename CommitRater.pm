@@ -33,11 +33,11 @@ use constant RULES => qw(
 
 sub rate
 {
-    my ($self) = @_;
+    my ($self, $limit) = @_;
     $self->repo->update;
 
     my %results;
-    $self->repo->each_commit(sub { rate_commit($_, \%results) });
+    $self->repo->each_commit(sub { rate_commit($_, \%results) }, $limit);
     return \%results
 }
 

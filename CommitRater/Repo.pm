@@ -63,11 +63,11 @@ sub update
 
 sub each_commit
 {
-    my ($self, $callback) = @_;
-    my  $repo             = $self->repo;
+    my ($self, $callback, $limit) = @_;
 
-    my $format = '--format=%H%n%aE%n%P%n%B%n%x00';
-    my $log    = decode('UTF-8', scalar $repo->git('log', $format));
+    my @cmd = ('log', '--format=%H%n%aE%n%P%n%B%n%x00');
+    push @cmd, -n => $limit if $limit;
+    my $log = decode('UTF-8', scalar $self->repo->git(@cmd));
 
     while ($log =~ /(.*?)\n(.*?)\n(.*?)\n(.*?)\0\n?/gs)
     {
