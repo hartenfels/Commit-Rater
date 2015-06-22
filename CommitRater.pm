@@ -12,13 +12,6 @@ has repo => (
     required => 1,
 );
 
-around BUILDARGS => sub
-{
-    my ($orig, $class) = (shift, shift);
-    return @_ == 1 && !ref $_[0]
-         ? $class->$orig(repo => CommitRater::Repo->new(remote => $_[0]))
-         : $class->$orig(@_);
-};
 
 use constant RULES => qw(
     empty_second_line

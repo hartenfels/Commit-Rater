@@ -22,10 +22,10 @@ if (@ARGV)
 
 pod2usage(-exitval => 0, -verbose => 2) if $opts{help};
 
-
 my $remote = $opts{remote} or pod2usage(1);
-my $rater  = CommitRater->new($remote);
 
+
+my $rater = CommitRater->new(repo => CommitRater::Repo->new(remote => $remote));
 print JSON->new->utf8->pretty->canonical->encode($rater->rate);
 
 
