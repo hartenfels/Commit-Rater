@@ -44,7 +44,6 @@ END_OF_MESSAGE
 
 
 my $repo  = CommitRater::Repo->new(local => $clone_dir, remote => $commit_dir);
-my $rater = CommitRater->new(repo => $repo);
 
 
 sub result
@@ -66,8 +65,13 @@ my $expected = {
         imperative_subject => result(1, 2, 0),
         body_limit         => result(1, 1, 1),
         body_used          => result(2, 1, 0),
+
         no_short_message   => result(2, 1, 0),
         no_long_message    => result(3, 0, 0),
+        no_bulk_change     => result(0, 3, 0),
+        no_vulgarity       => result(0, 3, 0),
+        no_misspelling     => result(0, 3, 0),
+        no_duplicate       => result(3, 0, 0),
     },
     'j@i.m'       => {
         empty_second_line  => result(0, 0, 1),
@@ -77,15 +81,21 @@ my $expected = {
         imperative_subject => result(0, 1, 0),
         body_limit         => result(0, 0, 1),
         body_used          => result(0, 1, 0),
+
         no_short_message   => result(0, 1, 0),
         no_long_message    => result(1, 0, 0),
+        no_bulk_change     => result(0, 1, 0),
+        no_vulgarity       => result(0, 1, 0),
+        no_misspelling     => result(0, 1, 0),
+        no_duplicate       => result(1, 0, 0),
     },
 };
 
-is_deeply $rater->rate,        $expected, 'rate aggregates expected results';
+is_deeply(CommitRater->new(repo => $repo)->rate, $expected,
+          'rate aggregates expected results');
 
 
-is_deeply $rater->rate(2), {
+is_deeply(CommitRater->new(repo => $repo)->rate(2), {
     'dev@elo.per' => {
         empty_second_line  => result(0, 1, 0),
         subject_limit      => result(1, 0, 0),
@@ -94,8 +104,13 @@ is_deeply $rater->rate(2), {
         imperative_subject => result(0, 1, 0),
         body_limit         => result(0, 1, 0),
         body_used          => result(1, 0, 0),
+
         no_short_message   => result(0, 1, 0),
         no_long_message    => result(1, 0, 0),
+        no_bulk_change     => result(0, 1, 0),
+        no_vulgarity       => result(0, 1, 0),
+        no_misspelling     => result(0, 1, 0),
+        no_duplicate       => result(1, 0, 0),
     },
     'j@i.m'       => {
         empty_second_line  => result(0, 0, 1),
@@ -105,13 +120,18 @@ is_deeply $rater->rate(2), {
         imperative_subject => result(0, 1, 0),
         body_limit         => result(0, 0, 1),
         body_used          => result(0, 1, 0),
+
         no_short_message   => result(0, 1, 0),
         no_long_message    => result(1, 0, 0),
+        no_bulk_change     => result(0, 1, 0),
+        no_vulgarity       => result(0, 1, 0),
+        no_misspelling     => result(0, 1, 0),
+        no_duplicate       => result(1, 0, 0),
     },
-}, 'rate with limit handles only recent commits';
+}, 'rate with limit handles only recent commits');
 
-is_deeply $rater->rate(10000), $expected,
-          'limit larger than number of commits aggregates all commits';
+is_deeply(CommitRater->new(repo => $repo)->rate(10000), $expected,
+          'limit larger than number of commits aggregates all commits');
 
 
 done_testing

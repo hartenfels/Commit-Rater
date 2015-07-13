@@ -1,4 +1,5 @@
 use Test::Most;
+use feature qw(state);
 use CommitRater;
 
 
@@ -9,7 +10,8 @@ sub rate_ok
     my @lines = $message =~ "\n" ? split "\n", $message : ($message);
     chomp for @lines;
 
-    my $got = CommitRater::rate_message(@lines);
+    state $rater = CommitRater->new(repo => undef);
+    my    $got   = $rater->rate_message(@lines);
     $got->{$_} = $got->{$_} ? 1 : defined $got->{$_} ? 0 : undef for keys %$got;
 
     is_deeply $got, $expected, $name;
@@ -27,6 +29,10 @@ rate_ok 'empty commit message', {
 
     no_short_message   => 0,
     no_long_message    => 1,
+    no_bulk_change     => 0,
+    no_vulgarity       => 0,
+    no_misspelling     => 0,
+    no_duplicate       => 1,
 }, '';
 
 
@@ -41,6 +47,10 @@ rate_ok 'commit message that does it all wrong', {
 
     no_short_message   => 1,
     no_long_message    => 0,
+    no_bulk_change     => 0,
+    no_vulgarity       => 0,
+    no_misspelling     => 0,
+    no_duplicate       => 1,
 }, <<END_OF_MESSAGE;
 added implementation for frob ni ca ti on interval retrieval (tm).
 END_OF_MESSAGE
@@ -57,6 +67,10 @@ rate_ok 'commit message that does it all right', {
 
     no_short_message   => 1,
     no_long_message    => 1,
+    no_bulk_change     => 0,
+    no_vulgarity       => 0,
+    no_misspelling     => 0,
+    no_duplicate       => 1,
 }, <<END_OF_MESSAGE;
 Add frobnication interval retrieval
 
@@ -77,6 +91,10 @@ rate_ok 'commit message in the middle', {
 
     no_short_message   => 0,
     no_long_message    => 1,
+    no_bulk_change     => 0,
+    no_vulgarity       => 0,
+    no_misspelling     => 0,
+    no_duplicate       => 1,
 }, <<END_OF_MESSAGE;
 Bug
 This fixes that super nasty bug that came up in the last meeting for real now
@@ -94,6 +112,10 @@ rate_ok 'whitespace and empty lines do not count as body', {
 
     no_short_message   => 1,
     no_long_message    => 1,
+    no_bulk_change     => 0,
+    no_vulgarity       => 0,
+    no_misspelling     => 0,
+    no_duplicate       => 1,
 }, <<END_OF_MESSAGE;
 Fail at fooling rate_commit
    
