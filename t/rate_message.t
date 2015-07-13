@@ -11,7 +11,7 @@ sub rate_ok
     chomp for @lines;
 
     state $rater = CommitRater->new(repo => undef);
-    my    $got   = $rater->rate_message(@lines);
+    my    $got   = $rater->rate_message({message => \@lines, changes => []});
     $got->{$_} = $got->{$_} ? 1 : defined $got->{$_} ? 0 : undef for keys %$got;
 
     is_deeply $got, $expected, $name;
@@ -29,7 +29,7 @@ rate_ok 'empty commit message', {
 
     no_short_message   => 0,
     no_long_message    => 1,
-    no_bulk_change     => 0,
+    no_bulk_change     => 1,
     no_vulgarity       => 1,
     no_misspelling     => 1,
     no_duplicate       => 1,
@@ -46,7 +46,7 @@ rate_ok 'another empty commit message', {
 
     no_short_message   => 0,
     no_long_message    => 1,
-    no_bulk_change     => 0,
+    no_bulk_change     => 1,
     no_vulgarity       => 1,
     no_misspelling     => 1,
     no_duplicate       => 0,
@@ -64,7 +64,7 @@ rate_ok 'commit message that does it all wrong', {
 
     no_short_message   => 1,
     no_long_message    => 0,
-    no_bulk_change     => 0,
+    no_bulk_change     => 1,
     no_vulgarity       => 0,
     no_misspelling     => 0,
     no_duplicate       => 1,
@@ -84,7 +84,7 @@ rate_ok 'commit message that does it all right', {
 
     no_short_message   => 1,
     no_long_message    => 1,
-    no_bulk_change     => 0,
+    no_bulk_change     => 1,
     no_vulgarity       => 1,
     no_misspelling     => 0,
     no_duplicate       => 1,
@@ -108,7 +108,7 @@ rate_ok 'commit message in the middle', {
 
     no_short_message   => 0,
     no_long_message    => 1,
-    no_bulk_change     => 0,
+    no_bulk_change     => 1,
     no_vulgarity       => 1,
     no_misspelling     => 1,
     no_duplicate       => 1,
@@ -129,7 +129,7 @@ rate_ok 'whitespace and empty lines do not count as body', {
 
     no_short_message   => 1,
     no_long_message    => 1,
-    no_bulk_change     => 0,
+    no_bulk_change     => 1,
     no_vulgarity       => 1,
     no_misspelling     => 0,
     no_duplicate       => 1,

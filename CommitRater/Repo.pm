@@ -65,17 +65,18 @@ sub each_commit
 {
     my ($self, $callback, $limit) = @_;
 
-    my @cmd = ('log', '--format=%H%n%aE%n%P%n%B%n%x00');
+    my @cmd = ('log', '--format=%x00%H%n%aE%n%P%n%B%n%x00', '--name-only');
     push @cmd, -n => $limit if $limit;
     my $log = decode('UTF-8', scalar $self->repo->git(@cmd));
 
-    while ($log =~ /(.*?)\n(.*?)\n(.*?)\n(.*?)\0\n?/gs)
+    while ($log =~ /\0(.*?)\n(.*?)\n(.*?)\n(.*?)\0([^\0]*)/gs)
     {
         local $_ = {
             sha     => $1,
             email   => $2,
             parents => [split ' ', $3],
             message => [split /\n/, $4],
+            changes => [grep { /\S/ } split /\n/, $5],
         };
         $callback->();
     }

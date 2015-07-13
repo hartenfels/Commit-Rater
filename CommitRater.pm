@@ -71,7 +71,7 @@ sub rate_commit
     my ($self, $commit, $results) = @_;
 
     my $author = $results->{fc $commit->{email}} //= {default_result};
-    my $rules  = $self->rate_message(@{$commit->{message}});
+    my $rules  = $self->rate_message($commit);
 
     while (my ($k, $v) = each %$rules)
     {
@@ -85,11 +85,11 @@ sub rate_message
 {
     no warnings 'uninitialized';
     state $tagger = Lingua::EN::Tagger->new;
-    my ($self, $subject, @body) = @_;
-
-    my $subject_words = split ' ', $subject;
-    my $text          = join "\n", $subject, @body;
-    my @words         = grep { /\w+/ } split ' ', $text;
+    my ($self, $commit)  = @_;
+    my ($subject, @body) = @{$commit->{message}};
+    my $subject_words    = split ' ', $subject;
+    my $text             = join "\n", $subject, @body;
+    my @words            = grep { /\w+/ } split ' ', $text;
 
     my %result;
     @result{(ALL_KEYS)} = (
@@ -103,7 +103,7 @@ sub rate_message
 
         $subject_words >  2,                             # no_short_message
         $subject_words < 10,                             # no_long_message
-        0,                                               # no_bulk_change
+        @{$commit->{changes}} < 10,                      # no_bulk_change
         $text !~ /$RE{profanity}{contextual}/,           # no_vulgarity
         scalar(all { $self->spell->check($_) } @words),  # no_misspelling
         !exists($self->dups->{$subject}),                # no_duplicate
