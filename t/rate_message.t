@@ -31,7 +31,7 @@ rate_ok 'empty commit message', {
     no_long_message    => 1,
     no_bulk_change     => 0,
     no_vulgarity       => 0,
-    no_misspelling     => 0,
+    no_misspelling     => 1,
     no_duplicate       => 1,
 }, '';
 
@@ -48,7 +48,7 @@ rate_ok 'another empty commit message', {
     no_long_message    => 1,
     no_bulk_change     => 0,
     no_vulgarity       => 0,
-    no_misspelling     => 0,
+    no_misspelling     => 1,
     no_duplicate       => 0,
 }, '';
 
@@ -110,7 +110,7 @@ rate_ok 'commit message in the middle', {
     no_long_message    => 1,
     no_bulk_change     => 0,
     no_vulgarity       => 0,
-    no_misspelling     => 0,
+    no_misspelling     => 1,
     no_duplicate       => 1,
 }, <<END_OF_MESSAGE;
 Bug

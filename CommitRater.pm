@@ -3,19 +3,30 @@ use Moose;
 use feature    qw(fc state);
 use List::Util qw(all any);
 use Lingua::EN::Tagger;
+use Text::Aspell;
 use CommitRater::Repo;
 
 
-has repo => (
+has repo  => (
     is       => 'ro',
     isa      => 'Maybe[CommitRater::Repo]',
     required => 1,
 );
 
-has dups => (
+has dups  => (
     is      => 'ro',
     isa     => 'HashRef',
     default => sub { {} },
+);
+
+has spell => (
+    is      => 'ro',
+    default => sub
+    {
+        my $spell = Text::Aspell->new;
+        $spell->set_option(lang => 'en_US');
+        return $spell
+    },
 );
 
 
@@ -74,7 +85,9 @@ sub rate_message
     no warnings 'uninitialized';
     state $tagger = Lingua::EN::Tagger->new;
     my ($self, $subject, @body) = @_;
-    my  $words           = split ' ', $subject;
+
+    my $subject_words = split ' ', $subject;
+    my @words         = grep { /\w+/ } split ' ', join "\n", $subject, @body;
 
     my %result;
     @result{(ALL_KEYS)} = (
@@ -86,11 +99,11 @@ sub rate_message
         undef,                                           # body_limit
         scalar(any { /\S/ } @body),                      # body used
 
-        $words >  2,                                     # no_short_message
-        $words < 10,                                     # no_long_message
+        $subject_words >  2,                             # no_short_message
+        $subject_words < 10,                             # no_long_message
         0,                                               # no_bulk_change
         0,                                               # no_vulgarity
-        0,                                               # no_misspelling
+        scalar(all { $self->spell->check($_) } @words),  # no_misspelling
         !exists($self->dups->{$subject}),                # no_duplicate
     );
 

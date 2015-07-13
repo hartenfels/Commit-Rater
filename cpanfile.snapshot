@@ -1172,6 +1172,13 @@ DISTRIBUTIONS
       Test::Builder::Tester 1.02
       Test::More 0
       perl 5.006
+  Text-Aspell-0.09
+    pathname: H/HA/HANK/Text-Aspell-0.09.tar.gz
+    provides:
+      Text::Aspell 0.09
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0
   Text-Diff-1.41
     pathname: O/OV/OVID/Text-Diff-1.41.tar.gz
     provides:

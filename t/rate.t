@@ -70,7 +70,7 @@ my $expected = {
         no_long_message    => result(3, 0, 0),
         no_bulk_change     => result(0, 3, 0),
         no_vulgarity       => result(0, 3, 0),
-        no_misspelling     => result(0, 3, 0),
+        no_misspelling     => result(1, 2, 0),
         no_duplicate       => result(3, 0, 0),
     },
     'j@i.m'       => {
@@ -86,7 +86,7 @@ my $expected = {
         no_long_message    => result(1, 0, 0),
         no_bulk_change     => result(0, 1, 0),
         no_vulgarity       => result(0, 1, 0),
-        no_misspelling     => result(0, 1, 0),
+        no_misspelling     => result(1, 0, 0),
         no_duplicate       => result(1, 0, 0),
     },
 };
@@ -109,7 +109,7 @@ is_deeply(CommitRater->new(repo => $repo)->rate(2), {
         no_long_message    => result(1, 0, 0),
         no_bulk_change     => result(0, 1, 0),
         no_vulgarity       => result(0, 1, 0),
-        no_misspelling     => result(0, 1, 0),
+        no_misspelling     => result(1, 0, 0),
         no_duplicate       => result(1, 0, 0),
     },
     'j@i.m'       => {
@@ -125,7 +125,7 @@ is_deeply(CommitRater->new(repo => $repo)->rate(2), {
         no_long_message    => result(1, 0, 0),
         no_bulk_change     => result(0, 1, 0),
         no_vulgarity       => result(0, 1, 0),
-        no_misspelling     => result(0, 1, 0),
+        no_misspelling     => result(1, 0, 0),
         no_duplicate       => result(1, 0, 0),
     },
 }, 'rate with limit handles only recent commits');

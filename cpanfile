@@ -4,3 +4,4 @@ requires 'JSON';
 requires 'Lingua::EN::Tagger';
 requires 'Moose';
 requires 'Test::Most';
+requires 'Text::Aspell';
