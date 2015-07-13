@@ -35,6 +35,23 @@ rate_ok 'empty commit message', {
     no_duplicate       => 1,
 }, '';
 
+rate_ok 'another empty commit message', {
+    empty_second_line  => undef,
+    subject_limit      => 1,
+    capitalize_subject => 0,
+    no_period_subject  => 1,
+    imperative_subject => 0,
+    body_limit         => undef,
+    body_used          => 0,
+
+    no_short_message   => 0,
+    no_long_message    => 1,
+    no_bulk_change     => 0,
+    no_vulgarity       => 0,
+    no_misspelling     => 0,
+    no_duplicate       => 0,
+}, '';
+
 
 rate_ok 'commit message that does it all wrong', {
     empty_second_line  => undef,
