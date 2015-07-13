@@ -27,7 +27,7 @@ added implementation for frobnication interval retrieval.
 END_OF_MESSAGE
 
 commit 'dev@elo.per', <<'END_OF_MESSAGE';
-Add frobnication interval retrieval
+Add cock-nication interval retrieval
 
 There used to be no way for clients to retrieve the widget's rate of
 frobnication. This commit adds a get_frobnication_interval function that
@@ -69,7 +69,7 @@ my $expected = {
         no_short_message   => result(2, 1, 0),
         no_long_message    => result(3, 0, 0),
         no_bulk_change     => result(0, 3, 0),
-        no_vulgarity       => result(0, 3, 0),
+        no_vulgarity       => result(2, 1, 0),
         no_misspelling     => result(1, 2, 0),
         no_duplicate       => result(3, 0, 0),
     },
@@ -85,7 +85,7 @@ my $expected = {
         no_short_message   => result(0, 1, 0),
         no_long_message    => result(1, 0, 0),
         no_bulk_change     => result(0, 1, 0),
-        no_vulgarity       => result(0, 1, 0),
+        no_vulgarity       => result(1, 0, 0),
         no_misspelling     => result(1, 0, 0),
         no_duplicate       => result(1, 0, 0),
     },
@@ -108,7 +108,7 @@ is_deeply(CommitRater->new(repo => $repo)->rate(2), {
         no_short_message   => result(0, 1, 0),
         no_long_message    => result(1, 0, 0),
         no_bulk_change     => result(0, 1, 0),
-        no_vulgarity       => result(0, 1, 0),
+        no_vulgarity       => result(1, 0, 0),
         no_misspelling     => result(1, 0, 0),
         no_duplicate       => result(1, 0, 0),
     },
@@ -124,7 +124,7 @@ is_deeply(CommitRater->new(repo => $repo)->rate(2), {
         no_short_message   => result(0, 1, 0),
         no_long_message    => result(1, 0, 0),
         no_bulk_change     => result(0, 1, 0),
-        no_vulgarity       => result(0, 1, 0),
+        no_vulgarity       => result(1, 0, 0),
         no_misspelling     => result(1, 0, 0),
         no_duplicate       => result(1, 0, 0),
     },

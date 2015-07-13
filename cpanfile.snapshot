@@ -959,6 +959,48 @@ DISTRIBUTIONS
       Scalar::Util 1.18
       Test::More 0.42
       perl 5.00503
+  Regexp-Common-2013031301
+    pathname: A/AB/ABIGAIL/Regexp-Common-2013031301.tar.gz
+    provides:
+      Regexp::Common 2013031301
+      Regexp::Common::CC 2010010201
+      Regexp::Common::Entry 2013031301
+      Regexp::Common::SEN 2010010201
+      Regexp::Common::URI 2010010201
+      Regexp::Common::URI::RFC1035 2010010201
+      Regexp::Common::URI::RFC1738 2010010201
+      Regexp::Common::URI::RFC1808 2010010201
+      Regexp::Common::URI::RFC2384 2010010201
+      Regexp::Common::URI::RFC2396 2010010201
+      Regexp::Common::URI::RFC2806 2010010201
+      Regexp::Common::URI::fax 2010010201
+      Regexp::Common::URI::file 2010010201
+      Regexp::Common::URI::ftp 2010010201
+      Regexp::Common::URI::gopher 2010010201
+      Regexp::Common::URI::http 2010010201
+      Regexp::Common::URI::news 2010010201
+      Regexp::Common::URI::pop 2010010201
+      Regexp::Common::URI::prospero 2010010201
+      Regexp::Common::URI::tel 2010010201
+      Regexp::Common::URI::telnet 2010010201
+      Regexp::Common::URI::tv 2010010201
+      Regexp::Common::URI::wais 2010010201
+      Regexp::Common::_support 2010010201
+      Regexp::Common::balanced 2013030901
+      Regexp::Common::comment 2010010201
+      Regexp::Common::delimited 2010010201
+      Regexp::Common::lingua 2010010201
+      Regexp::Common::list 2010010201
+      Regexp::Common::net 2013031301
+      Regexp::Common::number 2013031101
+      Regexp::Common::profanity 2010010201
+      Regexp::Common::whitespace 2010010201
+      Regexp::Common::zip 2010010201
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.00473
+      strict 0
+      vars 0
   Snowball-Norwegian-1.2
     pathname: A/AS/ASKSH/Snowball-Norwegian-1.2.tar.gz
     provides:

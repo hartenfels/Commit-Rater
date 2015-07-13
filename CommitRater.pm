@@ -1,8 +1,9 @@
 package CommitRater;
 use Moose;
-use feature    qw(fc state);
-use List::Util qw(all any);
+use feature        qw(fc state);
+use List::Util     qw(all any);
 use Lingua::EN::Tagger;
+use Regexp::Common qw(profanity);
 use Text::Aspell;
 use CommitRater::Repo;
 
@@ -87,7 +88,8 @@ sub rate_message
     my ($self, $subject, @body) = @_;
 
     my $subject_words = split ' ', $subject;
-    my @words         = grep { /\w+/ } split ' ', join "\n", $subject, @body;
+    my $text          = join "\n", $subject, @body;
+    my @words         = grep { /\w+/ } split ' ', $text;
 
     my %result;
     @result{(ALL_KEYS)} = (
@@ -102,7 +104,7 @@ sub rate_message
         $subject_words >  2,                             # no_short_message
         $subject_words < 10,                             # no_long_message
         0,                                               # no_bulk_change
-        0,                                               # no_vulgarity
+        $text !~ /$RE{profanity}{contextual}/,           # no_vulgarity
         scalar(all { $self->spell->check($_) } @words),  # no_misspelling
         !exists($self->dups->{$subject}),                # no_duplicate
     );
