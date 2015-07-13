@@ -23,6 +23,17 @@ use constant RULES => qw(
     body_used
 );
 
+use constant NONOS => qw(
+    no_short_message
+);
+#   no_long_message
+#   no_bulk_change
+#   no_vulgarity
+#   no_misspelling
+#   no_duplicate
+
+use constant ALL_KEYS => (RULES, NONOS);
+
 
 sub rate
 {
@@ -35,7 +46,7 @@ sub rate
 }
 
 
-sub default_result { map { $_ => {pass => 0, fail => 0, undef => 0} } RULES }
+sub default_result { map { $_ => {pass => 0, fail => 0, undef => 0} } ALL_KEYS }
 
 sub rate_commit
 {
@@ -59,14 +70,16 @@ sub rate_message
     my ($subject, @body) = @_;
 
     my %result;
-    @result{(RULES)} = (
+    @result{(ALL_KEYS)} = (
         undef,                                           # empty_second_line
         length $subject <= 50,                           # subject_limit
         scalar($subject =~ /^\p{Uppercase}/),            # capitalize_subject
         scalar($subject !~ /\.\s*$/),                    # no_period_subject
         scalar($tagger->add_tags($subject) =~ /<vbp?>/), # imperative subject
-        undef,                                           # body limit
+        undef,                                           # body_limit
         scalar(any { /\S/ } @body),                      # body used
+
+        split(' ', $subject) > 2,                        # no_short_message
     );
 
     if ($result{body_used})

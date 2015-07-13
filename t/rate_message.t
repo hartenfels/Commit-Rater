@@ -24,6 +24,8 @@ rate_ok 'empty commit message', {
     imperative_subject => 0,
     body_limit         => undef,
     body_used          => 0,
+
+    no_short_message   => 0,
 }, '';
 
 
@@ -35,6 +37,8 @@ rate_ok 'commit message that does it all wrong', {
     imperative_subject => 0,
     body_limit         => undef,
     body_used          => 0,
+
+    no_short_message   => 1,
 }, <<END_OF_MESSAGE;
 added implementation for frobnication interval retrieval.
 END_OF_MESSAGE
@@ -48,6 +52,8 @@ rate_ok 'commit message that does it all right', {
     imperative_subject => 1,
     body_limit         => 1,
     body_used          => 1,
+
+    no_short_message   => 1,
 }, <<END_OF_MESSAGE;
 Add frobnication interval retrieval
 
@@ -65,6 +71,8 @@ rate_ok 'commit message in the middle', {
     imperative_subject => 0,
     body_limit         => 0,
     body_used          => 1,
+
+    no_short_message   => 0,
 }, <<END_OF_MESSAGE;
 Bug
 This fixes that super nasty bug that came up in the last meeting for real now
@@ -79,6 +87,8 @@ rate_ok 'whitespace and empty lines do not count as body', {
     imperative_subject => 1,
     body_limit         => undef,
     body_used          => 0,
+
+    no_short_message   => 1,
 }, <<END_OF_MESSAGE;
 Fail at fooling rate_commit
    

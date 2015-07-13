@@ -66,6 +66,7 @@ my $expected = {
         imperative_subject => result(1, 2, 0),
         body_limit         => result(1, 1, 1),
         body_used          => result(2, 1, 0),
+        no_short_message   => result(2, 1, 0),
     },
     'j@i.m'       => {
         empty_second_line  => result(0, 0, 1),
@@ -75,6 +76,7 @@ my $expected = {
         imperative_subject => result(0, 1, 0),
         body_limit         => result(0, 0, 1),
         body_used          => result(0, 1, 0),
+        no_short_message   => result(0, 1, 0),
     },
 };
 
@@ -90,6 +92,7 @@ is_deeply $rater->rate(2), {
         imperative_subject => result(0, 1, 0),
         body_limit         => result(0, 1, 0),
         body_used          => result(1, 0, 0),
+        no_short_message   => result(0, 1, 0),
     },
     'j@i.m'       => {
         empty_second_line  => result(0, 0, 1),
@@ -99,6 +102,7 @@ is_deeply $rater->rate(2), {
         imperative_subject => result(0, 1, 0),
         body_limit         => result(0, 0, 1),
         body_used          => result(0, 1, 0),
+        no_short_message   => result(0, 1, 0),
     },
 }, 'rate with limit handles only recent commits';
 
