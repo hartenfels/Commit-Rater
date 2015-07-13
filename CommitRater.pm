@@ -8,8 +8,14 @@ use CommitRater::Repo;
 
 has repo => (
     is       => 'ro',
-    isa      => 'CommitRater::Repo',
+    isa      => 'Maybe[CommitRater::Repo]',
     required => 1,
+);
+
+has dups => (
+    is      => 'ro',
+    isa     => 'HashRef',
+    default => sub { {} },
 );
 
 
@@ -41,7 +47,7 @@ sub rate
     $self->repo->update;
 
     my %results;
-    $self->repo->each_commit(sub { rate_commit($_, \%results) }, $limit);
+    $self->repo->each_commit(sub { $self->rate_commit($_, \%results) }, $limit);
     return \%results
 }
 
@@ -50,10 +56,10 @@ sub default_result { map { $_ => {pass => 0, fail => 0, undef => 0} } ALL_KEYS }
 
 sub rate_commit
 {
-    my ($commit, $results) = @_;
+    my ($self, $commit, $results) = @_;
 
     my $author = $results->{fc $commit->{email}} //= {default_result};
-    my $rules  = rate_message(@{$commit->{message}});
+    my $rules  = $self->rate_message(@{$commit->{message}});
 
     while (my ($k, $v) = each %$rules)
     {
@@ -67,7 +73,7 @@ sub rate_message
 {
     no warnings 'uninitialized';
     state $tagger = Lingua::EN::Tagger->new;
-    my ($subject, @body) = @_;
+    my ($self, $subject, @body) = @_;
     my  $words           = split ' ', $subject;
 
     my %result;
@@ -85,7 +91,7 @@ sub rate_message
         0,                                               # no_bulk_change
         0,                                               # no_vulgarity
         0,                                               # no_misspelling
-        0,                                               # no_duplicate
+        !exists($self->dups->{$subject}),                # no_duplicate
     );
 
     if ($result{body_used})
@@ -93,6 +99,8 @@ sub rate_message
         $result{empty_second_line} = !length $body[0];
         $result{    body_limit   } = all { length $_ <= 72 } @body;
     }
+
+    $self->dups->{$subject} = 1;
 
     return \%result
 }
