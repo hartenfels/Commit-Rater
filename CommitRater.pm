@@ -25,8 +25,8 @@ use constant RULES => qw(
 
 use constant NONOS => qw(
     no_short_message
+    no_long_message
 );
-#   no_long_message
 #   no_bulk_change
 #   no_vulgarity
 #   no_misspelling
@@ -68,6 +68,7 @@ sub rate_message
     no warnings 'uninitialized';
     state $tagger = Lingua::EN::Tagger->new;
     my ($subject, @body) = @_;
+    my  $words           = split ' ', $subject;
 
     my %result;
     @result{(ALL_KEYS)} = (
@@ -79,7 +80,8 @@ sub rate_message
         undef,                                           # body_limit
         scalar(any { /\S/ } @body),                      # body used
 
-        split(' ', $subject) > 2,                        # no_short_message
+        $words >  2,                                     # no_short_message
+        $words < 10,                                     # no_long_message
     );
 
     if ($result{body_used})
