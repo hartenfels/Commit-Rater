@@ -26,11 +26,11 @@ use constant RULES => qw(
 use constant NONOS => qw(
     no_short_message
     no_long_message
+    no_bulk_change
+    no_vulgarity
+    no_misspelling
+    no_duplicate
 );
-#   no_bulk_change
-#   no_vulgarity
-#   no_misspelling
-#   no_duplicate
 
 use constant ALL_KEYS => (RULES, NONOS);
 
@@ -82,6 +82,10 @@ sub rate_message
 
         $words >  2,                                     # no_short_message
         $words < 10,                                     # no_long_message
+        0,                                               # no_bulk_change
+        0,                                               # no_vulgarity
+        0,                                               # no_misspelling
+        0,                                               # no_duplicate
     );
 
     if ($result{body_used})
