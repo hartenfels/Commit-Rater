@@ -131,7 +131,7 @@ rate_ok 'whitespace and empty lines do not count as body', {
     no_long_message    => 1,
     no_bulk_change     => 1,
     no_vulgarity       => 1,
-    no_misspelling     => 0,
+    no_misspelling     => 1,
     no_duplicate       => 1,
 }, <<END_OF_MESSAGE;
 Fail at fooling rate_commit
