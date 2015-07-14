@@ -4,7 +4,8 @@ The best commit rating system of the multiverse.
 
 ## Dependencies
 ``` Bash
-sudo apt-get install carton perl-doc git libssl-dev libaspell-dev node node-legacy npm
+sudo apt-get install carton perl-doc git libssl-dev libaspell-dev nodejs nodejs-legacy npm
+sudo apt-get install -g bower
 ```
 
 ## How we rate
