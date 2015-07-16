@@ -1,0 +1,163 @@
+\documentclass[slidestop,usenames,dvipsnames]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{fancyvrb}
+\usepackage[absolute,overlay]{textpos}
+
+\title{Commit Rater}
+\subtitle{Analysis \& Synthesis}
+\author{Marco Brack \and Carsten Hartenfels}
+\date{2015-06-18}
+
+
+\beamertemplatenavigationsymbolsempty
+\usetheme{Boadilla}
+\usecolortheme{whale}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+\defbeamertemplate*{footline}{my infolines theme} {
+    \leavevmode
+    \hbox{
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}
+        \usebeamerfont{author in head/foot}\insertshortauthor
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}
+        \usebeamerfont{title in head/foot}\insertshorttitle
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[wd=.309\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}
+        \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+        \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+    \end{beamercolorbox}}
+    \vskip0pt
+}
+
+\newcounter{FrameCounter}
+\newcommand{\nextframe}[0]{\stepcounter{FrameCounter}}
+\newcommand{\framecount}[1]{\frametitle{\arabic{FrameCounter}. {#1}}}
+\newcommand{\fitem}{\pause\vfill\item}
+\newcommand{\gitem}{\vfill\item}
+\newcommand{\fimage}[2]{\pause\vfill\begin{center}\includegraphics[width={#2}]{#1}\end{center}}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+    \begin{center}
+        \url{https://github.com/hartenfels/Commit-Rater}
+    \end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}
+    \frametitle{Content}
+    \begin{itemize}
+        \gitem Recap
+        \gitem Research Goals
+        \gitem Rules
+        \gitem Nonos
+        \gitem Commit Rater Web
+        \gitem Weka
+    \end{itemize}
+\end{frame}
+
+
+\nextframe
+\begin{frame}
+    \framecount{Recap}
+    \begin{itemize}
+        \fitem Pull Git Repo
+        \fitem Process Commits
+        \fitem Check Criteria
+    \end{itemize}
+\end{frame}
+
+
+\nextframe
+\begin{frame}
+    \framecount{New Research Goals}
+    \begin{itemize}
+        \fitem Recognize Good Commits
+        \fitem Thereby Recognize ``Good Developers''
+        \fitem Provide Feedback for Developer
+        \fitem Rank Developers
+        \fitem \emph{New:} Find relations between criteria
+    \end{itemize}
+\end{frame}
+
+
+\nextframe
+\begin{frame}
+  % Taken from http://chris.beams.io/posts/git-commit/#seven-rules
+    \framecount{Rules}
+    \begin{itemize}
+        \fitem Limit the subject line to 50 characters
+        \fitem Capitalize the subject line
+        \fitem Do not end the subject line with a period
+        \fitem Use the imperative mood in the subject line
+        \fitem Use a Body
+        \fitem Wrap the body at 72 characters
+        \fitem Separate subject from body with a blank line
+    \end{itemize}
+\end{frame}
+
+
+\nextframe
+\begin{frame}
+    \framecount{Nonos}
+    \begin{itemize}
+        \fitem Short Messages
+        \fitem Long Messages
+        \fitem Bulk Changes
+        \fitem Vulgarity
+        \fitem Misspellings
+        \fitem Duplicate Messages
+    \end{itemize}
+\end{frame}
+
+
+\nextframe
+\begin{frame}
+    \framecount{Commit Rater Web}
+    \vfill
+    \begin{center}
+        $~$\\
+        $~$\\
+        {\Huge Demo}\\
+        $~$\\
+        $~$\\
+    \end{center}
+\end{frame}
+
+
+\nextframe
+\begin{frame}
+    \framecount{Weka}
+    \begin{itemize}
+        \fitem Find Relations Between Criteria
+        \fitem Use: Remove Unnecessary Criteria
+        \fitem Use: Improve Web App
+        \fitem Expectation: Body Limit Tied to Body Useage
+        \fitem Expectation: Body Separation Tied to Body Useage
+    \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\nextframe
+\begin{frame}
+    \vfill
+    \begin{center}
+        $~$\\
+        $~$\\
+        {\Huge Thank You All For Listening}\\
+        $~$\\
+        $~$\\
+        \url{https://github.com/hartenfels/Commit-Rater}
+    \end{center}
+\end{frame}
+
+\end{document}
