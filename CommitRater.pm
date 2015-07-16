@@ -105,7 +105,7 @@ sub rate_message
         $subject_words < 10,                             # no_long_message
         @{$commit->{changes}} < 10,                      # no_bulk_change
         $text !~ /$RE{profanity}{contextual}/,           # no_vulgarity
-        scalar(grep { !$self->spell->check($_) } @words) < 2,  # no_misspelling
+        scalar(grep { !$self->spell->check($_) } @words) < 3,  # no_misspelling
         !exists($self->dups->{$subject}),                # no_duplicate
     );
 
