@@ -1,0 +1,485 @@
+% TODO
+% - provide general advice on how to define the research problem
+% - ... on how to do practical parts
+
+\documentclass{llncs}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{comment}
+
+\pagenumbering{arabic}
+
+\begin{document}
+
+\title{Annotated metamodel for MSR course papers}
+
+\subtitle{Version as of 30 June 2015}
+
+\author{Ralf L\"ammel}
+
+\institute{Software Languages Team, CS Faculty, University of Koblenz-Landau}
+
+\maketitle
+
+\begin{abstract}
+  This should be 100-200 words. Use present or past tense, but use it
+  consistently. Prefer ``we'' over ``I'' here and throughout the
+  paper. The abstract should summarize the methodology and results;
+  see the corresponding sections below. Your paper is preferably
+  typeset with LaTeX and it should comply with the Springer LNCS
+  style. (That style is also available for word users.) 
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+Address these questions:
+
+\begin{itemize}
+
+\item What is the context of this research?
+
+\item What is the overall challenge addressed by this research?
+
+\item What is the overall approach adopted by the research?
+
+\item Summarize results very briefly.
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Research question}
+
+State 1-5 research questions. One question could be enough. More is
+not better.
+
+For each question, make clear why this is an interesting question. For
+example, try to make clear why a scientist or a practician would
+benefit from knowing the answer to the question.
+
+Lay out some background for your research questions. That is, what
+body of related work may be worth mentioning and comparing to the
+research at hand. This may be related in terms of both relevant
+methodology or similar research questions.
+
+You should make sure to carry out a proper related work study. Use
+DBLP on the MSR conference for 2+
+years.\footnote{\url{http://dblp.uni-trier.de/db/conf/msr/}} You are
+welcome to search other conferences and journals. Coming to the
+conclusion that there is no related work is absolutely
+unacceptable. Again, you need to show related work awareness so that
+your research question is substantiated as being relevant and
+your methodology is deeply informed by existing publications.
+
+In many cases, you want to refine your research questions into actual
+hypotheses, i.e., something that is potentially falsifiable, subject
+to an appropriate approach towards measuring.
+
+It is also common to refine research questions. That is, one starts
+with a general (overall) research question and takes it appart into
+several questions that are concrete enough to be researched on and to
+be answered. In this manner, you may often suffice with one or two
+research questions which are however refined into perhaps
+several questions. Again, even without refinement, just one question may be
+Ok. This depends on the nature of the project and on the kind of question.
+
+Here are some recommended MSR papers by the Software Languages
+Team~\cite{LaemmelLPV11,LaemmelP13,SchmorleizL15} which you could
+consult to see instances of the concepts discussed in this
+metamodel. These papers may or may not be in an optimal form to
+function as good advice. You are also advised to have a look at some
+MSR papers (from the MSR conference), but again, they may also
+slightly vary in terms of consistency of style. if you like to get
+general advice on scientific writing, then I recommend relevant
+textbooks~\cite{Day98,Zobel09}. The best way to learn writing is by
+writing and by having someone with experience to provide feedback.
+
+You should most definitely have a look at this excellent tutorial on
+empirical software engineering (ESE)~\cite{Easterbrook07} to which MSR
+relates. General ESE is quite often concerned with controlled
+experiments and other research methods that involve subjects, whereas
+MSR is more concerned with automated analysis, but the text is still
+very helpful in coming to grips with research methods in software
+engineering overall. Specifically, it helps with formulating research questions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+\section{Methodology}
+
+The methodology section must give a very clear account of what sort of
+procedure was executed. Here are some detailed criteria:
+%
+\begin{itemize}
+\item The section is preferably a step-by-step procedure overall. First we did
+  this. Then we did this.
+\item Steps should be motivated or defended, whenever it is not
+  obvious why a certain choice was made. However, one should be
+  careful not to preempt the discussion of threats to validity; see
+  the extra section below.
+\item The text should support reproducibility. In particular, a
+  reasonably knowledgeable person should be able to re-execute the
+  methodology and compare the results.
+\item The text should not get into low-level (implementation)
+  details. These can be deferred to separate documentation; see Appendix~\ref{S:details}.
+\end{itemize}
+
+\subsection{Data extraction}
+
+This metamodel is concerned with MSR papers. Thus, the methodology
+section would be reasonably subdivided into the three major phases of
+an MSR research project.
+
+The subsection on data extraction is concerned with issues like the
+following:
+
+\begin{itemize}
+\item What repository was chosen and why?
+\item What sort of extraction techniques is applied?
+\item What sort of extra processing (e.g., filtering) is applied?
+\item What constraints were chosen to help with scalability?
+\end{itemize}
+
+\subsection{Data synthesis}
+
+Even the simplest MSR project carries out synthesis; data analysis (see
+below) may not be carried out in all the cases. The subsection on data
+synthesis is concerned with issues like the following:
+
+\begin{itemize}
+
+\item What metrics are used?
+
+\item What machine learning techniques are used?
+
+\item What information retrieval techniques are used?
+
+\end{itemize}
+
+The typical MSR paper picks either metrics or machine learning or IR.
+
+\subsection{Data analysis}
+
+Data analysis would be concerned with any sort of statistical quality
+analysis of the data. More specifically, the subsection on data
+analysis is concerned with issues like the following:
+
+\begin{itemize}
+
+\item Simple statistics like median of metrics.
+
+\item Analysis of regression or correlation or distribution.
+
+\item Analysis of accuracy such as precision and recall.
+
+\end{itemize}
+
+It should be noted that the methodology section describes the `how'
+(and to some extent the`why'), but it does not yet report the various
+results; see the following section. For instance, the methodology may
+explain why it is using a certain metric and define it and announce
+that the median for the metric is going to be determined, as it would
+provide a certain insight, but the actual tables or charts for the
+metric and the interpretation of the findings would be deferred to the
+results section.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Results}
+
+\noindent
+Summarize results in terms of tables, charts, and other kinds of
+figures.
+
+Explain and interpret the results.
+
+Get back to the research question and make sure that it is explicitly answered.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Threats to validity}
+
+There are external and internal threats to validity. See the softlang
+papers and MSR papers for examples. See this resource~\cite{Michael04}
+for an explanation. Be concise and systematic about answering
+questions.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conclusion}
+
+This is essentially a redundant section. Try to summarize your
+research from a more informed point of view. (We assume that the
+reader has read the paper and is ready for some deeper conclusion.)
+You could very well add some perspectives for future work, without
+repeating smaller scale weakness of research, as they were already
+identified in the threats to validity section.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\section{Details}
+\label{S:details}
+
+Any sort of interesting details such as source code, extra data (extra
+to the key results), extra procedural details supporting
+reproducibility can be listed here. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliography{paper}
+\bibliographystyle{abbrv}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+Generally, this seminar (series) is about ``software languages'' (SL)
+and hence it combines elements of software engineering, modelling,
+programming languages, linguistics, formal specification, and
+programming theory; see a recent discussion of some relevant fields
+and terminology~\cite{FavreGLP10}. 
+
+Each particular edition of the SL seminar focuses on a specific topic
+within the broader area of SL. (For instance, an edition may focus on
+programming-language usage \cite{HageK08} or natural language aspects
+in programming \cite{HostO08}.) The present notes provide some general
+advice on the reporting and presentation obligations of the seminar's
+participants. These notes are meant to be generic with regard to the
+particular theme of a specific seminar edition.
+
+That is, the purpose of these notes is to help student participants
+writing their reports and preparing their presentations. These notes
+complement the meetings and consultations.
+
+\subsection*{Road-map}
+
+In \S\ref{S:report}, advice on the report part of the seminar is
+provided.  
+
+\noindent
+In \S\ref{S:presentation}, advice on the presentation part
+is provided. 
+
+\noindent
+These notes are summarized in \S\ref{S:concl}.
+
+\pagebreak
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Advice on the report}
+\label{S:report}
+
+Much has been written and said about scientific writing.  A report for
+this seminar is a small exercise in scientific writing. Hence,
+seminar participants are \emph{strongly encouraged} to gain basic
+understanding of scientific writing. For instance, seminar
+participants may consult a resource such as
+\cite{Zobel09,Day98}. Unfortunately, the syllabus of Koblenz seminars
+does not plan for education on scientific writing, neither does any
+other obligatory course. Hence, seminar participants are bound to
+consult a designated book or online resource, and to work closely
+together with the prof to get a reasonable result.\footnote{Here is
+  another resource on writing and giving talks:
+  \url{http://research.microsoft.com/en-us/um/people/simonpj/papers/giving-a-talk/giving-a-talk.htm}.}
+The following notes try to get seminar participants off the ground.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Organization of the report}
+
+As far as reports for the seminar are concerned, we assume a rather
+simple organization. A report would be spending about 10-25 pages in
+Springer's LNCS style to describe the research work carried out. 
+
+Reports should use close 10 pages if there are not any substantial
+illustrations. Reports can use up to 25 pages, but \textbf{a higher
+  page count does not imply a better grade}---potentially it may
+negatively affect the grade. However, illustrations are strongly
+encouraged, if they truly illustrate the subject at hand. So seminar
+participants are welcome to exhaust a 25 pages limit with useful
+illustrations included.
+
+A report would have a title and an abstract. The purpose of an
+abstract is to properly summarize the report: use 50-200 words,
+typically 100-150 words.
+
+A report consists of an introduction, several technical sections,
+possibly a related work section, and a conclusion section. See below
+for more details.
+
+\subsection{The importance of the introduction}
+
+A report should start with an \emph{introduction section} which
+motivates the subject of the report, possibly states one or more
+\emph{research questions}, typically provides some background material
+(if such material is not placed in a subsequent, designated section or
+an appendix), lists \emph{contributions} of the report, and describes
+the organization of the rest of the report. Judgement of all submitted
+work may be biased by the introduction.
+
+If there is any ingredient that is critical to an excellent completion
+of the seminar, then this is the formulation of a \emph{research
+  question}. By default (for such a short report/paper that is meant
+here), the research question should be identified in the introduction
+section. The challenge is here to formulate a question that performs
+well in all of the following dimensions: a) concise and clear; b)
+informed and nontrivial; c) operationally intelligent and verifiable;
+d) meaningful to the rest of the text.
+
+\subsection{The technical sections}
+
+After the introduction, there can be any number of \emph{technical
+  sections}.  These sections constitute the core (``technical meat'')
+of the report. The style of these technical sections very much depends
+on the subject and the chosen sources as well as the assumed style of
+presentation. 
+
+As there are many different styles, and we do not want to discuss them
+here at length. The best advice may be to leverage the corpus of
+consulted research papers and to try approximating the style of one of
+them. The prof wants to help on this matter---during the consultations
+and otherwise.
+
+\subsection{The concluding section}
+
+After the technical sections, the report should be concluded by a
+final section. Typically, such a section contains bits of summary,
+discussion, interpretations, open problems or future work, and
+vision. This may be a good place for the student to show that he or
+she has outgrown the view of one or two specific papers and can
+usefully operate in a broader research context. Again, an excellent
+student would make a serious effort to connect several research papers
+and research directions in a comprehensible, informative, and
+cross-indexing manner.
+
+\subsection{Literature references}
+
+One important element of scholarly writing is to make appropriate use
+of citations. For instance, in the introduction section, one needs to
+provide \emph{contextual citations} so that the overall context of the
+research effort at hand is clarified. One may also quickly mention
+some more technical sources as a means to prepare for the more
+detailed parts of the report. Throughout the paper, one uses
+\emph{technical citations} for two major purposes: (i) to give credit
+to any reused content; (ii) to substantiate claims. In the conclusion
+of the report, one uses \emph{visionary citations} to connect to
+subjects that were not but cut be covered, or that are worth being
+mentioned otherwise.
+
+Seminar participants must prove that they use advanced means of
+locating prior work. The \href{http://portal.acm.org/}{ACM Digital
+  Library} and the
+\href{http://www.informatik.uni-trier.de/~ley/db/}{DBLP} service are
+particularly suited to search for scientific publications on topics of
+the SL seminar.
+
+Every edition of the SL seminar is unique, but here are some general
+pointers for research on software languages; again, every edition of
+the SL seminar may draw from additional sources, as it should be
+evident from the seminar edition's design. Thus:
+
+\begin{itemize}
+\item SLE---Software Language Engineering
+\item ASE---Automated Software Engineering
+\item ICPC---International Conference on Program Comprehension
+\item POPL---Principles of Programming Languages
+\item OOPSLA---OO Programming, Systems, Languages, and Applications
+\item MODELS--- Model Driven Engineering Languages and Systems
+\item WCRE---Working Conference on Reverse Engineering
+\item ICSM---International Conference on Software Maintenance
+\item MSR---Mining Software Repositories
+\item PLDI---Programm Language Design and Implementation
+\item PPDP---Principles and Practice of Declarative Programming
+\item VL/HCC---Symposium on Visual Languages and Human-Centric Computing
+\end{itemize}
+
+There are also various journals on similar themes that may provide
+seminal and archival content for the seminar work.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Abstraction is king, not page count}
+
+There is no use in reproducing or condensing one specific paper (or a
+series of strongly connected papers). Any reasonable seminar report
+must exercise abstraction; it must study a subject from an individual
+point of view with an original research question in mind. A reasonable
+seminar report involves (3+) different pieces of scholarly work and
+integrates them in the presentation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Advice on the presentation}
+\label{S:presentation}
+
+This section provides another example of what should be called a
+technical section. Again, in such sections, the author works out the
+technical details (say, meat) of all research work. There can be any
+number of such sections. One should think hard about organization
+principles to make up the appropriate number of sections and
+subsections.
+
+This section briefly talks about the presentation part of the seminar.
+Just as in the case of scientific writing, there exists online or
+published advice on ``how to give a good talk'', perhaps even in
+seminar-like circumstances \cite{Talk,Klaeren94}. Giving good talks is
+extremely difficult, but also very rewarding. Speakers should sure to
+do some amount of reflection before they go into your talk. Some rules
+of thumb follow:
+
+\begin{itemize}
+
+\item Finalizing the slides the night before is perhaps Ok, but one
+  should start thinking of the talk way ahead of time. Otherwise, the
+  presentation may likely to be boring or stressful and sends the
+  audience to sleep. Speakers should not waste the precious cycles of
+  the audience! As an aside, the available time should be perfectly
+  leveraged by the talk: not more, not less.
+
+\item One should not confuse writing with talking. One should not
+  think of the talk as a way to present the paper in a condensed
+  style. Instead, one should design the talk in a way that its
+  structure and style maintains the attention of the audience and
+  keeps up with the audience's abilities. One should use the talk to
+  get people interested in the subject. One should motivate the
+  audience to read more about the subject in the report that is
+  advertised by the presentation.
+
+\item One should not waste time on outlines; they are often totally
+  useless at the time they are shown. One should focus on motivation
+  from the first slide on. One should make good use of illustrations
+  and simplify matters. One should not try to tell every detail, but
+  to select some interesting details and make clear what else could
+  be discussed or is included into the paper.
+
+\item Seminar talks should be interactive. Hence, clarifying
+  questions should be admitted.
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Concluding remarks}
+\label{S:concl}
+
+These notes are supposed to be useful as is, but further efforts may
+be needed to convey all witness and intentions. For the time being,
+the author asks the seminar participants and other readers to work
+with what is available and the quoted resources. Everyone is welcome
+to suggest revisions for these notes.

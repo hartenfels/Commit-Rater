@@ -1,2 +1,4 @@
 *.*
 !*.tex
+!llncs.cls
+!*.bib
