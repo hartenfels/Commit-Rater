@@ -141,6 +141,9 @@ This criterion may or may not have been inspired by \url{http://www.commitlogsfr
 
 \subsubsection{no\_misspelling}
 \label{subs:no_misspelling}
+Of course, spelling is important. Correct or at least consistant spelling makes commit messages easier to read and scan, and makes them searchable.
+
+This criterion is hugely proplematic. In principle, spell checking is easily done with one of many libraries \footnote{We use http://search.cpan.org/~hank/Text-Aspell/Aspell.pm}, but such libraries will report technical terms as errors and since we cannot manually whitelist all of those, we need to allow a certain number of ``errors'' per message, which we have set to less than 2. This will of course sometimes hide real errors. Maybe further research could provide an adequate solution to this problem or at least analyse the precision of applying a standard spell checker to very domain specific texts.
 
 \subsubsection{no\_duplicate}
 \label{subs:no_duplicate}
