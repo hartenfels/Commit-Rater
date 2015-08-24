@@ -82,6 +82,9 @@ The remaining 6 criteria have been chosen by the authors. Since there are no oth
 
 \subsubsection{subject_limit}
 \label{subs:subject_limit}
+The subject line, i.e. the first line of a commit message, should be limited to 50 characters. This rule seems to have originated from a blog post by Tim Pope \cite{TP}, which is referenced by the Git manual \cite{OffGuide}. The reasoning behind it is, that the subject line is used by various tools and user interfaces to describe a commit in limited space.
+
+Additionally, large subject lines might hint at having done more than one thing in a commit, since the author needs more space to explain what the commit does. Logically separating changesets is another rule from \cite{OffGuide}, which of course cannot be evaluated without much language-specific effort.
 
 \subsubsection{capitalize_subject}
 \label{subs:capitalize_subject}
