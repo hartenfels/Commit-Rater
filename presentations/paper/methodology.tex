@@ -1,20 +1,27 @@
 \section{Methodology}
+% The methodology section must give a very clear account of what sort of
+% procedure was executed. Here are some detailed criteria:
 
-The methodology section must give a very clear account of what sort of
-procedure was executed. Here are some detailed criteria:
-%
+Our methodology is divided into the three typical phases of a MSR research project: 
+
+% \begin{itemize}
+% \item The section is preferably a step-by-step procedure overall. First we did
+%   this. Then we did this.
+% \item Steps should be motivated or defended, whenever it is not
+%   obvious why a certain choice was made. However, one should be
+%   careful not to preempt the discussion of threats to validity; see
+%   the extra section below.
+% \item The text should support reproducibility. In particular, a
+%   reasonably knowledgeable person should be able to re-execute the
+%   methodology and compare the results.
+% \item The text should not get into low-level (implementation)
+%   details. These can be deferred to separate documentation; see Appendix~\ref{S:details}.
+% \end{itemize}
+
 \begin{itemize}
-\item The section is preferably a step-by-step procedure overall. First we did
-  this. Then we did this.
-\item Steps should be motivated or defended, whenever it is not
-  obvious why a certain choice was made. However, one should be
-  careful not to preempt the discussion of threats to validity; see
-  the extra section below.
-\item The text should support reproducibility. In particular, a
-  reasonably knowledgeable person should be able to re-execute the
-  methodology and compare the results.
-\item The text should not get into low-level (implementation)
-  details. These can be deferred to separate documentation; see Appendix~\ref{S:details}.
+  \item Data Extraction. Since we wanted to be able to compare arbitrary Git repositories, we decided to \texttt{git clone} repos directly, instead of accessing commits via a proprietary API like GitHub's.
+  \item Data Synthesis. This includes checking commits against our criteria, which will be detailed below. The synthesized metrics are counts of met or unmet criteria grouped by the commit author email.
+  \item Data Analysis. We use a set of repositories and analyse our synthesis results for interesting statistics and relations between criteria.
 \end{itemize}
 
 \subsection{Data extraction}
