@@ -92,9 +92,14 @@ The first letter of the subject line should be capitalized. Although it could be
 
 \subsubsection{no_period_subject}
 \label{subs:no_period_subject}
+The subject line should have no trailing period. It servers no purpose, since the body of a commit message should be separated by a blank line (see \ref{empty_second_line}) and omitting it helps with the 50 character limit. Again, the only explicit mention of this rule is \cite{CB}, although the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} both seem to agree on this.
 
 \subsubsection{imperative_subject}
 \label{subs:imperative_subject}
+The subject line should be written in imperative present, e.g. ``Add a function that...'' (as mentioned in \cite{OffGuide}). There are a lot of opinions on this rule and many authors seem to prefer regular present tense (e.g. ``Adds a function that...'') or past tense (e.g. ``Added a function that...''), which both have their own justification. The most important reason to use the imperative is consistency with git itself, which usually generates messages this way, the most prominent example being messages of automatic merges (e.g. ``Merge branch \'master\' of https://github.com/hartenfels/Commit-Rater''). \cite{CB} gives a very nice explanation on how to write messages in the imperative.
+
+This criterion requires natural language processing of the commit
+message. For this purpose we use a perl module \footnote{http://search.cpan.org/dist/Lingua-EN-Tagger/Tagger.pm} and use it to get a list of the forms of the words in the subject line. If the list contains a verb in base present form, the criterion is passed. This is of course a very heuristic approach, but it successfully fails regular present tense or past tense subjet lines and furthermore ensures that there is a verb, so that nonsense messages like ``Some changes'' are failed too.
 
 \subsubsection{body_used}
 \label{subs:body_used}
