@@ -133,6 +133,11 @@ One big problem with this criterion is, that there may very well be reasonable l
 
 \subsubsection{no\_vulgarity}
 \label{subs:no_vulgarity}
+A commit message should obviously not contain any vulgarity for many reasons, but it should suffice to say that such things are unprofessional and will rarely make the commit any better.
+
+Checking for vulgarity is done with a perl module \footnote{http://search.cpan.org/~abigail/Regexp-Common-2013031301/lib/Regexp/Common/profanity.pm} that contains a list of offensive words. The test for the criterion is passed if none of the words are found in the commit message.
+
+This criterion may or may not have been inspired by \url{http://www.commitlogsfromlastnight.com/}
 
 \subsubsection{no\_misspelling}
 \label{subs:no_misspelling}
