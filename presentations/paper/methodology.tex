@@ -65,13 +65,20 @@ Our methodology is divided into the three typical phases of a MSR research proje
 %
 % The typical MSR paper picks either metrics or machine learning or IR.
 
-% TODO: Describe general synthesis process, focusing on input and output
-% TODO: List all criteria with details
-% TODO: Try to express criteria as metrics. I guess we count how many of an author's commits meet each criterion, and that count is our metric.
 % TODO: Put special focus on those Natural Language Processing
 % TODO: Maybe mention, that our synthesis contains actions that may have belonged into extraction, but we found the terms more fitting to our implementation
 
-Each commit of an author has been testet against the following criteria. While most tests either \emph{fail} or \emph{pass}, some criteria may not be appliccable in some situations, e.g. a commit message's body cannot be tested for a per-line character limit, if there is no body at all. In those cases, the criterion-test will count as \emph{undefined}.
+Each commit of an author is testet against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be appliccable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit, if there is no body at all. In those cases, the criterion-test will count as \emph{undefined}.
+
+The results of our tests are counted in a triple $(pass, fail, undef)$ for each criterion for each author. This triples will be used as a metric for the analysis in \ref{sub:analysis}.
+
+Almost all of the criteria below relate to the commit message. Only one of them states a very superficial rule about the changes in the commit. None of them process the code itself, neither inside the changes nor in the the code-base before or after applying the commit, as such criteria would require very language-specific knowledge that would have to be manually implemented for each desired language. By keeping our criteria language-independent, they remain appliccable to all Git Repositories.
+
+In general, commit messages should consist of a subject line and a body \cite{OffGuide}. \cite{CB} summarizes the most important guidelines very nicely, and the first seven criteria below are directly taken or inspired from the blog post. Note that the seventh mentioned rule could not be made into a criterion, since it would require actual understanding of the commit message. Omitting this rule, we still infered one additional criterium (\ref{subs:body_used}).
+
+The remaining 6 criteria have been chosen by the authors. Since there are no other sources to back our claim that failing to meet them makes a commit ``worse'', we will explain our reasoning behind the choices. Additionally, our criteria can be proven as valid, if there is a correlation between them and the criteria taken from credible sources. %TODO: THIS IS A WILD FUCKING GUESS AND WE BETTER FINALLY USE WEKA AND GET SOME RESULTS
+
+% TODO: List all criteria with details
 
 \subsubsection{subject_limit}
 \label{subs:subject_limit}
@@ -114,6 +121,7 @@ Each commit of an author has been testet against the following criteria. While m
 
 
 \subsection{Data Analysis}
+\label{sub:analysis}
 
 % Data analysis would be concerned with any sort of statistical quality
 % analysis of the data. More specifically, the subsection on data
