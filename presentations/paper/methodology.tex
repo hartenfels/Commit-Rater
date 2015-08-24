@@ -24,6 +24,7 @@ Our methodology is divided into the three typical phases of a MSR research proje
   \item Data Analysis. We use a set of repositories and analyse our synthesis results for interesting statistics and relations between criteria.
 \end{itemize}
 
+
 \subsection{Data Extraction}
 
 % This metamodel is concerned with MSR papers. Thus, the methodology
@@ -44,6 +45,7 @@ Our methodology is divided into the three typical phases of a MSR research proje
 % TODO: Describe preprocessing and output
 % TODO: Mention commit-limit
 % TODO: Introduce example repos
+
 
 \subsection{Data Synthesis}
 
@@ -68,6 +70,48 @@ Our methodology is divided into the three typical phases of a MSR research proje
 % TODO: Try to express criteria as metrics. I guess we count how many of an author's commits meet each criterion, and that count is our metric.
 % TODO: Put special focus on those Natural Language Processing
 % TODO: Maybe mention, that our synthesis contains actions that may have belonged into extraction, but we found the terms more fitting to our implementation
+
+Each commit of an author has been testet against the following criteria. While most tests either \emph{fail} or \emph{pass}, some criteria may not be appliccable in some situations, e.g. a commit message's body cannot be tested for a per-line character limit, if there is no body at all. In those cases, the criterion-test will count as \emph{undefined}.
+
+\subsubsection{subject_limit}
+\label{subs:subject_limit}
+
+\subsubsection{capitalize_subject}
+\label{subs:capitalize_subject}
+
+\subsubsection{no_period_subject}
+\label{subs:no_period_subject}
+
+\subsubsection{imperative_subject}
+\label{subs:imperative_subject}
+
+\subsubsection{body_used}
+\label{subs:body_used}
+
+\subsubsection{body_limit}
+\label{subs:body_limit}
+
+\subsubsection{empty_second_line}
+\label{subs:empty_second_line}
+
+\subsubsection{no_short_message}
+\label{subs:no_short_message}
+
+\subsubsection{no_long_message}
+\label{subs:no_long_message}
+
+\subsubsection{no_bulk_change}
+\label{subs:no_bulk_change}
+
+\subsubsection{no_vulgarity}
+\label{subs:no_vulgarity}
+
+\subsubsection{no_misspelling}
+\label{subs:no_misspelling}
+
+\subsubsection{no_duplicate}
+\label{subs:no_duplicate}
+
 
 \subsection{Data Analysis}
 
