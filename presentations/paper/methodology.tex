@@ -123,8 +123,13 @@ The subject line should consist of more than 2 words, since no useful informatio
 \label{subs:no_long_message}
 The subject line should be limited to less than 10 words. This is an extension of the subject\_limit criterion in \ref{subject_limit}, which might rarely allow 10 or more words. The reasoning behind this criterion again is, that many words hint at more than one logical changeset in one commit. Also, concision should help making a message more easily understandable and scanning a log for a particular commit takes less time. If there is need for longer explanations, the body should be used.
 
+It should be noted that the 10 words limit was arbitrarily chosen and might not yield ideal results.
+
 \subsubsection{no\_bulk\_change}
 \label{subs:no_bulk_change}
+Large changesets hint at a commit with more than one logical changeset.  If 10 or more files are changed by a commit, chances are that that commit should have been separated multiple commits. Furthermore, even a commit with 10 or more changes only contains one logical changeset, this hints at bad software architecture, altough this should maybe not be reflected in the evaluation of commits.
+
+One big problem with this criterion is, that there may very well be reasonable logical changes that have to touch 10 or more files, such as the refactoring of a classname. Also, as with the no_bulk_change-criterum in \ref{subs:no_long_message}, the chosen limit is only our best guess.
 
 \subsubsection{no\_vulgarity}
 \label{subs:no_vulgarity}
