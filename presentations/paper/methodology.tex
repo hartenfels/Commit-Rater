@@ -147,6 +147,9 @@ This criterion is hugely proplematic. In principle, spell checking is easily don
 
 \subsubsection{no\_duplicate}
 \label{subs:no_duplicate}
+There should rarely be duplicate commit messages (except for automatic messages like merges). A duplicate commit message hints at a duplicate change to the code and makes reading git logs more difficult (for humans).
+
+If a commit has the same commit message as a commit that has been processed before, this test fails.
 
 
 \subsection{Data Analysis}
