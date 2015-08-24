@@ -2,7 +2,7 @@
 % The methodology section must give a very clear account of what sort of
 % procedure was executed. Here are some detailed criteria:
 
-Our methodology is divided into the three typical phases of a MSR research project: 
+Our methodology is divided into the three typical phases of a MSR research project:
 
 % \begin{itemize}
 % \item The section is preferably a step-by-step procedure overall. First we did
@@ -24,41 +24,52 @@ Our methodology is divided into the three typical phases of a MSR research proje
   \item Data Analysis. We use a set of repositories and analyse our synthesis results for interesting statistics and relations between criteria.
 \end{itemize}
 
-\subsection{Data extraction}
+\subsection{Data Extraction}
 
-This metamodel is concerned with MSR papers. Thus, the methodology
-section would be reasonably subdivided into the three major phases of
-an MSR research project.
+% This metamodel is concerned with MSR papers. Thus, the methodology
+% section would be reasonably subdivided into the three major phases of
+% an MSR research project.
+%
+% The subsection on data extraction is concerned with issues like the
+% following:
+%
+% \begin{itemize}
+% \item What repository was chosen and why?
+% \item What sort of extraction techniques is applied?
+% \item What sort of extra processing (e.g., filtering) is applied?
+% \item What constraints were chosen to help with scalability?
+% \end{itemize}
 
-The subsection on data extraction is concerned with issues like the
-following:
+% TODO: Describe extraction process
+% TODO: Describe preprocessing and output
+% TODO: Mention commit-limit
+% TODO: Introduce example repos
 
-\begin{itemize}
-\item What repository was chosen and why?
-\item What sort of extraction techniques is applied?
-\item What sort of extra processing (e.g., filtering) is applied?
-\item What constraints were chosen to help with scalability?
-\end{itemize}
+\subsection{Data Synthesis}
 
-\subsection{Data synthesis}
+% Even the simplest MSR project carries out synthesis; data analysis (see
+% below) may not be carried out in all the cases. The subsection on data
+% synthesis is concerned with issues like the following:
+%
+% \begin{itemize}
+%
+% \item What metrics are used?
+%
+% \item What machine learning techniques are used?
+%
+% \item What information retrieval techniques are used?
+%
+% \end{itemize}
+%
+% The typical MSR paper picks either metrics or machine learning or IR.
 
-Even the simplest MSR project carries out synthesis; data analysis (see
-below) may not be carried out in all the cases. The subsection on data
-synthesis is concerned with issues like the following:
+% TODO: Describe general synthesis process, focusing on input and output
+% TODO: List all criteria with details
+% TODO: Try to express criteria as metrics
+% TODO: Put special focus on those Natural Language Processing
+% TODO: Maybe mention, that our synthesis contains actions that may have belonged into extraction, but we found the terms more fitting to our implementation
 
-\begin{itemize}
-
-\item What metrics are used?
-
-\item What machine learning techniques are used?
-
-\item What information retrieval techniques are used?
-
-\end{itemize}
-
-The typical MSR paper picks either metrics or machine learning or IR.
-
-\subsection{Data analysis}
+\subsection{Data Analysis}
 
 Data analysis would be concerned with any sort of statistical quality
 analysis of the data. More specifically, the subsection on data
