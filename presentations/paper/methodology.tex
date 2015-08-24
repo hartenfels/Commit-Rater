@@ -113,8 +113,11 @@ The lines of the body should be limited to 72 characters (originally stated in \
 \label{subs:empty_second_line}
 The subject line and the body should be separated by an empty line (\cite{TP}). This is how programs (including git itself) parsing the commit message which part is the subject line and which the body, so if a body is used, meeting this criterion is crucial. If no body is used, the test on this criterion will be undefined.
 
+The following six criteria have been chosen by the authors. Some state the obvious and most should be easy to meet, but failing to meet them should be a strong indicator of a bad commit.
+
 \subsubsection{no_short_message}
 \label{subs:no_short_message}
+The subject line should consist of more than 2 words, since no useful information can be conveyed with less words, for example messages like ``Bug'', ``Fix'' and ``Add comment'' are useless. Of course, there are situations where two words are appropriate, but we estimate that these are rare enough to be insignificant.
 
 \subsubsection{no_long_message}
 \label{subs:no_long_message}
