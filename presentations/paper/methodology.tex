@@ -1,0 +1,77 @@
+\section{Methodology}
+
+The methodology section must give a very clear account of what sort of
+procedure was executed. Here are some detailed criteria:
+%
+\begin{itemize}
+\item The section is preferably a step-by-step procedure overall. First we did
+  this. Then we did this.
+\item Steps should be motivated or defended, whenever it is not
+  obvious why a certain choice was made. However, one should be
+  careful not to preempt the discussion of threats to validity; see
+  the extra section below.
+\item The text should support reproducibility. In particular, a
+  reasonably knowledgeable person should be able to re-execute the
+  methodology and compare the results.
+\item The text should not get into low-level (implementation)
+  details. These can be deferred to separate documentation; see Appendix~\ref{S:details}.
+\end{itemize}
+
+\subsection{Data extraction}
+
+This metamodel is concerned with MSR papers. Thus, the methodology
+section would be reasonably subdivided into the three major phases of
+an MSR research project.
+
+The subsection on data extraction is concerned with issues like the
+following:
+
+\begin{itemize}
+\item What repository was chosen and why?
+\item What sort of extraction techniques is applied?
+\item What sort of extra processing (e.g., filtering) is applied?
+\item What constraints were chosen to help with scalability?
+\end{itemize}
+
+\subsection{Data synthesis}
+
+Even the simplest MSR project carries out synthesis; data analysis (see
+below) may not be carried out in all the cases. The subsection on data
+synthesis is concerned with issues like the following:
+
+\begin{itemize}
+
+\item What metrics are used?
+
+\item What machine learning techniques are used?
+
+\item What information retrieval techniques are used?
+
+\end{itemize}
+
+The typical MSR paper picks either metrics or machine learning or IR.
+
+\subsection{Data analysis}
+
+Data analysis would be concerned with any sort of statistical quality
+analysis of the data. More specifically, the subsection on data
+analysis is concerned with issues like the following:
+
+\begin{itemize}
+
+\item Simple statistics like median of metrics.
+
+\item Analysis of regression or correlation or distribution.
+
+\item Analysis of accuracy such as precision and recall.
+
+\end{itemize}
+
+It should be noted that the methodology section describes the `how'
+(and to some extent the`why'), but it does not yet report the various
+results; see the following section. For instance, the methodology may
+explain why it is using a certain metric and define it and announce
+that the median for the metric is going to be determined, as it would
+provide a certain insight, but the actual tables or charts for the
+metric and the interpretation of the findings would be deferred to the
+results section.
