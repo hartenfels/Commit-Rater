@@ -80,59 +80,59 @@ The remaining 6 criteria have been chosen by the authors. Since there are no oth
 
 % TODO: List all criteria with details
 
-\subsubsection{subject_limit}
+\subsubsection{subject\_limit}
 \label{subs:subject_limit}
 The subject line, i.e. the first line of a commit message, should be limited to 50 characters. This rule seems to have originated from a blog post by Tim Pope \cite{TP}, which is referenced by the Git manual \cite{OffGuide}. The reasoning behind it is, that the subject line is used by various tools and user interfaces to describe a commit in limited space.
 
 Additionally, large subject lines might hint at having done more than one thing in a commit, since the author needs more space to explain what the commit does. Logically separating changesets is another rule from \cite{OffGuide}, which of course cannot be evaluated without much language-specific effort.
 
-\subsubsection{capitalize_subject}
+\subsubsection{capitalize\_subject}
 \label{subs:capitalize_subject}
 The first letter of the subject line should be capitalized. Although it could be argued that this is more of a convention, subject lines should be complete sentences, and sentences in the english language start with a capital letter. This rule is only mentioned by \cite{CB}. It may not be as important as other rules, but fullfilling it requires little effort and makes reading the message a nicer.
 
-\subsubsection{no_period_subject}
+\subsubsection{no\_period\_subject}
 \label{subs:no_period_subject}
 The subject line should have no trailing period. It servers no purpose, since the body of a commit message should be separated by a blank line (see \ref{empty_second_line}) and omitting it helps with the 50 character limit. Again, the only explicit mention of this rule is \cite{CB}, although the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} both seem to agree on this.
 
-\subsubsection{imperative_subject}
+\subsubsection{imperative\_subject}
 \label{subs:imperative_subject}
 The subject line should be written in imperative present, e.g. ``Add a function that...'' (as mentioned in \cite{OffGuide}). There are a lot of opinions on this rule and many authors seem to prefer regular present tense (e.g. ``Adds a function that...'') or past tense (e.g. ``Added a function that...''), which both have their own justification. The most important reason to use the imperative is consistency with git itself, which usually generates messages this way, the most prominent example being messages of automatic merges (e.g. ``Merge branch \'master\' of https://github.com/hartenfels/Commit-Rater''). \cite{CB} gives a very nice explanation on how to write messages in the imperative.
 
 This criterion requires natural language processing of the commit
 message. For this purpose we use a perl module \footnote{http://search.cpan.org/dist/Lingua-EN-Tagger/Tagger.pm} and use it to get a list of the forms of the words in the subject line. If the list contains a verb in base present form, the criterion is passed. This is of course a very heuristic approach, but it successfully fails regular present tense or past tense subjet lines and furthermore ensures that there is a verb, so that nonsense messages like ``Some changes'' are failed too.
 
-\subsubsection{body_used}
+\subsubsection{body\_used}
 \label{subs:body_used}
 Additionally to the subject line, there should be a body that further explains what the commit does and why it does what it does (\cite{OffGuide}). The body consists of multiple lines and multiple paragraphs can be used, separated by blank lines. It is also acceptable to use bullet points. This criterion only checks if there is a body.
 
-\subsubsection{body_limit}
+\subsubsection{body\_limit}
 \label{subs:body_limit}
 The lines of the body should be limited to 72 characters (originally stated in \cite{TP}). As with the subject line limit, this ensures proper display of the (full) commit message with limited space available. The test on this criterion will be undefined if no body is used.
 
-\subsubsection{empty_second_line}
+\subsubsection{empty\_second\_line}
 \label{subs:empty_second_line}
 The subject line and the body should be separated by an empty line (\cite{TP}). This is how programs (including git itself) parsing the commit message which part is the subject line and which the body, so if a body is used, meeting this criterion is crucial. If no body is used, the test on this criterion will be undefined.
 
 The following six criteria have been chosen by the authors. Some state the obvious and most should be easy to meet, but failing to meet them should be a strong indicator of a bad commit.
 
-\subsubsection{no_short_message}
+\subsubsection{no\_short\_message}
 \label{subs:no_short_message}
 The subject line should consist of more than 2 words, since no useful information can be conveyed with less words, for example messages like ``Bug'', ``Fix'' and ``Add comment'' are useless. Of course, there are situations where two words are appropriate, but we estimate that these are rare enough to be insignificant.
 
-\subsubsection{no_long_message}
+\subsubsection{no\_long\_message}
 \label{subs:no_long_message}
 The subject line should be limited to less than 10 words. This is an extension of the subject\_limit criterion in \ref{subject_limit}, which might rarely allow 10 or more words. The reasoning behind this criterion again is, that many words hint at more than one logical changeset in one commit. Also, concision should help making a message more easily understandable and scanning a log for a particular commit takes less time. If there is need for longer explanations, the body should be used.
 
-\subsubsection{no_bulk_change}
+\subsubsection{no\_bulk\_change}
 \label{subs:no_bulk_change}
 
-\subsubsection{no_vulgarity}
+\subsubsection{no\_vulgarity}
 \label{subs:no_vulgarity}
 
-\subsubsection{no_misspelling}
+\subsubsection{no\_misspelling}
 \label{subs:no_misspelling}
 
-\subsubsection{no_duplicate}
+\subsubsection{no\_duplicate}
 \label{subs:no_duplicate}
 
 
