@@ -21,6 +21,10 @@ def getAuthorPassRateWeights(resultTriples)
   return passRateWeights
 end
 
+def countCommits(resultTriples)
+  return resultTriples['subject_limit']['pass'] + resultTriples['subject_limit']['fail']
+end
+
 criteria = [
   "body_limit",
   "body_used",
@@ -42,6 +46,8 @@ result['authors'] = Hash.new
 Dir.glob('samples/*.json') do |sample|
   authors = JSON.parse(File.read(sample))
   authors.each do |authorEmail, resultTriples|
+    next if countCommits(resultTriples) < 10
+
     result['authors'][authorEmail] = Hash.new
 
     passRates = getAuthorPassRates(resultTriples)
