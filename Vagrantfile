@@ -1,8 +1,12 @@
 $script = <<SCRIPT
-sudo apt-get update
-sudo apt-get install -y carton perl-doc git
+apt-get update
+apt-get install -y carton perl-doc git libaspell-dev
 git config --global user.name "vagrant"
 git config --global user.email "vagrant@vagrant.vg"
+cd /vagrant
+make install
+locale-gen "de_DE.UTF-8"
+dpkg-reconfigure locales
 SCRIPT
 
 

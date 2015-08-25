@@ -2,7 +2,26 @@
 
 The best commit rating system of the multiverse.
 
+## Useage
+Either use the provided vagrant setup or manually install the dependencies. `make install` to install perl dependencies if needed (the vagrant setup does this automatically the first time).
+
+Use carton to `exec` the Commit Rater perl script `commit-rater`:
+``` Bash
+carton exec perl commit-rater --remote=.
+```
+
+Remote may be any url of a Git repo. The command above runs the rater on it's own (this) repo.
+
 ## Dependencies
+You should be able to run the Commit Rater on any Linux machine (Windows and Mac have not been tested), although we only testet it on Ubuntu. Below is a list of dependencies you'd have to install on Ubuntu.
+
+### Commit Rater
+* carton
+* perl-doc
+* git
+* libaspell-dev
+
+### Commit Rater Web
 ``` Bash
 sudo apt-get install carton perl-doc git libssl-dev libaspell-dev nodejs nodejs-legacy npm
 sudo apt-get install -g bower
