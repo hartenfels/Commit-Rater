@@ -14,3 +14,11 @@
 %\item Summarize results very briefly.
 %
 %\end{itemize}
+
+Revision control systems are a tool most software developers use every day, and of course performing commits is a frequent task in these systems. Each of these commits is associated with a message, so that the reasons for specific changes can be ascertained in the future\TODO{cite that this is true}. To achieve consistent and useful commit messages, best practices have been established\cite{OffGuide,CB,TP,SR}.
+
+While there has been research in the field of Mining Software Repositories about emotional content of commit messages (see section \ref{sec:related-work}), none of them have dealt with the actual quality of commits and their relation to the aformentioned best practices. In this paper, we present our approach to this topic.
+
+We have built an application called ``Commit Rater''\footnote{\url{https://github.com/hartenfels/Commit-Rater}}, which extracts commit message data of any Git repository (see section \ref{sec:data-extraction}) and synthesizes the quantitative adherance to commit criteria (see section \ref{sec:data-synthesis}). For the sake of easy use and graphical visualization of the ratings, we have also built a web application\footnote{\url{https://github.com/hartenfels/Commit-Rater-Web}} around the tool, which, at the time of writing, is available for public use at \TODO{trollarena.de, really?}.
+
+Finally, we also performed machine learning \TODO{actually do machine learning and finish this}
