@@ -1,0 +1,631 @@
+{
+   "ali@alicoding.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "body_used" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "imperative_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      }
+   },
+   "brianloveswords@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 2
+      },
+      "body_used" : {
+         "fail" : 2,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 2
+      },
+      "imperative_subject" : {
+         "fail" : 1,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 2,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      }
+   },
+   "chris.mcavoy@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 18,
+         "undef" : 37
+      },
+      "body_used" : {
+         "fail" : 37,
+         "pass" : 18,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 31,
+         "pass" : 24,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 1,
+         "pass" : 17,
+         "undef" : 37
+      },
+      "imperative_subject" : {
+         "fail" : 25,
+         "pass" : 30,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 2,
+         "pass" : 53,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 13,
+         "pass" : 42,
+         "undef" : 0
+      }
+   },
+   "christensenep@gmail.com" : {
+      "body_limit" : {
+         "fail" : 2,
+         "pass" : 111,
+         "undef" : 232
+      },
+      "body_used" : {
+         "fail" : 232,
+         "pass" : 113,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 50,
+         "pass" : 295,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 113,
+         "undef" : 232
+      },
+      "imperative_subject" : {
+         "fail" : 191,
+         "pass" : 154,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 1,
+         "pass" : 344,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 86,
+         "pass" : 259,
+         "undef" : 0
+      }
+   },
+   "cmcavoy@users.noreply.github.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "body_used" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "imperative_subject" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 2,
+         "pass" : 1,
+         "undef" : 0
+      }
+   },
+   "daytonn@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "body_used" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "imperative_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      }
+   },
+   "friedger@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "body_used" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "imperative_subject" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      }
+   },
+   "github@andrewhayward.net" : {
+      "body_limit" : {
+         "fail" : 1,
+         "pass" : 4,
+         "undef" : 43
+      },
+      "body_used" : {
+         "fail" : 43,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 48,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 2,
+         "pass" : 3,
+         "undef" : 43
+      },
+      "imperative_subject" : {
+         "fail" : 41,
+         "pass" : 7,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 1,
+         "pass" : 47,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 48,
+         "undef" : 0
+      }
+   },
+   "jessicabrookeklein@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "body_used" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "imperative_subject" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      }
+   },
+   "johns@mozillafoundation.org" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 4
+      },
+      "body_used" : {
+         "fail" : 4,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 4
+      },
+      "imperative_subject" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 2,
+         "pass" : 2,
+         "undef" : 0
+      }
+   },
+   "jon@jbuckley.ca" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 7
+      },
+      "body_used" : {
+         "fail" : 7,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 2,
+         "pass" : 8,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 7
+      },
+      "imperative_subject" : {
+         "fail" : 6,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 10,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 3,
+         "pass" : 7,
+         "undef" : 0
+      }
+   },
+   "mikelarssonftw@gmail.com" : {
+      "body_limit" : {
+         "fail" : 3,
+         "pass" : 5,
+         "undef" : 13
+      },
+      "body_used" : {
+         "fail" : 13,
+         "pass" : 8,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 21,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 2,
+         "pass" : 6,
+         "undef" : 13
+      },
+      "imperative_subject" : {
+         "fail" : 7,
+         "pass" : 14,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 1,
+         "pass" : 20,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 11,
+         "pass" : 10,
+         "undef" : 0
+      }
+   },
+   "mwillse@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 5
+      },
+      "body_used" : {
+         "fail" : 5,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 4,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 5
+      },
+      "imperative_subject" : {
+         "fail" : 5,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 1,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 1,
+         "pass" : 4,
+         "undef" : 0
+      }
+   },
+   "secretrobotron@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 5
+      },
+      "body_used" : {
+         "fail" : 5,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 4,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 5
+      },
+      "imperative_subject" : {
+         "fail" : 8,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 4,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 9,
+         "undef" : 0
+      }
+   },
+   "simon@simonwex.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "body_used" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "imperative_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      }
+   },
+   "sue@benormal.info" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 13,
+         "undef" : 15
+      },
+      "body_used" : {
+         "fail" : 15,
+         "pass" : 13,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 28,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 13,
+         "undef" : 15
+      },
+      "imperative_subject" : {
+         "fail" : 28,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 2,
+         "pass" : 26,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 28,
+         "undef" : 0
+      }
+   },
+   "zahra.arch@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 8,
+         "undef" : 182
+      },
+      "body_used" : {
+         "fail" : 182,
+         "pass" : 8,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 175,
+         "pass" : 15,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 2,
+         "pass" : 6,
+         "undef" : 182
+      },
+      "imperative_subject" : {
+         "fail" : 153,
+         "pass" : 37,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 4,
+         "pass" : 186,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 73,
+         "pass" : 117,
+         "undef" : 0
+      }
+   }
+}
