@@ -27,6 +27,7 @@ Our methodology is divided into the three typical phases of a MSR research proje
 
 
 \subsection{Data Extraction}
+\label{sec:data-extraction}
 
 Several repositories were chosen as sample sources, for the sake of having enough data to analyze in section\ref{sec:TODO}. Additionally, the authors of these repositories have different levels of being aware of and adhering to Git's commit message guidelines\cite{OffGuide}, which leads to a large spread of ratings accross them.
 
@@ -75,6 +76,7 @@ However, to keep the prototype website usable for multiple users at once, we dec
 
 
 \subsection{Data Synthesis}
+\label{sec:data-synthesis}
 
 % Even the simplest MSR project carries out synthesis; data analysis (see
 % below) may not be carried out in all the cases. The subsection on data
@@ -96,7 +98,7 @@ However, to keep the prototype website usable for multiple users at once, we dec
 
 Each commit of an author is tested against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be appliccable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit if there is no body at all. In those cases, the criterion-test will count as \emph{undefined}.
 
-The results of our tests are counted in a triple $(pass, fail, undef)$ for each criterion per author. These triples will be used as a metric for the analysis in \ref{sub:analysis}.
+The results of our tests are counted in a triple $(pass, fail, undef)$ for each criterion per author. These triples will be used as a metric for the analysis in \ref{sec:data-analysis}.
 
 Almost all of the criteria below relate to the commit message, only one of them states a very superficial rule about the changes in the commit. None of them process the code itself, neither inside the changes nor in the the code-base before or after applying the commit, as such criteria would require very language-specific knowledge that would have to be manually implemented for each desired language. By keeping our criteria language-independent, they remain applicable to all Git repositories.
 
@@ -178,7 +180,7 @@ If a commit has the same commit message as a commit that has been processed befo
 
 
 \subsection{Data Analysis}
-\label{sub:analysis}
+\label{sec:data-analysis}
 
 % Data analysis would be concerned with any sort of statistical quality
 % analysis of the data. More specifically, the subsection on data
