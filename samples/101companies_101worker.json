@@ -1,0 +1,1038 @@
+{
+   "-" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 300
+      },
+      "body_used" : {
+         "fail" : 300,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 6,
+         "pass" : 295,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 300
+      },
+      "imperative_subject" : {
+         "fail" : 244,
+         "pass" : 57,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 286,
+         "pass" : 15,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 57,
+         "pass" : 244,
+         "undef" : 0
+      }
+   },
+   "aleksey.lashin@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "body_used" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "imperative_subject" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      }
+   },
+   "carsten.hartenfels@googlemail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 3
+      },
+      "body_used" : {
+         "fail" : 3,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 3
+      },
+      "imperative_subject" : {
+         "fail" : 3,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 3,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      }
+   },
+   "dev@michael-monschau.de" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 2
+      },
+      "body_used" : {
+         "fail" : 2,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 1,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 2
+      },
+      "imperative_subject" : {
+         "fail" : 1,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      }
+   },
+   "dotnetby@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 420
+      },
+      "body_used" : {
+         "fail" : 420,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 99,
+         "pass" : 323,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 1,
+         "pass" : 1,
+         "undef" : 420
+      },
+      "imperative_subject" : {
+         "fail" : 370,
+         "pass" : 52,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 422,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 22,
+         "pass" : 400,
+         "undef" : 0
+      }
+   },
+   "freddy92.online@googlemail.com" : {
+      "body_limit" : {
+         "fail" : 1,
+         "pass" : 5,
+         "undef" : 19
+      },
+      "body_used" : {
+         "fail" : 19,
+         "pass" : 6,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 5,
+         "pass" : 20,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 6,
+         "undef" : 19
+      },
+      "imperative_subject" : {
+         "fail" : 12,
+         "pass" : 13,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 25,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 25,
+         "undef" : 0
+      }
+   },
+   "freddy@frederiks-mbp.speedport_w_724v_09011602_00_015" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 34
+      },
+      "body_used" : {
+         "fail" : 34,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 27,
+         "pass" : 8,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 34
+      },
+      "imperative_subject" : {
+         "fail" : 21,
+         "pass" : 14,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 35,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 5,
+         "pass" : 30,
+         "undef" : 0
+      }
+   },
+   "freddy@frederiks-mbp.speedport_w_724v_09011603_00_009" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 7
+      },
+      "body_used" : {
+         "fail" : 7,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 2,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 7
+      },
+      "imperative_subject" : {
+         "fail" : 2,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 7,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 2,
+         "pass" : 5,
+         "undef" : 0
+      }
+   },
+   "git@mariusrackwitz.de" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 3
+      },
+      "body_used" : {
+         "fail" : 3,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 3,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 3
+      },
+      "imperative_subject" : {
+         "fail" : 2,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      }
+   },
+   "github@michael-monschau.de" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "body_used" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "imperative_subject" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      }
+   },
+   "hartenfels@uni-koblenz.de" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 98
+      },
+      "body_used" : {
+         "fail" : 98,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 2,
+         "pass" : 99,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 98
+      },
+      "imperative_subject" : {
+         "fail" : 75,
+         "pass" : 26,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 76,
+         "pass" : 25,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 11,
+         "pass" : 90,
+         "undef" : 0
+      }
+   },
+   "kevin.k1252@gmail.com" : {
+      "body_limit" : {
+         "fail" : 1,
+         "pass" : 2,
+         "undef" : 147
+      },
+      "body_used" : {
+         "fail" : 147,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 120,
+         "pass" : 30,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 147
+      },
+      "imperative_subject" : {
+         "fail" : 117,
+         "pass" : 33,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 150,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 31,
+         "pass" : 119,
+         "undef" : 0
+      }
+   },
+   "kevin@kevin-virtualbox.(none)" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 3
+      },
+      "body_used" : {
+         "fail" : 3,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 2,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 3
+      },
+      "imperative_subject" : {
+         "fail" : 2,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 1,
+         "pass" : 2,
+         "undef" : 0
+      }
+   },
+   "kevin@tabolo.de" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 2
+      },
+      "body_used" : {
+         "fail" : 2,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 2,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 2
+      },
+      "imperative_subject" : {
+         "fail" : 2,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      }
+   },
+   "l.schmelzeisen@gmx.de" : {
+      "body_limit" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 3
+      },
+      "body_used" : {
+         "fail" : 3,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 3
+      },
+      "imperative_subject" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 3,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 1,
+         "pass" : 3,
+         "undef" : 0
+      }
+   },
+   "lukas@uni-koblenz.de" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "body_used" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "imperative_subject" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      }
+   },
+   "martin.leinberger@googlemail.com" : {
+      "body_limit" : {
+         "fail" : 13,
+         "pass" : 25,
+         "undef" : 305
+      },
+      "body_used" : {
+         "fail" : 305,
+         "pass" : 38,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 246,
+         "pass" : 97,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 4,
+         "pass" : 34,
+         "undef" : 305
+      },
+      "imperative_subject" : {
+         "fail" : 257,
+         "pass" : 86,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 3,
+         "pass" : 340,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 82,
+         "pass" : 261,
+         "undef" : 0
+      }
+   },
+   "martin@martin-desktop-ubuntu.(none)" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "body_used" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 1
+      },
+      "imperative_subject" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      }
+   },
+   "megaplanet.github@megaplanet.org" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 87
+      },
+      "body_used" : {
+         "fail" : 87,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 79,
+         "pass" : 8,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 87
+      },
+      "imperative_subject" : {
+         "fail" : 73,
+         "pass" : 14,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 4,
+         "pass" : 83,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 28,
+         "pass" : 59,
+         "undef" : 0
+      }
+   },
+   "mmonschau@users.noreply.github.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 10
+      },
+      "body_used" : {
+         "fail" : 10,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 11,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 10
+      },
+      "imperative_subject" : {
+         "fail" : 10,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 11,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 11,
+         "undef" : 0
+      }
+   },
+   "nicolas-beck@gmx.de" : {
+      "body_limit" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 25
+      },
+      "body_used" : {
+         "fail" : 25,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 22,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 25
+      },
+      "imperative_subject" : {
+         "fail" : 22,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 26,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 5,
+         "pass" : 21,
+         "undef" : 0
+      }
+   },
+   "rlaemmel@gmail.com" : {
+      "body_limit" : {
+         "fail" : 1,
+         "pass" : 6,
+         "undef" : 213
+      },
+      "body_used" : {
+         "fail" : 213,
+         "pass" : 7,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 22,
+         "pass" : 198,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 7,
+         "pass" : 0,
+         "undef" : 213
+      },
+      "imperative_subject" : {
+         "fail" : 176,
+         "pass" : 44,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 42,
+         "pass" : 178,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 29,
+         "pass" : 191,
+         "undef" : 0
+      }
+   },
+   "ruether@uni-koblenz.de" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 5
+      },
+      "body_used" : {
+         "fail" : 5,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 2,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 5
+      },
+      "imperative_subject" : {
+         "fail" : 3,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 2,
+         "pass" : 3,
+         "undef" : 0
+      }
+   },
+   "seiferphilipp@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "body_used" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "imperative_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      }
+   },
+   "t.moehlenhof@gmail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 12
+      },
+      "body_used" : {
+         "fail" : 12,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 4,
+         "pass" : 8,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 12
+      },
+      "imperative_subject" : {
+         "fail" : 8,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 12,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 0,
+         "pass" : 12,
+         "undef" : 0
+      }
+   },
+   "tschmorleiz@googlemail.com" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 283
+      },
+      "body_used" : {
+         "fail" : 283,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 106,
+         "pass" : 178,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 283
+      },
+      "imperative_subject" : {
+         "fail" : 235,
+         "pass" : 49,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 3,
+         "pass" : 281,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 32,
+         "pass" : 252,
+         "undef" : 0
+      }
+   },
+   "worker@101companies.org" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 18
+      },
+      "body_used" : {
+         "fail" : 18,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 10,
+         "pass" : 8,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 0,
+         "undef" : 18
+      },
+      "imperative_subject" : {
+         "fail" : 13,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 1,
+         "pass" : 17,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 3,
+         "pass" : 15,
+         "undef" : 0
+      }
+   },
+   "worker@worker.uni-koblenz.de" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 2
+      },
+      "body_used" : {
+         "fail" : 2,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 1,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 2
+      },
+      "imperative_subject" : {
+         "fail" : 2,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 2,
+         "pass" : 1,
+         "undef" : 0
+      }
+   }
+}
