@@ -1,0 +1,136 @@
+{
+   "hartenfels@uni-koblenz.de" : {
+      "body_limit" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 96
+      },
+      "body_used" : {
+         "fail" : 96,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 1,
+         "pass" : 96,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 96
+      },
+      "imperative_subject" : {
+         "fail" : 50,
+         "pass" : 47,
+         "undef" : 0
+      },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 97,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 4,
+         "pass" : 93,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 2,
+         "pass" : 95,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 6,
+         "pass" : 91,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 46,
+         "pass" : 51,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 8,
+         "pass" : 89,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 97,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 12,
+         "pass" : 85,
+         "undef" : 0
+      }
+   },
+   "papstdonb@googlemail.com" : {
+      "body_limit" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 91
+      },
+      "body_used" : {
+         "fail" : 91,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "capitalize_subject" : {
+         "fail" : 0,
+         "pass" : 92,
+         "undef" : 0
+      },
+      "empty_second_line" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 91
+      },
+      "imperative_subject" : {
+         "fail" : 33,
+         "pass" : 59,
+         "undef" : 0
+      },
+      "no_bulk_change" : {
+         "fail" : 1,
+         "pass" : 91,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 13,
+         "pass" : 79,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 18,
+         "pass" : 74,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 6,
+         "pass" : 86,
+         "undef" : 0
+      },
+      "no_period_subject" : {
+         "fail" : 1,
+         "pass" : 91,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 13,
+         "pass" : 79,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 1,
+         "pass" : 91,
+         "undef" : 0
+      },
+      "subject_limit" : {
+         "fail" : 37,
+         "pass" : 55,
+         "undef" : 0
+      }
+   }
+}
