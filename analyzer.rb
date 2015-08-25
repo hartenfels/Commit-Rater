@@ -22,16 +22,24 @@ def getAuthorPassRateWeights(resultTriples)
 end
 
 result = Hash.new
+result['authors'] = Hash.new
 Dir.glob('samples/*.json') do |sample|
   authors = JSON.parse(File.read(sample))
   authors.each do |authorEmail, resultTriples|
-    result[authorEmail] = Hash.new
-    result[authorEmail]['passRates'] = getAuthorPassRates(resultTriples)
-    result[authorEmail]['passRateWeights'] = getAuthorPassRateWeights(resultTriples)
-    result[authorEmail]['average'] = result[authorEmail]['passRates'].values.inject(:+) \
-                                   / result[authorEmail]['passRates'].length
-    result[authorEmail]['weightedAverage'] = result[authorEmail]['passRates'].values.zip(result[authorEmail]['passRateWeights'].values).map{|a,b| a * b}.inject(:+)\
-                                           / result[authorEmail]['passRateWeights'].values.inject(:+)
+    result['authors'][authorEmail] = Hash.new
+
+    passRates = getAuthorPassRates(resultTriples)
+    result['authors'][authorEmail]['passRates'] = passRates
+
+    passRateWeights = getAuthorPassRateWeights(resultTriples)
+    result['authors'][authorEmail]['passRateWeights'] = passRateWeights
+
+    average = passRates.values.inject(:+) / passRates.length
+    result['authors'][authorEmail]['average'] = average
+
+    weightedAverage = passRates.values.zip(passRateWeights.values).map{|a,b| a * b}.inject(:+)\
+                    / passRateWeights.values.inject(:+)
+    result['authors'][authorEmail]['weightedAverage'] = weightedAverage
   end
 end
 
