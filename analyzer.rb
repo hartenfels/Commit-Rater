@@ -43,4 +43,7 @@ Dir.glob('samples/*.json') do |sample|
   end
 end
 
+result['averageRating'] = result['authors'].values.inject(0){|acc, a| acc + a['average']} / result['authors'].length
+result['averageWeightedRating'] = result['authors'].values.inject(0){|acc, a| acc + a['weightedAverage']} / result['authors'].length
+
 puts JSON.pretty_generate(result)
