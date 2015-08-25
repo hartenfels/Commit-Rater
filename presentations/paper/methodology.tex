@@ -1,4 +1,5 @@
 \section{Methodology}
+\label{sec:methodology}
 % The methodology section must give a very clear account of what sort of
 % procedure was executed. Here are some detailed criteria:
 
@@ -26,6 +27,38 @@ Our methodology is divided into the three typical phases of a MSR research proje
 
 
 \subsection{Data Extraction}
+\label{sec:data-extraction}
+
+Several repositories were chosen as sample sources, for the sake of having enough data to analyze in section\ref{sec:TODO}. Additionally, the authors of these repositories have different levels of being aware of and adhering to Git's commit message guidelines\cite{OffGuide}, which leads to a large spread of ratings accross them.
+
+\begin{description}
+    \item[101worker]\footnote{\url{https://github.com/101companies/101worker}}: A relatively small repository of barely over $2000$ commits, done by the Software Languages Team of the University of Koblenz-Landau. Most of the commits in this repository do not adhere to the commit guidelines.
+    \item[mozilla/openbadges-badgekit]\footnote{\url{https://github.com/mozilla/openbadges-badgekit/}}: % TODO why?
+    \item[perl]\footnote{\url{https://github.com/Perl/perl5}}: The interpreter for Perl 5, a large repository of over $60000$ commits, partially adhering the commit guidelines.
+    \item[Linux Kernel]\footnote{\url{https://github.com/torvalds/linux}}: A massive repository of over half a million commits. Used for stress-testing our implementation and finding reasonable constraints on the amount of commits analyzed. Most commit messages adhere to the commit guidelines, for the sake of managing such a large volume of them.
+\end{description}
+
+To extract commit messages of a GitHub repository, the first and obvious attempt would be to use GitHub's API\footnote{\url{https://developer.github.com/v3/}}, which provides seemingly ideal REST resources for doing exactly that\footnote{\url{https://developer.github.com/v3/git/commits/\#get-a-commit}}. However, there is a heavy rate limit on calls to the API\footnote{\url{https://developer.github.com/v3/\#rate-limiting}}, which at the time of writing was at most 5000 requests per hour. Such a limit is only enough to analyze small repositories and is not suitable for a web application performing the rating of commits (see section \ref{sec:TODO}).
+
+Instead, the choice was made to simply clone the repositories and use \texttt{git log} to extract commit messages from them. While it requires time to clone the repository and disk space to store its data, it is much less limited and can be used for any Git repository, even outside of GitHub.
+
+During processing, each message is attributed to an author by their e-mail address and split into subject line and zero or more body lines following it. Additionally, a list of changed files is gathered from the log, for the use in data synthesis.
+
+\begin{table}[t]
+    \begin{tabularx}{\textwidth}{@{}|Y|Y|Y|@{}}\hline
+        \textbf{Repository} & \textbf{Commits} & \textbf{Time to Rate} \\\hline
+        BadgeKit            & $723$            & $4$ seconds           \\\hline
+        101worker           & $2073$           & $10$ seconds          \\\hline
+        perl                & $60898$          & $3$ minutes           \\\hline
+        Linux Kernel        & $543964$         & $16$ minutes          \\\hline
+    \end{tabularx}
+    \caption{Time taken to clone repositories and rate their commits}
+    \label{tab:time}
+\end{table}
+
+Since the entirety of repository commit messages can be listed by a single call to \texttt{git log} and commits can be extracted by a single regular expression, the commit rating process is fast and scales well. Repeated analysis of the same repository is also optimized by caching the cloned data on disk and only pulling recent changes on subsequent runs. The actual time taken to rate these repositories on the server the application is running on are found in table \ref{tab:time}.
+
+However, to keep the prototype website usable for multiple users at once, we decided to limit the number of commits analyzed to the latest $10000$ commits. However, this practical limit may be increased by allowing more worker processes to rate repositories at once, reducing the chance of the entire commit rater being blocked for a long time by large repositories.
 
 % This metamodel is concerned with MSR papers. Thus, the methodology
 % section would be reasonably subdivided into the three major phases of
@@ -41,13 +74,9 @@ Our methodology is divided into the three typical phases of a MSR research proje
 % \item What constraints were chosen to help with scalability?
 % \end{itemize}
 
-% TODO: Describe extraction process
-% TODO: Describe preprocessing and output
-% TODO: Mention commit-limit
-% TODO: Introduce example repos
-
 
 \subsection{Data Synthesis}
+\label{sec:data-synthesis}
 
 % Even the simplest MSR project carries out synthesis; data analysis (see
 % below) may not be carried out in all the cases. The subsection on data
@@ -67,15 +96,15 @@ Our methodology is divided into the three typical phases of a MSR research proje
 
 % TODO: Maybe mention, that our synthesis contains actions that may have belonged into extraction, but we found the terms more fitting to our implementation
 
-Each commit of an author is testet against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be appliccable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit, if there is no body at all. In those cases, the criterion-test will count as \emph{undefined}.
+Each commit of an author is tested against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be appliccable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit if there is no body at all. In those cases, the criterion-test will count as \emph{undefined}.
 
-The results of our tests are counted in a triple $(pass, fail, undef)$ for each criterion for each author. This triples will be used as a metric for the analysis in \ref{sub:analysis}.
+The results of our tests are counted in a triple $(pass, fail, undef)$ for each criterion per author. These triples will be used as a metric for the analysis in \ref{sec:data-analysis}.
 
-Almost all of the criteria below relate to the commit message. Only one of them states a very superficial rule about the changes in the commit. None of them process the code itself, neither inside the changes nor in the the code-base before or after applying the commit, as such criteria would require very language-specific knowledge that would have to be manually implemented for each desired language. By keeping our criteria language-independent, they remain appliccable to all Git repositories.
+Almost all of the criteria below relate to the commit message, only one of them states a very superficial rule about the changes in the commit. None of them process the code itself, neither inside the changes nor in the the code-base before or after applying the commit, as such criteria would require very language-specific knowledge that would have to be manually implemented for each desired language. By keeping our criteria language-independent, they remain applicable to all Git repositories.
 
 In general, commit messages should consist of a subject line and a body \footnote{See \cite{OffGuide} for an exhaustive explanation and an example}. \cite{CB} summarizes the most important guidelines very nicely, and the first seven criteria below are directly taken or inspired from the blog post. Note that the seventh mentioned rule could not be made into a criterion, since it would require actual understanding of the commit message. Omitting this rule, we still infered one additional criterium (\ref{subs:body_used}) that we found missing in the list.
 
-The remaining 6 criteria have been chosen by the authors. Since there are no other sources to back our claim that failing to meet them makes a commit ``worse'', we will explain our reasoning behind the choices. Additionally, our criteria can be proven as valid, if there is a correlation between them and the criteria taken from credible sources. %TODO: THIS IS A WILD FUCKING GUESS AND WE BETTER FINALLY USE WEKA AND GET SOME RESULTS
+The remaining 6 criteria have been chosen by the authors. Since there are no other sources to back our claim that failing to meet them makes a commit ``worse'', we will explain our reasoning behind the choices. Additionally, our criteria can be validated if there is a correlation between them and the criteria taken from credible sources (see section \ref{sec:TODO}). %TODO: THIS IS A WILD FUCKING GUESS AND WE BETTER FINALLY USE WEKA AND GET SOME RESULTS
 
 \subsubsection{subject\_limit}
 \label{subs:subject_limit}
@@ -85,24 +114,23 @@ Additionally, large subject lines might hint at having done more than one thing 
 
 \subsubsection{capitalize\_subject}
 \label{subs:capitalize_subject}
-The first letter of the subject line should be capitalized. Although it could be argued that this is more of a convention, subject lines should be complete sentences, and sentences in the english language start with a capital letter. This rule is only mentioned by \cite{CB}. It may not be as important as other rules, but fulfilling it requires little effort and makes reading the message nicer.
+The first letter of the subject line should be capitalized. Although it could be argued that this is more of a convention, subject lines should be complete sentences, and sentences in the English language start with a capital letter. This rule is only mentioned by \cite{CB}.
 
 \subsubsection{no\_period\_subject}
 \label{subs:no_period_subject}
-The subject line should have no trailing period. It servers no purpose, since the body of a commit message should be separated by a blank line (see \ref{empty_second_line}) and omitting it helps with the 50 character limit. Again, the only explicit mention of this rule is \cite{CB}, although the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} both seem to adhere to it.
+The subject line should have no trailing period. It servers no purpose, since the body of a commit message should be separated by a blank line (see \ref{empty_second_line}) and omitting it helps with the 50 character limit. Again, the only explicit mention of this rule is \cite{CB}, however the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} both implicitly adhere to it.
 
 \subsubsection{imperative\_subject}
 \label{subs:imperative_subject}
-The subject line should be written in imperative present tense, e.g. ``Add a function that...'' (as mentioned in \cite{OffGuide}). There are a lot of opinions on this rule and some authors seem to prefer regular present tense (e.g. ``Adds a function that...'') or past tense (e.g. ``Added a function that...''), which both have their own justification. In the authors opinion, the most important reason to use the imperative is consistency with git itself, which usually generates messages this way, the most prominent example being messages of automatic merges (e.g. ``Merge branch \'master\' of https://github.com/hartenfels/Commit-Rater''). \cite{CB} gives very nice instructions on how and why to write messages in the imperative.
+The subject line should be written in imperative present tense, e.g. ``Add a function that...'' (as mentioned in \cite{OffGuide}). This also adds consistency with Git itself, which generates messages this way, the most prominent example being messages of automatic merges (e.g. ``Merge branch 'master' of https://github.com/hartenfels/Commit-Rater''). \cite{CB} gives very nice instructions on how and why to write messages in imperative form.
 
-This criterion requires natural language processing of the commit
-message. For this purpose we use a Perl module \footnote{http://search.cpan.org/dist/Lingua-EN-Tagger/Tagger.pm} and use it to get a list of the forms of the words in the subject line. If the list contains a verb in base present form, the criterion is passed. This is of course a very heuristic approach, but it successfully fails regular present tense or past tense subjet lines and furthermore ensures that there is a verb, so that nonsense messages like ``Some changes'' are failed too.
+This criterion requires natural language processing of the commit message. For this purpose we use a part-of-speech tagger\footnote{\url{https://metacpan.org/pod/Lingua::EN::Tagger}} and generate a list of the forms of the words in the subject line. If the list contains a verb in base present form, the criterion is passed. This is of course a very heuristic approach, but it successfully fails regular present tense, past tense or subject lines with no verb at all.
 
 \subsubsection{body\_used}
 \label{subs:body_used}
 In addition to the subject line, there should be a body that further explains what the commit does and why it does what it does (\cite{OffGuide}). The body consists of multiple lines and multiple paragraphs can be used, separated by blank lines. It is also acceptable to use bullet points. This criterion only checks if there is a body.
 
-As the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} seem to disagree on this, we decided to make the useage of the body mandatory.
+As the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} seem to disagree on this, we decided to make the usage of the body mandatory.
 
 \subsubsection{body\_limit}
 \label{subs:body_limit}
@@ -112,6 +140,7 @@ The lines of the body should be limited to 72 characters (originally stated in \
 \label{subs:empty_second_line}
 The subject line and the body should be separated by an empty line (\cite{TP}). This is how programs (including git itself) parsing the commit message know, which part is the subject line and which the body, so if a body is used, meeting this criterion is crucial. If no body is used, the test on this criterion will be undefined.
 
+\par\bigskip
 The following six criteria have been chosen by the authors. Some state the obvious and most should be easy to meet, but failing to meet them should be a strong indicator of a bad commit.
 
 \subsubsection{no\_short\_message}
@@ -128,20 +157,20 @@ It should be noted that the 10 words limit was arbitrarily chosen and might not 
 \label{subs:no_bulk_change}
 Large changesets hint at a commit with more than one logical changeset. If 10 or more files are changed by a commit, chances are that that commit should have been divided into multiple commits. Furthermore, even a commit with 10 or more changes only contains one logical changeset, this hints at bad software architecture, altough this should maybe not be reflected in the evaluation of commits.
 
-One big problem with this criterion is, that there may very well be reasonable logical changes that have to touch 10 or more files, such as the refactoring of a classname. Also, as with the no\_bulk\_change-criterum in \ref{subs:no_long_message}, the chosen limit is only our best guess.
+One big problem with this criterion is, that there may very well be reasonable logical changes that have to touch 10 or more files, such as the refactoring of a class name. Also, as with the no\_long\_message-criterion in \ref{subs:no_long_message}, the chosen limit is only our best guess.
 
 \subsubsection{no\_vulgarity}
 \footnote{This criterion may or may not have been inspired by \url{http://www.commitlogsfromlastnight.com/}}
 \label{subs:no_vulgarity}
 A commit message should obviously not contain any vulgarity for many reasons, but it should suffice to say that such things are unprofessional and will rarely make the commit any better.
 
-Checking for vulgarity is done with a Perl module \footnote{http://search.cpan.org/~abigail/Regexp-Common-2013031301/lib/Regexp/Common/profanity.pm} that contains a list of offensive words. The test for the criterion is passed if none of the words are found in the commit message.
+Checking for vulgarity is done with a Perl module that matches offensive words\footnote{\url{https://metacpan.org/pod/Regexp::Common::profanity}}. The test for the criterion passes if none of the words are found in the commit message.
 
 \subsubsection{no\_misspelling}
 \label{subs:no_misspelling}
 Of course, spelling is important. Correct or at least consistent spelling makes commit messages easier to read and scan, and makes them searchable.
 
-This criterion is hugely problematic. In principle, spell checking is easily done with one of many libraries \footnote{We use http://search.cpan.org/~hank/Text-Aspell/Aspell.pm}, but such libraries will report technical terms as errors and since we cannot manualy whitelist all of those, we need to allow a certain number of ``errors'' per message, which we have set to 2. This will of course sometimes hide real errors. Maybe further research could provide an adequate solution to this problem or at least analyse the precision of applying a standard spell checker to very domain specific texts.
+This criterion is hugely problematic. In principle, spell checking is easily done with one of many libraries \footnote{We use GNU Aspell, via \url{https://metacpan.org/pod/Text::Aspell}}, but such libraries will report technical terms as errors and since we cannot manualy whitelist all of those, we need to allow a certain number of ``errors'' per message, which we have set to 2. This will of course sometimes hide real errors. Maybe further research could provide an adequate solution to this problem or at least analyse the precision of applying a standard spell checker to very domain specific texts.
 
 \subsubsection{no\_duplicate}
 \label{subs:no_duplicate}
@@ -151,7 +180,7 @@ If a commit has the same commit message as a commit that has been processed befo
 
 
 \subsection{Data Analysis}
-\label{sub:analysis}
+\label{sec:data-analysis}
 
 % Data analysis would be concerned with any sort of statistical quality
 % analysis of the data. More specifically, the subsection on data

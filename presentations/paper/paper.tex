@@ -1,15 +1,20 @@
 \documentclass{llncs}
 
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{url}
 \usepackage{comment}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\renewcommand{\arraystretch}{1.5}
+
+\newcommand{\TODO}[1]{\textsuperscript{TODO: #1}}
 
 \pagenumbering{arabic}
 
 \begin{document}
 \title{Commit Rater}
 \subtitle{Analyzing and Comparing Git Author's Commit Messages}
-\author{Carsten Hartenfels}% \and Marco Brack} TODO: This causes some error
+\author{Carsten Hartenfels \and Marco Brack}
 \institute{Software Languages Team, CS Faculty, University of Koblenz-Landau}
 
 \maketitle
@@ -19,7 +24,7 @@
 \include{research_question}
 \include{methodology}
 \include{results}
-\include{threads}
+\include{threats}
 \include{conclusion}
 
 \appendix
