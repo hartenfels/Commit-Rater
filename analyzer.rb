@@ -33,4 +33,4 @@ authors.each do |authorEmail, resultTriples|
                                          / result[authorEmail]['passRateWeights'].values.inject(:+)
 end
 
-pp result
+puts JSON.pretty_generate(result)
