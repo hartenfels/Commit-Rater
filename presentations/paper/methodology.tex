@@ -36,25 +36,27 @@ Several repositories were chosen as sample sources, for the sake of having enoug
     \item[Linux Kernel]\footnote{\url{https://github.com/torvalds/linux}}: A massive repository of over half a million commits. Used for stress-testing our implementation and finding reasonable constraints on the amount of commits analyzed. Most commit messages adhere to the commit guidelines, for the sake of managing such a large volume of them.
 \end{description}
 
-To extract commit messages of a GitHub repository, the first and obvious attempt would be to use GitHub's API\footnote{\url{https://developer.github.com/v3/}}, which provides seemingly ideal REST resources for doing exactly that\footnote{\url{https://developer.github.com/v3/git/commits/\#get-a-commit}}. However, there is a heavy rate limit on calls to the API\footnote{\url{https://developer.github.com/v3/\#rate-limiting}}, which at the time of writing was at most 5000 requests per hour. Such a limit is only enough to analyze small repositories and is not suitable for a web application performing the rating of commits (see section\ref{sec:TODO}).
+To extract commit messages of a GitHub repository, the first and obvious attempt would be to use GitHub's API\footnote{\url{https://developer.github.com/v3/}}, which provides seemingly ideal REST resources for doing exactly that\footnote{\url{https://developer.github.com/v3/git/commits/\#get-a-commit}}. However, there is a heavy rate limit on calls to the API\footnote{\url{https://developer.github.com/v3/\#rate-limiting}}, which at the time of writing was at most 5000 requests per hour. Such a limit is only enough to analyze small repositories and is not suitable for a web application performing the rating of commits (see section \ref{sec:TODO}).
 
 Instead, the choice was made to simply clone the repositories and use \texttt{git log} to extract commit messages from them. While it requires time to clone the repository and disk space to store its data, it is much less limited and can be used for any Git repository, even outside of GitHub.
 
 During processing, each message is attributed to an author by their e-mail address and split into subject line and zero or more body lines following it. Additionally, a list of changed files is gathered from the log, for the use in data synthesis.
 
-\begin{table}
-    \begin{tabularx}{\textwidth}{|X|X|}\hline
+\begin{table}[t]
+    \begin{tabularx}{\textwidth}{@{}|Y|Y|@{}}\hline
         \textbf{Repository} & \textbf{Time to Rate} \\\hline
-        101worker & ? \\\hline
-        BadgeKit & ? \\\hline
+        101worker & 10 seconds \\\hline
+        BadgeKit & 4 seconds \\\hline
         perl & ? \\\hline
         Linux Kernel & ?\\\hline
     \end{tabularx}
-    \caption{Time taken to rate commits of repositories}
+    \caption{Time taken to clone repositories and rate their commits}
     \label{tab:time}
 \end{table}
 
-Since the entirety of repository commit messages can be listed by a single call to \texttt{git log} and commits can be extracted by a single regular expression, the commit rating process is fast and scales well. Repeated analysis of the same repository is also optimized by caching the cloned data on disk and only pulling recent changes on subsequent runs.
+Since the entirety of repository commit messages can be listed by a single call to \texttt{git log} and commits can be extracted by a single regular expression, the commit rating process is fast and scales well. Repeated analysis of the same repository is also optimized by caching the cloned data on disk and only pulling recent changes on subsequent runs. The actual time taken to rate these repositories on the server the application is running on are found in table \ref{tab:time}.
+
+However, to keep the prototype website usable for multiple users at once, we decided to limit the number of commits analyzed to the latest $10,000$ commits. However, this practical limit may be increased by allowing more worker processes to rate repositories at once, reducing the chance of the entire commit rater being blocked for a long time by large repositories.
 
 % This metamodel is concerned with MSR papers. Thus, the methodology
 % section would be reasonably subdivided into the three major phases of
@@ -69,11 +71,6 @@ Since the entirety of repository commit messages can be listed by a single call 
 % \item What sort of extra processing (e.g., filtering) is applied?
 % \item What constraints were chosen to help with scalability?
 % \end{itemize}
-
-% TODO: Describe extraction process
-% TODO: Describe preprocessing and output
-% TODO: Mention commit-limit
-% TODO: Introduce example repos
 
 
 \subsection{Data Synthesis}
