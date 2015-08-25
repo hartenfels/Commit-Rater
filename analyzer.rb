@@ -21,6 +21,22 @@ def getAuthorPassRateWeights(resultTriples)
   return passRateWeights
 end
 
+criteria = [
+  "body_limit",
+  "body_used",
+  "capitalize_subject",
+  "empty_second_line",
+  "imperative_subject",
+  "no_bulk_change",
+  "no_duplicate",
+  "no_long_message",
+  "no_misspelling",
+  "no_period_subject",
+  "no_short_message",
+  "no_vulgarity",
+  "subject_limit"
+]
+
 result = Hash.new
 result['authors'] = Hash.new
 Dir.glob('samples/*.json') do |sample|
@@ -45,5 +61,11 @@ end
 
 result['averageRating'] = result['authors'].values.inject(0){|acc, a| acc + a['average']} / result['authors'].length
 result['averageWeightedRating'] = result['authors'].values.inject(0){|acc, a| acc + a['weightedAverage']} / result['authors'].length
+criteria.each do |criterion|
+
+  criterionAverage = result['authors'].values.inject(0){|acc, a| acc + a['passRates'][criterion]} \
+                   / result['authors'].length
+  result["average_#{criterion}"] = criterionAverage
+end
 
 puts JSON.pretty_generate(result)
