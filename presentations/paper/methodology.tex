@@ -31,9 +31,9 @@ Our methodology is divided into the three typical phases of a MSR research proje
 Several repositories were chosen as sample sources, for the sake of having enough data to analyze in section\ref{sec:TODO}. Additionally, the authors of these repositories have different levels of being aware of and adhering to Git's commit message guidelines\cite{OffGuide}, which leads to a large spread of ratings accross them.
 
 \begin{description}
-    \item[101worker]\footnote{\url{https://github.com/101companies/101worker}}: A relatively small repository of barely over $2,000$ commits, done by the Software Languages Team of the University of Koblenz-Landau. Most of the commits in this repository do not adhere to the commit guidelines.
+    \item[101worker]\footnote{\url{https://github.com/101companies/101worker}}: A relatively small repository of barely over $2000$ commits, done by the Software Languages Team of the University of Koblenz-Landau. Most of the commits in this repository do not adhere to the commit guidelines.
     \item[mozilla/openbadges-badgekit]\footnote{\url{https://github.com/mozilla/openbadges-badgekit/}}: % TODO why?
-    \item[perl]\footnote{\url{https://github.com/Perl/perl5}}: The interpreter for Perl 5, a large repository of over $60,000$ commits, partially adhering the commit guidelines.
+    \item[perl]\footnote{\url{https://github.com/Perl/perl5}}: The interpreter for Perl 5, a large repository of over $60000$ commits, partially adhering the commit guidelines.
     \item[Linux Kernel]\footnote{\url{https://github.com/torvalds/linux}}: A massive repository of over half a million commits. Used for stress-testing our implementation and finding reasonable constraints on the amount of commits analyzed. Most commit messages adhere to the commit guidelines, for the sake of managing such a large volume of them.
 \end{description}
 
@@ -57,7 +57,7 @@ During processing, each message is attributed to an author by their e-mail addre
 
 Since the entirety of repository commit messages can be listed by a single call to \texttt{git log} and commits can be extracted by a single regular expression, the commit rating process is fast and scales well. Repeated analysis of the same repository is also optimized by caching the cloned data on disk and only pulling recent changes on subsequent runs. The actual time taken to rate these repositories on the server the application is running on are found in table \ref{tab:time}.
 
-However, to keep the prototype website usable for multiple users at once, we decided to limit the number of commits analyzed to the latest $10,000$ commits. However, this practical limit may be increased by allowing more worker processes to rate repositories at once, reducing the chance of the entire commit rater being blocked for a long time by large repositories.
+However, to keep the prototype website usable for multiple users at once, we decided to limit the number of commits analyzed to the latest $10000$ commits. However, this practical limit may be increased by allowing more worker processes to rate repositories at once, reducing the chance of the entire commit rater being blocked for a long time by large repositories.
 
 % This metamodel is concerned with MSR papers. Thus, the methodology
 % section would be reasonably subdivided into the three major phases of
