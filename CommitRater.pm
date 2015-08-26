@@ -53,14 +53,24 @@ use constant NONOS => qw(
 use constant ALL_KEYS => (RULES, NONOS);
 
 
+sub rate_base
+{
+    my ($self, $callback, $accu, @rest) = @_;
+    $self->repo->update;
+    $self->repo->each_commit(sub { $callback->($self, $_, $accu) }, @rest);
+    return $accu
+}
+
 sub rate
 {
     my ($self, $limit) = @_;
-    $self->repo->update;
+    return $self->rate_base(\&rate_commit, {}, $limit)
+}
 
-    my %results;
-    $self->repo->each_commit(sub { $self->rate_commit($_, \%results) }, $limit);
-    return \%results
+sub rate_independent
+{
+    my ($self, $limit) = @_;
+    return $self->rate_base(\&rate_commit_independent, [], $limit)
 }
 
 
@@ -78,6 +88,13 @@ sub rate_commit
         my $what = $v ? 'pass' : defined $v ? 'fail' : 'undef';
         $author->{$k}{$what} += 1;
     }
+}
+
+sub rate_commit_independent
+{
+    my ($self, $commit, $results) = @_;
+    my $rules = $self->rate_message($commit);
+    push @{$results}, [@{$rules}{(ALL_KEYS)}];
 }
 
 

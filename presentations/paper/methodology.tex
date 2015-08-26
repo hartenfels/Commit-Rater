@@ -118,7 +118,7 @@ The first letter of the subject line should be capitalized. Although it could be
 
 \subsubsection{no\_period\_subject}
 \label{subs:no_period_subject}
-The subject line should have no trailing period. It servers no purpose, since the body of a commit message should be separated by a blank line (see \ref{empty_second_line}) and omitting it helps with the 50 character limit. Again, the only explicit mention of this rule is \cite{CB}, however the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} both implicitly adhere to it.
+The subject line should have no trailing period. It servers no purpose, since the body of a commit message should be separated by a blank line (see \ref{subs:empty_second_line}) and omitting it helps with the 50 character limit. Again, the only explicit mention of this rule is \cite{CB}, however the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} both implicitly adhere to it.
 
 \subsubsection{imperative\_subject}
 \label{subs:imperative_subject}
@@ -221,7 +221,9 @@ On each level, it is furthermore possible to analyse either the results of all c
 
 \subsubsection{Commit-level}
 \label{subs:Commit-level}
-Although looking at the results of a single commit might be interesting for debugging the criteria tests, there are not many options for analysis. The percentage of passed tests could serve as a rating for the commit, where 100\% means having passed all tests, but no further conclusions could be drawn from this level. Therefore, we did not concern ourselves with this level.
+Commit-level results, i.e. which criteria a single commit does or does not fulfill, is used for the machine learning aspect of this paper. Each commit represents a data set of boolean values. Due to the ways each criterion is formulated, true values are always good. For simplicity's sake, undefined values are considered bad and result in a false value.
+
+See section \ref{sec:results2} for a detailed explanation of our machine learning process.
 
 \subsubsection{Author-level}
 \label{subs:Author-level}
