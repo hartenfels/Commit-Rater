@@ -70,7 +70,7 @@ my $expected = {
         no_long_message    => result(3, 0, 0),
         no_bulk_change     => result(3, 0, 0),
         no_vulgarity       => result(2, 1, 0),
-        no_misspelling     => result(1, 2, 0),
+        no_misspelling     => result(2, 1, 0),
         no_duplicate       => result(3, 0, 0),
     },
     'j@i.m'       => {
