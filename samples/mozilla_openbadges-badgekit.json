@@ -25,7 +25,37 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 1,
          "undef" : 0
@@ -62,9 +92,39 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 2,
          "pass" : 0,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 2,
          "undef" : 0
       },
       "subject_limit" : {
@@ -99,9 +159,39 @@
          "pass" : 30,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 1,
+         "pass" : 54,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 4,
+         "pass" : 51,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 55,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 14,
+         "pass" : 41,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 2,
          "pass" : 53,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 17,
+         "pass" : 38,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 55,
          "undef" : 0
       },
       "subject_limit" : {
@@ -136,9 +226,39 @@
          "pass" : 154,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 13,
+         "pass" : 332,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 6,
+         "pass" : 339,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 6,
+         "pass" : 339,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 75,
+         "pass" : 270,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 1,
          "pass" : 344,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 68,
+         "pass" : 277,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 345,
          "undef" : 0
       },
       "subject_limit" : {
@@ -173,7 +293,37 @@
          "pass" : 3,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 2,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 3,
          "undef" : 0
@@ -210,7 +360,37 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 1,
          "undef" : 0
@@ -247,7 +427,37 @@
          "pass" : 0,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 1,
          "undef" : 0
@@ -284,9 +494,39 @@
          "pass" : 7,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 4,
+         "pass" : 44,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 48,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 48,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 4,
+         "pass" : 44,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 1,
          "pass" : 47,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 13,
+         "pass" : 35,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 48,
          "undef" : 0
       },
       "subject_limit" : {
@@ -321,7 +561,37 @@
          "pass" : 0,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 1,
          "undef" : 0
@@ -358,7 +628,37 @@
          "pass" : 4,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 2,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 3,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 1,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 4,
          "undef" : 0
@@ -395,7 +695,37 @@
          "pass" : 4,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 10,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 10,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 10,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 9,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 10,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 2,
+         "pass" : 8,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 10,
          "undef" : 0
@@ -432,9 +762,39 @@
          "pass" : 14,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 21,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 21,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 5,
+         "pass" : 16,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 7,
+         "pass" : 14,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 1,
          "pass" : 20,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 1,
+         "pass" : 20,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 21,
          "undef" : 0
       },
       "subject_limit" : {
@@ -469,9 +829,39 @@
          "pass" : 0,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 4,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 1,
          "pass" : 4,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 5,
          "undef" : 0
       },
       "subject_limit" : {
@@ -506,9 +896,39 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 9,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 9,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 9,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 4,
+         "pass" : 5,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 4,
          "pass" : 5,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 1,
+         "pass" : 8,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 9,
          "undef" : 0
       },
       "subject_limit" : {
@@ -543,7 +963,37 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 1,
          "undef" : 0
@@ -580,9 +1030,39 @@
          "pass" : 0,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 28,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 18,
+         "pass" : 10,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 28,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 6,
+         "pass" : 22,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 2,
          "pass" : 26,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 24,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 28,
          "undef" : 0
       },
       "subject_limit" : {
@@ -617,9 +1097,39 @@
          "pass" : 37,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 190,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 10,
+         "pass" : 180,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 55,
+         "pass" : 135,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 27,
+         "pass" : 163,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 4,
          "pass" : 186,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 6,
+         "pass" : 184,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 190,
          "undef" : 0
       },
       "subject_limit" : {
