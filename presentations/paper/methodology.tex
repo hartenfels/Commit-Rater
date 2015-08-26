@@ -221,7 +221,9 @@ On each level, it is furthermore possible to analyse either the results of all c
 
 \subsubsection{Commit-level}
 \label{subs:Commit-level}
-Although looking at the results of a single commit might be interesting for debugging the criteria tests, there are not many options for analysis. The percentage of passed tests could serve as a rating for the commit, where 100\% means having passed all tests, but no further conclusions could be drawn from this level. Therefore, we did not concern ourselves with this level.
+Commit-level results, i.e. which criteria a single commit does or does not fulfill, is used for the machine learning aspect of this paper. Each commit represents a data set of boolean values. Due to the ways each criterion is formulated, true values are always good. For simplicity's sake, undefined values are considered bad and result in a false value.
+
+See section \ref{sec:results2} for a detailed explanation of our machine learning process.
 
 \subsubsection{Author-level}
 \label{subs:Author-level}
