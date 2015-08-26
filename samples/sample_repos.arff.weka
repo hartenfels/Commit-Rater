@@ -1,0 +1,127 @@
+
+Apriori
+=======
+
+Minimum support: 0.9 (538808 instances)
+Minimum metric <confidence>: 0.9
+Number of cycles performed: 2
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 8
+
+Size of set of large itemsets L(2): 21
+
+Size of set of large itemsets L(3): 24
+
+Size of set of large itemsets L(4): 14
+
+Size of set of large itemsets L(5): 2
+
+Best rules found:
+
+  1. empty_second_line=TRUE 554466 ==> body_used=TRUE 554466    conf:(1)
+  2. empty_second_line=TRUE no_misspelling=FALSE 552576 ==> body_used=TRUE 552576    conf:(1)
+  3. empty_second_line=TRUE no_vulgarity=TRUE 549172 ==> body_used=TRUE 549172    conf:(1)
+  4. empty_second_line=TRUE no_vulgarity=TRUE no_misspelling=FALSE 547286 ==> body_used=TRUE 547286    conf:(1)
+  5. empty_second_line=TRUE no_short_message=TRUE 546911 ==> body_used=TRUE 546911    conf:(1)
+  6. empty_second_line=TRUE no_short_message=TRUE no_misspelling=FALSE 545556 ==> body_used=TRUE 545556    conf:(1)
+  7. empty_second_line=TRUE no_short_message=TRUE no_vulgarity=TRUE 541696 ==> body_used=TRUE 541696    conf:(1)
+  8. empty_second_line=TRUE no_short_message=TRUE no_vulgarity=TRUE no_misspelling=FALSE 540345 ==> body_used=TRUE 540345    conf:(1)
+  9. body_used=TRUE no_short_message=TRUE no_duplicate=TRUE 544500 ==> no_misspelling=FALSE 543160    conf:(1)
+ 10. empty_second_line=TRUE no_short_message=TRUE 546911 ==> no_misspelling=FALSE 545556    conf:(1)
+ 11. empty_second_line=TRUE body_used=TRUE no_short_message=TRUE 546911 ==> no_misspelling=FALSE 545556    conf:(1)
+ 12. empty_second_line=TRUE no_short_message=TRUE 546911 ==> body_used=TRUE no_misspelling=FALSE 545556    conf:(1)
+ 13. body_used=TRUE no_short_message=TRUE 562350 ==> no_misspelling=FALSE 560948    conf:(1)
+ 14. empty_second_line=TRUE no_short_message=TRUE no_vulgarity=TRUE 541696 ==> no_misspelling=FALSE 540345    conf:(1)
+ 15. empty_second_line=TRUE body_used=TRUE no_short_message=TRUE no_vulgarity=TRUE 541696 ==> no_misspelling=FALSE 540345    conf:(1)
+ 16. empty_second_line=TRUE no_short_message=TRUE no_vulgarity=TRUE 541696 ==> body_used=TRUE no_misspelling=FALSE 540345    conf:(1)
+ 17. body_used=TRUE no_short_message=TRUE no_vulgarity=TRUE 557099 ==> no_misspelling=FALSE 555701    conf:(1)
+ 18. body_used=TRUE no_short_message=TRUE no_bulk_change=TRUE 545976 ==> no_misspelling=FALSE 544605    conf:(1)
+ 19. body_used=TRUE no_short_message=TRUE no_bulk_change=TRUE no_vulgarity=TRUE 540875 ==> no_misspelling=FALSE 539508    conf:(1)
+ 20. body_used=TRUE no_duplicate=TRUE 548283 ==> no_misspelling=FALSE 546816    conf:(1)
+ 21. body_used=TRUE no_vulgarity=TRUE no_duplicate=TRUE 543257 ==> no_misspelling=FALSE 541794    conf:(1)
+ 22. body_used=TRUE no_bulk_change=TRUE 554221 ==> no_misspelling=FALSE 552340    conf:(1)
+ 23. body_used=TRUE 570867 ==> no_misspelling=FALSE 568928    conf:(1)
+ 24. empty_second_line=TRUE 554466 ==> no_misspelling=FALSE 552576    conf:(1)
+ 25. empty_second_line=TRUE body_used=TRUE 554466 ==> no_misspelling=FALSE 552576    conf:(1)
+ 26. empty_second_line=TRUE 554466 ==> body_used=TRUE no_misspelling=FALSE 552576    conf:(1)
+ 27. body_used=TRUE no_bulk_change=TRUE no_vulgarity=TRUE 549042 ==> no_misspelling=FALSE 547165    conf:(1)
+ 28. body_used=TRUE no_vulgarity=TRUE 565536 ==> no_misspelling=FALSE 563601    conf:(1)
+ 29. empty_second_line=TRUE no_vulgarity=TRUE 549172 ==> no_misspelling=FALSE 547286    conf:(1)
+ 30. empty_second_line=TRUE body_used=TRUE no_vulgarity=TRUE 549172 ==> no_misspelling=FALSE 547286    conf:(1)
+ 31. empty_second_line=TRUE no_vulgarity=TRUE 549172 ==> body_used=TRUE no_misspelling=FALSE 547286    conf:(1)
+ 32. no_misspelling=FALSE no_duplicate=TRUE 553148 ==> no_short_message=TRUE 549492    conf:(0.99)
+ 33. no_vulgarity=TRUE no_misspelling=FALSE no_duplicate=TRUE 548122 ==> no_short_message=TRUE 544486    conf:(0.99)
+ 34. body_used=TRUE no_misspelling=FALSE no_duplicate=TRUE 546816 ==> no_short_message=TRUE 543160    conf:(0.99)
+ 35. body_used=TRUE no_duplicate=TRUE 548283 ==> no_short_message=TRUE 544500    conf:(0.99)
+ 36. body_used=TRUE no_vulgarity=TRUE no_duplicate=TRUE 543257 ==> no_short_message=TRUE 539494    conf:(0.99)
+ 37. no_duplicate=TRUE 569755 ==> no_vulgarity=TRUE 564719    conf:(0.99)
+ 38. no_bulk_change=TRUE no_duplicate=TRUE 552610 ==> no_vulgarity=TRUE 547725    conf:(0.99)
+ 39. no_short_message=TRUE no_duplicate=TRUE 564538 ==> no_vulgarity=TRUE 559522    conf:(0.99)
+ 40. no_short_message=TRUE no_bulk_change=TRUE no_duplicate=TRUE 547680 ==> no_vulgarity=TRUE 542813    conf:(0.99)
+ 41. no_bulk_change=TRUE no_duplicate=TRUE 552610 ==> no_short_message=TRUE 547680    conf:(0.99)
+ 42. no_bulk_change=TRUE 581259 ==> no_vulgarity=TRUE 576070    conf:(0.99)
+ 43. no_short_message=TRUE 587584 ==> no_vulgarity=TRUE 582323    conf:(0.99)
+ 44. no_short_message=TRUE no_bulk_change=TRUE 570514 ==> no_vulgarity=TRUE 565403    conf:(0.99)
+ 45. no_bulk_change=TRUE no_vulgarity=TRUE no_duplicate=TRUE 547725 ==> no_short_message=TRUE 542813    conf:(0.99)
+ 46. no_period_subject=TRUE 551589 ==> no_vulgarity=TRUE 546589    conf:(0.99)
+ 47. no_misspelling=FALSE no_duplicate=TRUE 553148 ==> no_vulgarity=TRUE 548122    conf:(0.99)
+ 48. no_short_message=TRUE no_misspelling=FALSE no_duplicate=TRUE 549492 ==> no_vulgarity=TRUE 544486    conf:(0.99)
+ 49. no_duplicate=TRUE 569755 ==> no_short_message=TRUE 564538    conf:(0.99)
+ 50. body_used=TRUE no_duplicate=TRUE 548283 ==> no_vulgarity=TRUE 543257    conf:(0.99)
+ 51. body_used=TRUE no_misspelling=FALSE no_duplicate=TRUE 546816 ==> no_vulgarity=TRUE 541794    conf:(0.99)
+ 52. body_used=TRUE no_short_message=TRUE no_duplicate=TRUE 544500 ==> no_vulgarity=TRUE 539494    conf:(0.99)
+ 53. no_vulgarity=TRUE no_duplicate=TRUE 564719 ==> no_short_message=TRUE 559522    conf:(0.99)
+ 54. no_short_message=TRUE no_misspelling=FALSE 568621 ==> no_vulgarity=TRUE 563370    conf:(0.99)
+ 55. no_short_message=TRUE no_bulk_change=TRUE no_misspelling=FALSE 552033 ==> no_vulgarity=TRUE 546932    conf:(0.99)
+ 56. no_misspelling=FALSE 576601 ==> no_vulgarity=TRUE 571270    conf:(0.99)
+ 57. no_bulk_change=TRUE no_misspelling=FALSE 559768 ==> no_vulgarity=TRUE 554589    conf:(0.99)
+ 58. body_used=TRUE 570867 ==> no_vulgarity=TRUE 565536    conf:(0.99)
+ 59. body_used=TRUE no_short_message=TRUE 562350 ==> no_vulgarity=TRUE 557099    conf:(0.99)
+ 60. body_used=TRUE no_short_message=TRUE no_bulk_change=TRUE 545976 ==> no_vulgarity=TRUE 540875    conf:(0.99)
+ 61. body_used=TRUE no_bulk_change=TRUE 554221 ==> no_vulgarity=TRUE 549042    conf:(0.99)
+ 62. body_used=TRUE no_duplicate=TRUE 548283 ==> no_short_message=TRUE no_misspelling=FALSE 543160    conf:(0.99)
+ 63. body_used=TRUE no_short_message=TRUE no_misspelling=FALSE 560948 ==> no_vulgarity=TRUE 555701    conf:(0.99)
+ 64. body_used=TRUE no_short_message=TRUE no_bulk_change=TRUE no_misspelling=FALSE 544605 ==> no_vulgarity=TRUE 539508    conf:(0.99)
+ 65. body_used=TRUE no_misspelling=FALSE 568928 ==> no_vulgarity=TRUE 563601    conf:(0.99)
+ 66. body_used=TRUE no_bulk_change=TRUE no_misspelling=FALSE 552340 ==> no_vulgarity=TRUE 547165    conf:(0.99)
+ 67. empty_second_line=TRUE no_short_message=TRUE 546911 ==> no_vulgarity=TRUE 541696    conf:(0.99)
+ 68. empty_second_line=TRUE body_used=TRUE no_short_message=TRUE 546911 ==> no_vulgarity=TRUE 541696    conf:(0.99)
+ 69. empty_second_line=TRUE no_short_message=TRUE 546911 ==> body_used=TRUE no_vulgarity=TRUE 541696    conf:(0.99)
+ 70. empty_second_line=TRUE 554466 ==> no_vulgarity=TRUE 549172    conf:(0.99)
+ 71. empty_second_line=TRUE body_used=TRUE 554466 ==> no_vulgarity=TRUE 549172    conf:(0.99)
+ 72. empty_second_line=TRUE 554466 ==> body_used=TRUE no_vulgarity=TRUE 549172    conf:(0.99)
+ 73. empty_second_line=TRUE no_short_message=TRUE no_misspelling=FALSE 545556 ==> no_vulgarity=TRUE 540345    conf:(0.99)
+ 74. empty_second_line=TRUE body_used=TRUE no_short_message=TRUE no_misspelling=FALSE 545556 ==> no_vulgarity=TRUE 540345    conf:(0.99)
+ 75. empty_second_line=TRUE no_short_message=TRUE no_misspelling=FALSE 545556 ==> body_used=TRUE no_vulgarity=TRUE 540345    conf:(0.99)
+ 76. empty_second_line=TRUE no_misspelling=FALSE 552576 ==> no_vulgarity=TRUE 547286    conf:(0.99)
+ 77. empty_second_line=TRUE body_used=TRUE no_misspelling=FALSE 552576 ==> no_vulgarity=TRUE 547286    conf:(0.99)
+ 78. empty_second_line=TRUE no_misspelling=FALSE 552576 ==> body_used=TRUE no_vulgarity=TRUE 547286    conf:(0.99)
+ 79. no_misspelling=FALSE no_duplicate=TRUE 553148 ==> body_used=TRUE 546816    conf:(0.99)
+ 80. no_short_message=TRUE no_misspelling=FALSE no_duplicate=TRUE 549492 ==> body_used=TRUE 543160    conf:(0.99)
+ 81. no_vulgarity=TRUE no_misspelling=FALSE no_duplicate=TRUE 548122 ==> body_used=TRUE 541794    conf:(0.99)
+ 82. body_used=TRUE no_short_message=TRUE 562350 ==> no_vulgarity=TRUE no_misspelling=FALSE 555701    conf:(0.99)
+ 83. body_used=TRUE no_duplicate=TRUE 548283 ==> no_vulgarity=TRUE no_misspelling=FALSE 541794    conf:(0.99)
+ 84. body_used=TRUE no_short_message=TRUE no_bulk_change=TRUE 545976 ==> no_vulgarity=TRUE no_misspelling=FALSE 539508    conf:(0.99)
+ 85. empty_second_line=TRUE no_short_message=TRUE 546911 ==> no_vulgarity=TRUE no_misspelling=FALSE 540345    conf:(0.99)
+ 86. empty_second_line=TRUE body_used=TRUE no_short_message=TRUE 546911 ==> no_vulgarity=TRUE no_misspelling=FALSE 540345    conf:(0.99)
+ 87. empty_second_line=TRUE no_short_message=TRUE 546911 ==> body_used=TRUE no_vulgarity=TRUE no_misspelling=FALSE 540345    conf:(0.99)
+ 88. empty_second_line=TRUE no_vulgarity=TRUE no_misspelling=FALSE 547286 ==> no_short_message=TRUE 540345    conf:(0.99)
+ 89. empty_second_line=TRUE body_used=TRUE no_vulgarity=TRUE no_misspelling=FALSE 547286 ==> no_short_message=TRUE 540345    conf:(0.99)
+ 90. empty_second_line=TRUE no_vulgarity=TRUE no_misspelling=FALSE 547286 ==> body_used=TRUE no_short_message=TRUE 540345    conf:(0.99)
+ 91. empty_second_line=TRUE no_misspelling=FALSE 552576 ==> no_short_message=TRUE 545556    conf:(0.99)
+ 92. empty_second_line=TRUE body_used=TRUE no_misspelling=FALSE 552576 ==> no_short_message=TRUE 545556    conf:(0.99)
+ 93. empty_second_line=TRUE no_misspelling=FALSE 552576 ==> body_used=TRUE no_short_message=TRUE 545556    conf:(0.99)
+ 94. body_used=TRUE 570867 ==> no_vulgarity=TRUE no_misspelling=FALSE 563601    conf:(0.99)
+ 95. body_used=TRUE no_bulk_change=TRUE 554221 ==> no_vulgarity=TRUE no_misspelling=FALSE 547165    conf:(0.99)
+ 96. empty_second_line=TRUE 554466 ==> no_vulgarity=TRUE no_misspelling=FALSE 547286    conf:(0.99)
+ 97. empty_second_line=TRUE body_used=TRUE 554466 ==> no_vulgarity=TRUE no_misspelling=FALSE 547286    conf:(0.99)
+ 98. empty_second_line=TRUE 554466 ==> body_used=TRUE no_vulgarity=TRUE no_misspelling=FALSE 547286    conf:(0.99)
+ 99. no_bulk_change=TRUE no_misspelling=FALSE 559768 ==> body_used=TRUE 552340    conf:(0.99)
+100. no_misspelling=FALSE 576601 ==> body_used=TRUE 568928    conf:(0.99)
+
+=== Evaluation ===
+
+Elapsed time: 0.949s
+
