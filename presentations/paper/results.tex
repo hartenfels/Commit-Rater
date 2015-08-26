@@ -8,6 +8,13 @@
 \label{sec:results1}
 This subsection focuses solely on repository-level analysis of our metrics, since comparison between individual commits and or individual authors would be tedious. Also, author-level analysis is open to everyone through the web interface.
 
+
+\begin{figure}[htbp]
+  \centering
+  \includesvg{img/subject_limit.svg}
+  \caption{svg image}
+\end{figure}
+
 Figure \ref{fig:bp_subject_limit} shows the repository-level boxplots for the subject limit criterion for all 4 repositories. The number behind the labels denotes the number of authors that were evaluated in the graph. Surprisingly, the linux kernel has the worst results, followed by the badgekit and the perl5 and then the 101worker with the best results.
 
 On the other hand, \ref{fig:bp_imperative_subject} shows that authors of the linux kernel use the imperative mood for the subject the most, while the authors of the 101worker rarely do. Additionally, \ref{fig:bp_no_short_message} shows that linux kernel authors do not write short commit messages, while the authors of the 101worker do. This observation coincides with our estimations for the worker, since that criterion was inspired by a prevalence for 1-word commits in that repo.
