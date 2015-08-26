@@ -1,0 +1,27 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+In this paper, we presented an application used to rate commit messages of Git repositories. Data extraction is done by cloning the repositories. Data synthesis is based on several separate criteria -- some official, some set by us personally. Finally, data analysis is done by comparing a set of repositories against each other.
+
+Only one of our research question has been answered vaguely positively: ``good'' commits were recognized by the aforementioned criteria. However, we were unable to draw further conclusions from analysis on higher levels. Additionally, not all of our criteria could be validated by using machine learning attribution, some simply due to the criteria itself not being good, some due to the approach of machine learning not being applicable to the data set.
+
+A prototype web application has been developed and is available for public testing, allowing us to use the resulting data for further research and development.
+
+
+\subsection{Future Work}
+\label{sec:future-work}
+
+The implementation and concepts presented in this paper are, due to the scope of the MSR course they were made in, largely prototypical and could be improved upon in several way.
+
+Firstly, the internal threats to validity presented in section \ref{sec:internal-threats} could largely be resolved by replacing the criteria used to synthesize data, or by improving their implementation to more accurately represent their abstract idea.
+
+Furthermore, a nicer interface could be provided to users of the web application. Comparisons could be drawn to other authors or repositories, better suggestions for improvement could be implemented and graphs could be used to visualize the results.
+
+Finally, language-specific criteria could be implemented as well. This would make the Commit Rater much more powerful, as it would be able to also analyze the contents of each commit. For example, it could recognize bad practices such as commented-out code or mixed whitespace and non-whitespace changes.
+
+%This is essentially a redundant section. Try to summarize your
+%research from a more informed point of view. (We assume that the
+%reader has read the paper and is ready for some deeper conclusion.)
+%You could very well add some perspectives for future work, without
+%repeating smaller scale weakness of research, as they were already
+%identified in the threats to validity section.

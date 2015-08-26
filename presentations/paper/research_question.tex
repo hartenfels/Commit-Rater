@@ -1,0 +1,76 @@
+\section{Research Questions}
+\label{sec:research-questions}
+
+Our research and development regarding the Commit Rater was lead by the goal of providing useful data to developers, such as ourselves, regarding their commits, to help them learn and improve. The following two research questions (RQs) emerged from this objective.
+
+
+\subsection{RQ1: Can ``Good'' Commits be Recognized?}
+\label{sec:rq1}
+
+Telling ``good'' from ``bad'' commits would allow us to provide feedback to developers on how to improve and educate them about best practices. A set of criteria needs to be chosen and applied to the commit data, to allow for a quantifiable rating of each commit.
+
+
+\subsection{RQ2: Is Our Personally Chosen Criteria Valid?}
+\label{sec:rq2}
+
+Due to the lack of availability, the criteria necessary in RQ1 cannot all come from reputable sources and instead needs to be chosen through common sense. To validate these baseless rules, we want to find correlations between them and the official criteria. Through this, new criteria could be established and bad ones removed, allowing for a more accurate and detailed report to developers.
+
+
+\subsection{Related Work}
+\label{sec:related-work}
+
+The original inspiration for this work was the project \emph{Commit} \emph{Logs} \emph{From} \emph{Last} \emph{Night}\cite{LastNight}, especially its presentation resulting from it\footnote{\url{https://www.youtube.com/watch?v=V44kscaJe3M}}. Now defunct and only a static site, it used to regularly extract the latest commit messages from GitHub for vulgarity and published them on the website. As seen in the presentation, the vulgarity rate can be correlated with various software languages, time of day et cetera. However, in the end it is merely a fun website and does not give any useful information to developers.
+
+Similarly, the paper \emph{Sentiment} \emph{Analysis} \emph{of} \emph{Commit} \emph{Comments} \emph{in} \emph{GitHub:} \emph{An} \emph{Empirical} \emph{Study}\cite{Sentiment} from the MSR conference 2014 analyzes commit messages from Git repositories for their emotional impact and their correlation to software languages, time of day, geographical distribution and project approval. Again, however, the result is merely reflective not useful for developers in the process of developing something, which was our primary goal in this research.
+
+%State 1-5 research questions. One question could be enough. More is
+%not better.
+%
+%For each question, make clear why this is an interesting question. For
+%example, try to make clear why a scientist or a practician would
+%benefit from knowing the answer to the question.
+%
+%Lay out some background for your research questions. That is, what
+%body of related work may be worth mentioning and comparing to the
+%research at hand. This may be related in terms of both relevant
+%methodology or similar research questions.
+%
+%You should make sure to carry out a proper related work study. Use
+%DBLP on the MSR conference for 2+
+%years.\footnote{\url{http://dblp.uni-trier.de/db/conf/msr/}} You are
+%welcome to search other conferences and journals. Coming to the
+%conclusion that there is no related work is absolutely
+%unacceptable. Again, you need to show related work awareness so that
+%your research question is substantiated as being relevant and
+%your methodology is deeply informed by existing publications.
+%
+%In many cases, you want to refine your research questions into actual
+%hypotheses, i.e., something that is potentially falsifiable, subject
+%to an appropriate approach towards measuring.
+%
+%It is also common to refine research questions. That is, one starts
+%with a general (overall) research question and takes it appart into
+%several questions that are concrete enough to be researched on and to
+%be answered. In this manner, you may often suffice with one or two
+%research questions which are however refined into perhaps
+%several questions. Again, even without refinement, just one question may be
+%Ok. This depends on the nature of the project and on the kind of question.
+%
+%Here are some recommended MSR papers by the Software Languages
+%Team~\cite{LaemmelLPV11,LaemmelP13,SchmorleizL15} which you could
+%consult to see instances of the concepts discussed in this
+%metamodel. These papers may or may not be in an optimal form to
+%function as good advice. You are also advised to have a look at some
+%MSR papers (from the MSR conference), but again, they may also
+%slightly vary in terms of consistency of style. if you like to get
+%general advice on scientific writing, then I recommend relevant
+%textbooks~\cite{Day98,Zobel09}. The best way to learn writing is by
+%writing and by having someone with experience to provide feedback.
+%
+%You should most definitely have a look at this excellent tutorial on
+%empirical software engineering (ESE)~\cite{Easterbrook07} to which MSR
+%relates. General ESE is quite often concerned with controlled
+%experiments and other research methods that involve subjects, whereas
+%MSR is more concerned with automated analysis, but the text is still
+%very helpful in coming to grips with research methods in software
+%engineering overall. Specifically, it helps with formulating research questions.

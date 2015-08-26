@@ -1,0 +1,60 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    awesome_print (1.6.1)
+    clbustos-rtf (0.4.2)
+    dirty-memoize (0.0.4)
+    distribution (0.7.3)
+    extendmatrix (0.4)
+    gsl (1.16.0.6)
+    minimization (0.2.3)
+      text-table (~> 1.2)
+    prawn (0.8.4)
+      prawn-core (>= 0.8.4, < 0.9)
+      prawn-core (>= 0.8.4, < 0.9)
+      prawn-layout (>= 0.8.4, < 0.9)
+      prawn-layout (>= 0.8.4, < 0.9)
+      prawn-security (>= 0.8.4, < 0.9)
+      prawn-security (>= 0.8.4, < 0.9)
+    prawn-core (0.8.4)
+    prawn-layout (0.8.4)
+    prawn-security (0.8.4)
+    prawn-svg (0.9.1.11)
+      prawn (>= 0.8.4)
+    rake (10.4.2)
+    rake-compiler (0.9.5)
+      rake
+    reportbuilder (1.4.2)
+      clbustos-rtf (~> 0.4.0)
+      prawn (~> 0.8.4)
+      prawn-svg (~> 0.9.1)
+      text-table (~> 1.2)
+    rserve-client (0.3.1)
+    ruby-ole (1.2.11.8)
+    rubyvis (0.5.2)
+    spreadsheet (0.6.9)
+      ruby-ole (>= 1.0)
+    statistics2 (0.54)
+    statsample (1.5.0)
+      awesome_print (~> 1.6)
+      dirty-memoize (~> 0.0.4)
+      distribution (~> 0.7)
+      extendmatrix (~> 0.3)
+      minimization (~> 0.2)
+      reportbuilder (~> 1.4)
+      rserve-client (~> 0.3)
+      rubyvis (~> 0.5.0)
+      spreadsheet (~> 0.6.5)
+    statsample-optimization (2.1.1)
+      gsl (~> 1.14)
+      rake-compiler
+      statistics2 (~> 0.54)
+      statsample (~> 1.2)
+    text-table (1.2.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  statsample
+  statsample-optimization

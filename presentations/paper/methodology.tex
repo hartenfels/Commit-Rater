@@ -1,0 +1,259 @@
+\section{Methodology}
+\label{sec:methodology}
+% The methodology section must give a very clear account of what sort of
+% procedure was executed. Here are some detailed criteria:
+
+Our methodology is divided into the three typical phases of a MSR research project:
+
+% \begin{itemize}
+% \item The section is preferably a step-by-step procedure overall. First we did
+%   this. Then we did this.
+% \item Steps should be motivated or defended, whenever it is not
+%   obvious why a certain choice was made. However, one should be
+%   careful not to preempt the discussion of threats to validity; see
+%   the extra section below.
+% \item The text should support reproducibility. In particular, a
+%   reasonably knowledgeable person should be able to re-execute the
+%   methodology and compare the results.
+% \item The text should not get into low-level (implementation)
+%   details. These can be deferred to separate documentation; see Appendix~\ref{S:details}.
+% \end{itemize}
+
+\begin{itemize}
+  \item Data Extraction. Since we wanted to be able to compare arbitrary Git repositories, we decided to \texttt{git clone} repos directly, instead of accessing commits via a proprietary API like GitHub's.
+  \item Data Synthesis. This includes checking commits against our criteria, which will be detailed below. The synthesized metrics are counts of met or unmet criteria grouped by the commit author email.
+  \item Data Analysis. We use a set of repositories and analyse our synthesis results for interesting statistics and relations between criteria.
+\end{itemize}
+
+
+\subsection{Data Extraction}
+\label{sec:data-extraction}
+
+Several repositories were chosen as sample sources, for the sake of having enough data to analyze in section\ref{sec:data-analysis}. Additionally, the authors of these repositories have different levels of being aware of and adhering to Git's commit message guidelines\cite{OffGuide}, which leads to a large spread of ratings across them.
+
+\begin{description}
+    \item[101worker]\footnote{\url{https://github.com/101companies/101worker}}: A relatively small repository of barely over $2000$ commits, done by the Software Languages Team of the University of Koblenz-Landau. Most of the commits in this repository do not adhere to the commit guidelines.
+    \item[mozilla/openbadges-badgekit]\footnote{\url{https://github.com/mozilla/openbadges-badgekit}}: The smallest repository in our selection, it was chosen because it is a Mozilla project and we therefore expect that most commits adhere at least partially to the commit guidelines.
+    \item[perl]\footnote{\url{https://github.com/Perl/perl5}}: The interpreter for Perl 5, a large repository of over $60000$ commits, partially adhering the commit guidelines.
+    \item[Linux Kernel]\footnote{\url{https://github.com/torvalds/linux}}: A massive repository of over half a million commits. Used for stress-testing our implementation and finding reasonable constraints on the amount of commits analyzed. Most commit messages adhere to the commit guidelines, for the sake of managing such a large volume of them.
+\end{description}
+
+To extract commit messages of a GitHub repository, the first and obvious attempt would be to use GitHub's API\footnote{\url{https://developer.github.com/v3/}}, which provides seemingly ideal REST resources for doing exactly that\footnote{\url{https://developer.github.com/v3/git/commits/\#get-a-commit}}. However, there is a heavy rate limit on calls to the API\footnote{\url{https://developer.github.com/v3/\#rate-limiting}}, which at the time of writing was at most 5000 requests per hour. Such a limit is only enough to analyze small repositories and is not suitable for our web application performing the rating of commits.
+
+Instead, the choice was made to simply clone the repositories and use \texttt{git log} to extract commit messages from them. While it requires time to clone the repository and disk space to store its data, it is much less limited and can be used for any Git repository, even outside of GitHub.
+
+During processing, each message is attributed to an author by their e-mail address and split into subject line and zero or more body lines following it. Additionally, a list of changed files is gathered from the log, for the use in data synthesis.
+
+\begin{table}[t]
+    \begin{tabularx}{\textwidth}{@{}|Y|Y|Y|@{}}\hline
+        \textbf{Repository} & \textbf{Commits} & \textbf{Time to Rate} \\\hline
+        BadgeKit            & $723$            & $4$ seconds           \\\hline
+        101worker           & $2073$           & $10$ seconds          \\\hline
+        perl                & $60898$          & $3$ minutes           \\\hline
+        Linux Kernel        & $543964$         & $16$ minutes          \\\hline
+    \end{tabularx}
+    \caption{Time taken to clone repositories and rate their commits}
+    \label{tab:time}
+\end{table}
+
+Since the entirety of repository commit messages can be listed by a single call to \texttt{git log} and commits can be extracted by a single regular expression, the commit rating process is fast and scales well. Repeated analysis of the same repository is also optimized by caching the cloned data on disk and only pulling recent changes on subsequent runs. The actual time taken to rate these repositories on the server the application is running on are found in table \ref{tab:time}.
+
+However, to keep the prototype website usable for multiple users at once, we decided to limit the number of commits analyzed to the latest $10000$ commits. However, this practical limit may be increased by allowing more worker processes to rate repositories at once, reducing the chance of the entire commit rater being blocked for a long time by large repositories.
+
+% This metamodel is concerned with MSR papers. Thus, the methodology
+% section would be reasonably subdivided into the three major phases of
+% an MSR research project.
+%
+% The subsection on data extraction is concerned with issues like the
+% following:
+%
+% \begin{itemize}
+% \item What repository was chosen and why?
+% \item What sort of extraction techniques is applied?
+% \item What sort of extra processing (e.g., filtering) is applied?
+% \item What constraints were chosen to help with scalability?
+% \end{itemize}
+
+
+\subsection{Data Synthesis}
+\label{sec:data-synthesis}
+
+% Even the simplest MSR project carries out synthesis; data analysis (see
+% below) may not be carried out in all the cases. The subsection on data
+% synthesis is concerned with issues like the following:
+%
+% \begin{itemize}
+%
+% \item What metrics are used?
+%
+% \item What machine learning techniques are used?
+%
+% \item What information retrieval techniques are used?
+%
+% \end{itemize}
+%
+% The typical MSR paper picks either metrics or machine learning or IR.
+
+Each commit of an author is tested against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be applicable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit if there is no body at all. In those cases, the criterion test will count as \emph{undefined}.
+
+The results of our tests are counted in a triple $(pass, fail, undef)$ for each criterion per author. These triples will be used as a metric for the analysis in \ref{sec:data-analysis}.
+
+Almost all of the criteria below relate to the commit message, only one of them states a very superficial rule about the changes in the commit. None of them process the code itself, neither inside the changes nor in the code-base before or after applying the commit, as such criteria would require very language-specific knowledge that would have to be manually implemented for each desired language. By keeping our criteria language-independent, they remain applicable to all Git repositories.
+
+In general, commit messages should consist of a subject line and a body \footnote{See \cite{OffGuide} for an exhaustive explanation and an example}. \cite{CB} summarizes the most important guidelines very nicely, and the first seven criteria below are directly taken or inspired from the blog post. Note that the seventh mentioned rule could not be made into a criterion, since it would require actual understanding of the commit message. Omitting this rule, we still inferred one additional criterion (\ref{subs:body_used}) that we found missing in the list.
+
+The remaining 6 criteria have been chosen by the authors. Since there are no other sources to back our claim that failing to meet them makes a commit ``worse'', we will explain our reasoning behind the choices. Additionally, we will attempt to validate our criteria by correlating it with the official criteria as seen in section \ref{sec:results2}.
+
+\subsubsection{subject\_limit}
+\label{subs:subject_limit}
+The subject line, i.e. the first line of a commit message, should be limited to 50 characters. This rule seems to have originated from a blog post by Tim Pope \cite{TP}, which is referenced by the Git manual \cite{OffGuide}. The reasoning behind it is, that the subject line is used by various tools and user interfaces to describe a commit in limited space.
+
+Additionally, large subject lines might hint at having done more than one thing in a commit, since the author needs more space to explain what the commit does. Logically separating change sets is another rule from \cite{OffGuide}, which of course cannot be evaluated without great language-specific effort.
+
+\subsubsection{capitalize\_subject}
+\label{subs:capitalize_subject}
+The first letter of the subject line should be capitalized. Although it could be argued that this is more of a convention, subject lines should be complete sentences, and sentences in the English language start with a capital letter. This rule is only mentioned by \cite{CB}.
+
+\subsubsection{no\_period\_subject}
+\label{subs:no_period_subject}
+The subject line should have no trailing period. It servers no purpose, since the body of a commit message should be separated by a blank line (see \ref{subs:empty_second_line}) and omitting it helps with the 50 character limit. Again, the only explicit mention of this rule is \cite{CB}, however the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} both implicitly adhere to it.
+
+\subsubsection{imperative\_subject}
+\label{subs:imperative_subject}
+The subject line should be written in imperative present tense, e.g. ``Add a function that...'' (as mentioned in \cite{OffGuide}). This also adds consistency with Git itself, which generates messages this way, the most prominent example being messages of automatic merges (e.g. ``Merge branch 'master' of https://github.com/hartenfels/Commit-Rater''). \cite{CB} gives very nice instructions on how and why to write messages in imperative form.
+
+This criterion requires natural language processing of the commit message. For this purpose we use a part-of-speech tagger\footnote{\url{https://metacpan.org/pod/Lingua::EN::Tagger}} and generate a list of the forms of the words in the subject line. If the list contains a verb in base present form, the criterion is passed. This is of course a very heuristic approach, but it successfully fails regular present tense, past tense or subject lines with no verb at all.
+
+\subsubsection{body\_used}
+\label{subs:body_used}
+In addition to the subject line, there should be a body that further explains what the commit does and why it does what it does\cite{OffGuide}. The body consists of multiple lines and multiple paragraphs can be used, separated by blank lines. It is also acceptable to use bullet points. This criterion only checks if there is a body.
+
+As the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} seem to disagree on this, we decided to make the usage of the body mandatory.
+
+\subsubsection{body\_limit}
+\label{subs:body_limit}
+The lines of the body should be limited to 72 characters (originally stated in \cite{TP}). As with the subject line limit, this ensures proper display of the (full) commit message with limited space available. The test on this criterion will be undefined if no body is used.
+
+\subsubsection{empty\_second\_line}
+\label{subs:empty_second_line}
+The subject line and the body should be separated by an empty line\cite{TP}. This is how programs (including git itself) parsing the commit message know, which part is the subject line and which the body, so if a body is used, meeting this criterion is crucial. If no body is used, the test on this criterion will be undefined.
+
+\par\bigskip
+The following six criteria have been chosen by the authors. Some state the obvious and most should be easy to meet, but failing to meet them should be a strong indicator of a bad commit.
+
+\subsubsection{no\_short\_message}
+\label{subs:no_short_message}
+The subject line should consist of more than 2 words, since no useful information can be conveyed with less words, for example messages like ``Bug'', ``Fix'' and ``Add comment'' are useless. Of course, there are situations where two words are appropriate, but we estimate that these are rare enough to be insignificant.
+
+\subsubsection{no\_long\_message}
+\label{subs:no_long_message}
+The subject line should be limited to less than 10 words. This is an extension of the subject\_limit criterion in \ref{subs:subject_limit}, which might rarely allow 10 or more words. The reasoning behind this criterion is again, that many words hint at more than one logical change set in one commit. Also, concision should help making a message more easily understandable and scanning a log for a particular commit takes less effort. If there is need for longer explanations, they should be moved to the body.
+
+It should be noted that the 10 words limit was arbitrarily chosen and might not yield ideal results.
+
+\subsubsection{no\_bulk\_change}
+\label{subs:no_bulk_change}
+Large change sets hint at a commit with more than one logical change set. If 10 or more files are changed by a commit, chances are that that commit should have been divided into multiple commits. Furthermore, even a commit with 10 or more changes only contains one logical change set, this hints at bad software architecture, although this should maybe not be reflected in the evaluation of commits.
+
+One big problem with this criterion is, that there may very well be reasonable logical changes that have to touch 10 or more files, such as the refactoring of a class name. Also, as with the no\_long\_message-criterion in \ref{subs:no_long_message}, the chosen limit is only our best guess.
+
+\subsubsection{no\_vulgarity}
+\label{subs:no_vulgarity}
+A commit message should obviously not contain any vulgarity for many reasons, but it should suffice to say that such things are unprofessional and will rarely make the commit any better.
+
+Checking for vulgarity is done with a Perl module that matches offensive words\footnote{\url{https://metacpan.org/pod/Regexp::Common::profanity}}. The test for the criterion passes if none of the words are found in the commit message.
+
+\subsubsection{no\_misspelling}
+\label{subs:no_misspelling}
+Of course, spelling is important. Correct or at least consistent spelling makes commit messages easier to read and scan, and makes them searchable.
+
+This criterion is hugely problematic. In principle, spell checking is easily done with one of many libraries \footnote{We use GNU Aspell, via \url{https://metacpan.org/pod/Text::Aspell}}, but such libraries will report technical terms as errors and since we cannot manually whitelist all of those, we need to allow a certain number of ``errors'' per message, which we have set to 2. This will of course sometimes hide real errors. Maybe further research could provide an adequate solution to this problem or at least analyse the precision of applying a standard spell checker to very domain specific texts.
+
+\subsubsection{no\_duplicate}
+\label{subs:no_duplicate}
+There should rarely be duplicate commit messages (except for automatic messages like merges). A duplicate commit message hints at a duplicate change to the code and makes reading git logs more difficult (for humans).
+
+If a commit has the same commit message as a commit that has been processed before, this test fails.
+
+
+\subsection{Data Analysis}
+\label{sec:data-analysis}
+
+% Data analysis would be concerned with any sort of statistical quality
+% analysis of the data. More specifically, the subsection on data
+% analysis is concerned with issues like the following:
+%
+% \begin{itemize}
+%
+% \item Simple statistics like median of metrics.
+%
+% \item Analysis of regression or correlation or distribution.
+%
+% \item Analysis of accuracy such as precision and recall.
+%
+% \end{itemize}
+%
+% It should be noted that the methodology section describes the `how'
+% (and to some extent the`why'), but it does not yet report the various
+% results; see the following section. For instance, the methodology may
+% explain why it is using a certain metric and define it and announce
+% that the median for the metric is going to be determined, as it would
+% provide a certain insight, but the actual tables or charts for the
+% metric and the interpretation of the findings would be deferred to the
+% results section.
+
+Under the assumption that our synthesis results are metrics for the ``goodness'' of commits, we need to analyse them in order to aggregate a measure of ``goodness''. This analysis can be performed on three levels:
+
+\begin{itemize}
+  \item Per commit-level: Analysis could be done on the results of checking an individual commit against our criteria.
+  \item Per author-level: This level would aggregate the metrics for all commits of an author in a repository and create a rating of the authors commit behaviour.
+  \item Per repository-level: This level would aggregate the metrics of all authors in a repository and create a ranking for the whole team.
+\end{itemize}
+
+On each level, it is furthermore possible to analyse either the results of all criteria checks or only the check/checks for one criterion. These six possibilities will be discussed below.
+
+\subsubsection{Commit-level}
+\label{subs:Commit-level}
+Commit-level results, i.e. which criteria a single commit does or does not fulfill, is used for the machine learning aspect of this paper. Each commit represents a data set of boolean values. Due to the ways each criterion is formulated, true values are always good. For simplicity's sake, undefined values are considered bad and result in a false value.
+
+See section \ref{sec:results2} for a detailed explanation of our machine learning process.
+
+\subsubsection{Author-level}
+\label{subs:Author-level}
+Analysis on this level evaluates the metrics-triples that were described in \ref{sec:data-synthesis}, where each author has a triple $(pass, fail, undef)$ for each criterion with $pass$ the number of commits that \emph{pass} the test for the criterion, $fail$ the number of commits that \emph{fail} the test for the criterion and $undef$ the number of commits that could not be tested against the criterion.
+
+The rate of how many of the commits pass a certain criterion may be interpreted as the rate with which the author adheres the corresponding rule. The rate is calculated with the following formula:
+
+\begin{equation}
+  \label{eq:rate}
+  rate(triple) = \frac{triple_{pass}}{triple_{pass} + triple_{fail}}
+\end{equation}
+
+The important thing to note about this formula is, that it excludes $undef$. This means, that for instance authors who rarely use the body (see \ref{subs:body_used}) still have a useful reflection on how many of their commits with body were limited to 72 characters per line (\ref{subs:body_limit}).
+
+An example: A author with the triple $(190, 10, 0)$ for the subject limit (\ref{subs:subject_limit}) successfully limits his subject lines to 50 characters in 95\% of his commits. It could therefore furthermore be concluded that he is aware of the guideline, but has no tool in place that would prevent accidentally writing more than 50 characters.
+
+An average of these rates over all criteria can be seen as a general rating of an author's commit behaviour. Because of the $undef$s, two averages have to be considered: The standard average, which is just the average over the rates described above. And an average over the rates where each rate is weighted according to how many of all commits constituted to the rate. An author with a triple $(5, 5, 90)$ has a rate of 50\% according to equation \ref{eq:rate}, but should factor less into the average since only 10\% of all commits could be evaluated. Thus, the weighted average is calculated as follows:
+
+\begin{equation}
+  \label{eq:weightedAverage}
+  wa(triples) = \frac{1}{|triples|} \times \sum\nolimits_{t \in triples} rate(t) \times weight(t)
+\end{equation}
+
+Where triples is the collection of triples of an author and a weight is calculated as follows:
+
+\begin{equation}
+  weight(triple) = \frac{triple_{pass} + triple_{fail}}{triple_{pass} + triple_{fail} + triple_{undef}}
+\end{equation}
+
+When working on this level, it turned out to be useful to exclude authors with few commits (maybe 10 or less), since the analysis results for these authors are not representative enough to infer any interpretations.
+
+This kind of analysis may be helpful for individual developers who seek to improve their Git etiquette. Our aforementioned Web-Frontend exposes this kind of functionality in an easily accessible way.
+
+\subsubsection{Repository-level}
+The analysis on this level is very similar to the analysis on the author-level. It would have been easy to just aggregate the triples of all authors in a repo and apply equation \ref{eq:weightedAverage} to receive an average for the whole repository. But we decided that this would serve no practical purpose, since the distribution over the behaviour of many authors across all criteria would likely have a very high variance and only very general trends could be inferred from the results.
+
+Instead, on this level we opted to create boxplots with the rates for each criterion for all authors. Since each author has one triple per criterion, this means that for example a repository with 100 authors has 100 data points (rates) for a boxplot. The boxplots will be shown and discussed in \ref{sec:results}.
+
+\subsubsection{Above repository-level}
+It may be of further interest to look at the averages of adherence to guidelines across multiple repos and thereby extrapolate some general statistics about usage of the guidelines in the Git community. But we did not concern ourselves with this level, since we found it to be unrelated to our research questions.

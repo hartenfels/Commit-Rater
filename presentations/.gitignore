@@ -2,3 +2,4 @@
 !*.tex
 !llncs.cls
 !*.bib
+!paper/img/*

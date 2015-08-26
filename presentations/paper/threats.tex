@@ -1,0 +1,22 @@
+\section{Threats to Validity}
+\label{sec:threats-to-validity}
+
+In the process of developing our system and writing this paper, some threats to validity have come to attention. They are detailed below.
+
+\subsection{Internal Threats to Validity}
+\label{sec:internal-threats}
+
+The relation between our criteria and the official criteria may not solely arise from the fact that both are valid criteria. There may be other causes, such as with the relation between the subject line character limit and the subject line word limit, which almost test the same thing.
+
+Furthermore, our tests for the criteria may be flawed. The prime example for such a test is the one for the spelling criterion. As already mentioned in section \ref{subs:no_misspelling}, spell-checking highly technical texts is very problematic and the results of this test may not be trustworthy.
+
+Generating boxplots on the author-level assumes equal significance for each author. This means, that an author with just 20 commits and a success-rate of 100\% for a criterion is counted equally as an author with 1000 commits and a rate of 100\%, although always adhering to a guideline for 1000 commits is a way greater feat as doing the same for 20 commits. Maybe this should somehow be reflected in the results, but we estimate that the changes to the result would be insignificant, as long as we exclude authors with very few commits (which we do).
+
+\subsection{External Threats to Validity}
+\label{sec:external-threats}
+
+One basic assumption of our rater is, that the criteria from the official sources define ``good'' commits. This definition may be reasonable in most cases, but some developers might prefer different guidelines. Thus, our rater is only applicable to repositories where these guidelines are agreed upon. Other repositories might receive significantly worse ratings although the authors may simply have adhered to different guidelines.
+
+Since there is no Ground Truth for if the rated commits are ``good'', we cannot evaluate if our rating method really recognizes such commits. Thus, this assumption may or may not be valid.
+
+While our rater mostly operates on the metadata of a commit, there are many more factors that constitute to a good commit that have not been considered, since they for example would require interpreting/compiling or at least parsing the code. Therefore, our criteria are incomplete.
