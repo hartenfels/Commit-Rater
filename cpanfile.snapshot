@@ -261,6 +261,18 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  File-Slurp-9999.19
+    pathname: U/UR/URI/File-Slurp-9999.19.tar.gz
+    provides:
+      File::Slurp 9999.19
+      FileSlurp_12 9999.13
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      POSIX 0
+      perl 5.004
   Git-Repository-1.314
     pathname: B/BO/BOOK/Git-Repository-1.314.tar.gz
     provides:

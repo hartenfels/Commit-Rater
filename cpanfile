@@ -1,4 +1,5 @@
 requires 'Devel::Cover';
+requires 'File::Slurp';
 requires 'Git::Repository';
 requires 'JSON';
 requires 'Lingua::EN::Tagger';
