@@ -19,9 +19,10 @@ criteria = %w[body_limit body_used capitalize_subject empty_second_line imperati
 
 repos = Hash.new
 Dir.glob('../samples/*.json') do |sample|
-  repos[sample] = JSON.parse(File.read(sample))
+  repos[File.basename(sample, ".json")] = JSON.parse(File.read(sample))
 end
 
+boxcount = 1
 criteria.each do |criterion|
   puts "#{criterion}"
   File.open("boxplots/#{criterion}.svg", 'w') do |f|
@@ -36,11 +37,16 @@ criteria.each do |criterion|
       end
       boxplot_arrays.push(repo_criterion_rates.to_numeric)
     end
-    f.puts Statsample::Graph::Boxplot.new(
+    svg = Statsample::Graph::Boxplot.new(
       :vectors => boxplot_arrays,
       :width => 1024,
       :height => 768,
       :groups => (0..boxplot_arrays.length).to_a
     ).to_svg
+    repos.length.times do
+      svg.sub! ">Vector #{boxcount}<", ">#{repos.keys[boxcount % repos.length]}<"
+      boxcount += 1
+    end
+    f.puts svg
   end
 end
