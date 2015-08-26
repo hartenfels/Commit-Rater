@@ -6,7 +6,7 @@ use JSON;
 
 
 my %DEFAULTS = (
-    ASSOCIATOR    => 'weka.associations.Apriori -N 100',
+    ASSOCIATOR    => 'weka.associations.Apriori -N 300',
     JAVA_CMD      => 'java',
     JAVA_ARGS     => '-Xmx4098m',
     TRAINING_FILE => 'samples/sample_repos.arff',
