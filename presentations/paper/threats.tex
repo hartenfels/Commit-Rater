@@ -23,3 +23,5 @@ Generating boxplots on the author-level assumes equal significance for each auth
 One basic assumption of our rater is, that the criteria from the official sources define ``good'' commits. This definition may be reasonable in most cases, but some developers might prefer different guidelines. Thus, our rater is only applicable to repositories where these guidelines are agreed upon. Other repositories meight receive significantly worse ratings although the authors may simply have adhered to different guidelines.
 
 Since there is no Ground Truth for if the rated commits are ``good'', we cannot evaluate if our rating method really recognizes such commits. Thus, this assumption may or may not be valid.
+
+While our rater mostly operates on the metadata of a commit, there are many more factors that constitute to a good commit that have not been considered, since they for example would require interpreting/compiling or at least parsing the code. Therefore, our criteria are incomplete.
