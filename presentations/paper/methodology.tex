@@ -208,3 +208,17 @@ If a commit has the same commit message as a commit that has been processed befo
 % * Weka
 % * Some Boxplots including averages for all metrics
 % TODO: Introduce the analysis tools we used
+
+Under the assumption that our synthesis results are metrics for the ``goodness'' of commits, we need to analyse them in order to aggregate a measure of ``goodness''. This analysis can be performed on three levels:
+
+\begin{itemize}
+  \item Per commit-level: Analysis could be done on the results of checking an individual commit against our criteria.
+  \item Per author-level: This level would aggregate the metrics for all commits of an author in a repository and create a rating of the authors commit behaviour.
+  \item Per repository-level: This level would aggregate the metrics of all authors in a repository and create a ranking for the whole team.
+\end{itemize}
+
+On each level, it is furthermore possible to analyse either the results of all criteria-checks or only the check/checks for one criterion. These six possibilities will be discussed below.
+
+% 1. Level: No use
+% 2. Level: Commit Rater Web
+% 3: Level: Boxplots
