@@ -24,7 +24,7 @@ end
 
 boxcount = 1
 criteria.each do |criterion|
-  puts "#{criterion}"
+  puts "----#{criterion}"
   File.open("boxplots/#{criterion}.svg", 'w') do |f|
     boxplot_arrays = Array.new
     repos.each do |repo, authors|
@@ -35,6 +35,8 @@ criteria.each do |criterion|
         rate = total == 0 ? 1 : triple['pass'].to_f / total
         repo_criterion_rates.push(rate)
       end
+      puts repo
+      puts repo_criterion_rates.inject{|sum, el| sum + el}.to_f / repo_criterion_rates.size
       boxplot_arrays.push(repo_criterion_rates.to_numeric)
     end
     svg = Statsample::Graph::Boxplot.new(
@@ -44,7 +46,7 @@ criteria.each do |criterion|
       :groups => (0..boxplot_arrays.length).to_a
     ).to_svg
     repos.length.times do
-      repo_index = boxcount % repos.length
+      repo_index = boxcount % repos.length - 1
       svg.sub! ">Vector #{boxcount}<", ">#{repos.keys[repo_index]} (#{repos.values[repo_index].length})<"
       boxcount += 1
     end
