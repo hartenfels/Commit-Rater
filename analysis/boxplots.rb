@@ -24,26 +24,23 @@ end
 
 criteria.each do |criterion|
   puts "#{criterion}"
-  File.open("boxplots/#{criterion}.txt", 'w') do |f|
-    ss_analysis(Statsample::Graph::Boxplot) do
-      boxplot_arrays = Array.new
-      repos.each do |repo, authors|
-        repo_criterion_rates = Array.new
-        authors.each do |author, triples|
-          triple = triples[criterion]
-          total = triple['pass'] + triple['fail']
-          rate = total == 0 ? 1 : triple['pass'].to_f / total
-          repo_criterion_rates.push(rate)
-        end
-        boxplot_arrays.push(repo_criterion_rates.to_numeric)
+  File.open("boxplots/#{criterion}.svg", 'w') do |f|
+    boxplot_arrays = Array.new
+    repos.each do |repo, authors|
+      repo_criterion_rates = Array.new
+      authors.each do |author, triples|
+        triple = triples[criterion]
+        total = triple['pass'] + triple['fail']
+        rate = total == 0 ? 1 : triple['pass'].to_f / total
+        repo_criterion_rates.push(rate)
       end
-      pp boxplot_arrays
-      boxplot(:vectors=>boxplot_arrays, :width=>1024, :height=>768)
+      boxplot_arrays.push(repo_criterion_rates.to_numeric)
     end
-    begin
-      Statsample::Analysis.run
-    rescue FloatDomainError
-      puts "Invalid data for boxplot"
-    end
+    f.puts Statsample::Graph::Boxplot.new(
+      :vectors => boxplot_arrays,
+      :width => 1024,
+      :height => 768,
+      :groups => (0..boxplot_arrays.length).to_a
+    ).to_svg
   end
 end
