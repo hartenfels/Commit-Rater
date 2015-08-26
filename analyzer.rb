@@ -6,8 +6,8 @@ require 'pp'
 def getAuthorPassRates(resultTriples)
   passRates = Hash.new
   resultTriples.each do |criterionName, resultTriple|
-    passRates[criterionName] = resultTriple['pass'].to_f \
-                             / (resultTriple['pass'] + resultTriple['fail'])
+    attempts = (resultTriple['pass'] + resultTriple['fail'])
+    passRates[criterionName] = attempts == 0 ? 0 : resultTriple['pass'].to_f / attempts
   end
   return passRates
 end
@@ -15,8 +15,8 @@ end
 def getAuthorPassRateWeights(resultTriples)
   passRateWeights = Hash.new
   resultTriples.each do |criterionName, resultTriple|
-    passRateWeights[criterionName] = (resultTriple['pass'].to_f + resultTriple['fail']) \
-                                   / (resultTriple['pass'] + resultTriple['fail'] + resultTriple['undef'])
+    total = resultTriple['pass'] + resultTriple['fail'] + resultTriple['undef']
+    passRateWeights[criterionName] = total == 0 ? 0 : (resultTriple['pass'].to_f + resultTriple['fail']) / total
   end
   return passRateWeights
 end
@@ -25,21 +25,7 @@ def countCommits(resultTriples)
   return resultTriples['subject_limit']['pass'] + resultTriples['subject_limit']['fail']
 end
 
-criteria = [
-  "body_limit",
-  "body_used",
-  "capitalize_subject",
-  "empty_second_line",
-  "imperative_subject",
-  "no_bulk_change",
-  "no_duplicate",
-  "no_long_message",
-  "no_misspelling",
-  "no_period_subject",
-  "no_short_message",
-  "no_vulgarity",
-  "subject_limit"
-]
+criteria = %w[body_limit body_used capitalize_subject empty_second_line imperative_subject no_bulk_change no_duplicate no_long_message no_misspelling no_period_subject no_short_message no_vulgarity subject_limit]
 
 result = Hash.new
 result['authors'] = Hash.new
@@ -68,7 +54,7 @@ end
 result['averageRating'] = result['authors'].values.inject(0){|acc, a| acc + a['average']} / result['authors'].length
 result['averageWeightedRating'] = result['authors'].values.inject(0){|acc, a| acc + a['weightedAverage']} / result['authors'].length
 criteria.each do |criterion|
-
+  puts criterion
   criterionAverage = result['authors'].values.inject(0){|acc, a| acc + a['passRates'][criterion]} \
                    / result['authors'].length
   result["average_#{criterion}"] = criterionAverage
