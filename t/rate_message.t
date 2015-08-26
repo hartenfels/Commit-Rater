@@ -69,7 +69,7 @@ rate_ok 'commit message that does it all wrong', {
     no_misspelling     => 0,
     no_duplicate       => 1,
 }, <<END_OF_MESSAGE;
-added implementation for cock ni ca ti on interval retrieval (tm).
+added implementaton for cock ni ca ti on interval retrieval (tm).
 END_OF_MESSAGE
 
 
