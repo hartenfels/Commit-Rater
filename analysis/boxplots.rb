@@ -44,7 +44,8 @@ criteria.each do |criterion|
       :groups => (0..boxplot_arrays.length).to_a
     ).to_svg
     repos.length.times do
-      svg.sub! ">Vector #{boxcount}<", ">#{repos.keys[boxcount % repos.length]}<"
+      repo_index = boxcount % repos.length
+      svg.sub! ">Vector #{boxcount}<", ">#{repos.keys[repo_index]} (#{repos.values[repo_index].length})<"
       boxcount += 1
     end
     f.puts svg
