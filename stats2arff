@@ -1,0 +1,72 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use feature     qw(say);
+use File::Slurp qw(slurp);
+use JSON;
+use List::Util  qw(sum);
+use Pod::Usage;
+
+
+my @KEYS = qw(
+    empty_second_line
+    subject_limit
+    capitalize_subject
+    no_period_subject
+    imperative_subject
+    body_limit
+    body_used
+    no_short_message
+    no_long_message
+    no_bulk_change
+    no_vulgarity
+    no_misspelling
+    no_duplicate
+);
+
+sub get_count
+{
+    my ($data) = @_;
+    return sum @{$data->{$KEYS[0]}}{qw(pass fail undef)};
+}
+
+
+if (!@ARGV)
+{
+    pod2usage(
+        -msg     => 'No input files given.',
+        -exitval => 1,
+        -verbose => 99,
+    );
+}
+
+
+say '@RELATION commits';
+say "\@ATTRIBUTE $_ NUMERIC" for @KEYS;
+say '@DATA';
+
+
+for my $file (@ARGV)
+{
+    my $stats = decode_json scalar slurp $file;
+    for my $author (sort keys %$stats)
+    {
+        say "% $file\t$author";
+        my $data  = $stats->{$author};
+        my $count = get_count($data);
+        say join ',', map { $_->{pass} / $count } @{$data}{@KEYS};
+    }
+}
+
+
+__END__
+
+=head1 NAME
+
+stats2arff - convert CommitRater JSON statistics to a Weka ARFF file
+
+=head1 SYNOPSIS
+
+    stats2arff STATS.json [MORESTATS.json...] > OUTPUT.arff
+
+=cut
