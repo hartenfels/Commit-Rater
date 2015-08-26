@@ -29,7 +29,7 @@ Our methodology is divided into the three typical phases of a MSR research proje
 \subsection{Data Extraction}
 \label{sec:data-extraction}
 
-Several repositories were chosen as sample sources, for the sake of having enough data to analyze in section\ref{sec:TODO}. Additionally, the authors of these repositories have different levels of being aware of and adhering to Git's commit message guidelines\cite{OffGuide}, which leads to a large spread of ratings accross them.
+Several repositories were chosen as sample sources, for the sake of having enough data to analyze in section\ref{sec:data-analysis}. Additionally, the authors of these repositories have different levels of being aware of and adhering to Git's commit message guidelines\cite{OffGuide}, which leads to a large spread of ratings accross them.
 
 \begin{description}
     \item[101worker]\footnote{\url{https://github.com/101companies/101worker}}: A relatively small repository of barely over $2000$ commits, done by the Software Languages Team of the University of Koblenz-Landau. Most of the commits in this repository do not adhere to the commit guidelines.
@@ -38,7 +38,7 @@ Several repositories were chosen as sample sources, for the sake of having enoug
     \item[Linux Kernel]\footnote{\url{https://github.com/torvalds/linux}}: A massive repository of over half a million commits. Used for stress-testing our implementation and finding reasonable constraints on the amount of commits analyzed. Most commit messages adhere to the commit guidelines, for the sake of managing such a large volume of them.
 \end{description}
 
-To extract commit messages of a GitHub repository, the first and obvious attempt would be to use GitHub's API\footnote{\url{https://developer.github.com/v3/}}, which provides seemingly ideal REST resources for doing exactly that\footnote{\url{https://developer.github.com/v3/git/commits/\#get-a-commit}}. However, there is a heavy rate limit on calls to the API\footnote{\url{https://developer.github.com/v3/\#rate-limiting}}, which at the time of writing was at most 5000 requests per hour. Such a limit is only enough to analyze small repositories and is not suitable for a web application performing the rating of commits (see section \ref{sec:TODO}).
+To extract commit messages of a GitHub repository, the first and obvious attempt would be to use GitHub's API\footnote{\url{https://developer.github.com/v3/}}, which provides seemingly ideal REST resources for doing exactly that\footnote{\url{https://developer.github.com/v3/git/commits/\#get-a-commit}}. However, there is a heavy rate limit on calls to the API\footnote{\url{https://developer.github.com/v3/\#rate-limiting}}, which at the time of writing was at most 5000 requests per hour. Such a limit is only enough to analyze small repositories and is not suitable for our web application performing the rating of commits.
 
 Instead, the choice was made to simply clone the repositories and use \texttt{git log} to extract commit messages from them. While it requires time to clone the repository and disk space to store its data, it is much less limited and can be used for any Git repository, even outside of GitHub.
 
@@ -160,7 +160,6 @@ Large changesets hint at a commit with more than one logical changeset. If 10 or
 One big problem with this criterion is, that there may very well be reasonable logical changes that have to touch 10 or more files, such as the refactoring of a class name. Also, as with the no\_long\_message-criterion in \ref{subs:no_long_message}, the chosen limit is only our best guess.
 
 \subsubsection{no\_vulgarity}
-\footnote{This criterion may or may not have been inspired by \url{http://www.commitlogsfromlastnight.com/}}
 \label{subs:no_vulgarity}
 A commit message should obviously not contain any vulgarity for many reasons, but it should suffice to say that such things are unprofessional and will rarely make the commit any better.
 
