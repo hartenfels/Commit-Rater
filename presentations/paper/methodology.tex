@@ -29,7 +29,7 @@ Our methodology is divided into the three typical phases of a MSR research proje
 \subsection{Data Extraction}
 \label{sec:data-extraction}
 
-Several repositories were chosen as sample sources, for the sake of having enough data to analyze in section\ref{sec:data-analysis}. Additionally, the authors of these repositories have different levels of being aware of and adhering to Git's commit message guidelines\cite{OffGuide}, which leads to a large spread of ratings accross them.
+Several repositories were chosen as sample sources, for the sake of having enough data to analyze in section\ref{sec:data-analysis}. Additionally, the authors of these repositories have different levels of being aware of and adhering to Git's commit message guidelines\cite{OffGuide}, which leads to a large spread of ratings across them.
 
 \begin{description}
     \item[101worker]\footnote{\url{https://github.com/101companies/101worker}}: A relatively small repository of barely over $2000$ commits, done by the Software Languages Team of the University of Koblenz-Landau. Most of the commits in this repository do not adhere to the commit guidelines.
@@ -94,13 +94,19 @@ However, to keep the prototype website usable for multiple users at once, we dec
 %
 % The typical MSR paper picks either metrics or machine learning or IR.
 
+<<<<<<< HEAD
 For synthesis, after extracting the raw commit data, each commit of an author is tested against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be appliccable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit if there is no body at all. In those cases, the criterion-test will count as \emph{undefined}.
+=======
+% TODO: Maybe mention, that our synthesis contains actions that may have belonged into extraction, but we found the terms more fitting to our implementation
+
+Each commit of an author is tested against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be applicable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit if there is no body at all. In those cases, the criterion test will count as \emph{undefined}.
+>>>>>>> 2f0745a9e5561029b4e9353ed03912182e672566
 
 The results of our tests are counted in a triple $(pass, fail, undef)$ for each criterion per author. These triples will be used as a metric for the analysis in \ref{sec:data-analysis}.
 
-Almost all of the criteria below relate to the commit message, only one of them states a very superficial rule about the changes in the commit. None of them process the code itself, neither inside the changes nor in the the code-base before or after applying the commit, as such criteria would require very language-specific knowledge that would have to be manually implemented for each desired language. By keeping our criteria language-independent, they remain applicable to all Git repositories.
+Almost all of the criteria below relate to the commit message, only one of them states a very superficial rule about the changes in the commit. None of them process the code itself, neither inside the changes nor in the code-base before or after applying the commit, as such criteria would require very language-specific knowledge that would have to be manually implemented for each desired language. By keeping our criteria language-independent, they remain applicable to all Git repositories.
 
-In general, commit messages should consist of a subject line and a body \footnote{See \cite{OffGuide} for an exhaustive explanation and an example}. \cite{CB} summarizes the most important guidelines very nicely, and the first seven criteria below are directly taken or inspired from the blog post. Note that the seventh mentioned rule could not be made into a criterion, since it would require actual understanding of the commit message. Omitting this rule, we still infered one additional criterium (\ref{subs:body_used}) that we found missing in the list.
+In general, commit messages should consist of a subject line and a body \footnote{See \cite{OffGuide} for an exhaustive explanation and an example}. \cite{CB} summarizes the most important guidelines very nicely, and the first seven criteria below are directly taken or inspired from the blog post. Note that the seventh mentioned rule could not be made into a criterion, since it would require actual understanding of the commit message. Omitting this rule, we still inferred one additional criterion (\ref{subs:body_used}) that we found missing in the list.
 
 The remaining 6 criteria have been chosen by the authors. Since there are no other sources to back our claim that failing to meet them makes a commit ``worse'', we will explain our reasoning behind the choices. Additionally, we will attempt to validate our criteria by correlating it with the official criteria as seen in section \ref{sec:results2}.
 
@@ -108,7 +114,7 @@ The remaining 6 criteria have been chosen by the authors. Since there are no oth
 \label{subs:subject_limit}
 The subject line, i.e. the first line of a commit message, should be limited to 50 characters. This rule seems to have originated from a blog post by Tim Pope \cite{TP}, which is referenced by the Git manual \cite{OffGuide}. The reasoning behind it is, that the subject line is used by various tools and user interfaces to describe a commit in limited space.
 
-Additionally, large subject lines might hint at having done more than one thing in a commit, since the author needs more space to explain what the commit does. Logically separating changesets is another rule from \cite{OffGuide}, which of course cannot be evaluated without great language-specific effort.
+Additionally, large subject lines might hint at having done more than one thing in a commit, since the author needs more space to explain what the commit does. Logically separating change sets is another rule from \cite{OffGuide}, which of course cannot be evaluated without great language-specific effort.
 
 \subsubsection{capitalize\_subject}
 \label{subs:capitalize_subject}
@@ -126,7 +132,7 @@ This criterion requires natural language processing of the commit message. For t
 
 \subsubsection{body\_used}
 \label{subs:body_used}
-In addition to the subject line, there should be a body that further explains what the commit does and why it does what it does (\cite{OffGuide}). The body consists of multiple lines and multiple paragraphs can be used, separated by blank lines. It is also acceptable to use bullet points. This criterion only checks if there is a body.
+In addition to the subject line, there should be a body that further explains what the commit does and why it does what it does\cite{OffGuide}. The body consists of multiple lines and multiple paragraphs can be used, separated by blank lines. It is also acceptable to use bullet points. This criterion only checks if there is a body.
 
 As the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} seem to disagree on this, we decided to make the usage of the body mandatory.
 
@@ -136,7 +142,7 @@ The lines of the body should be limited to 72 characters (originally stated in \
 
 \subsubsection{empty\_second\_line}
 \label{subs:empty_second_line}
-The subject line and the body should be separated by an empty line (\cite{TP}). This is how programs (including git itself) parsing the commit message know, which part is the subject line and which the body, so if a body is used, meeting this criterion is crucial. If no body is used, the test on this criterion will be undefined.
+The subject line and the body should be separated by an empty line\cite{TP}. This is how programs (including git itself) parsing the commit message know, which part is the subject line and which the body, so if a body is used, meeting this criterion is crucial. If no body is used, the test on this criterion will be undefined.
 
 \par\bigskip
 The following six criteria have been chosen by the authors. Some state the obvious and most should be easy to meet, but failing to meet them should be a strong indicator of a bad commit.
@@ -147,13 +153,13 @@ The subject line should consist of more than 2 words, since no useful informatio
 
 \subsubsection{no\_long\_message}
 \label{subs:no_long_message}
-The subject line should be limited to less than 10 words. This is an extension of the subject\_limit criterion in \ref{subject_limit}, which might rarely allow 10 or more words. The reasoning behind this criterion is agein, that many words hint at more than one logical changeset in one commit. Also, concision should help making a message more easily understandable and scanning a log for a particular commit takes less effort. If there is need for longer explanations, they should be moved to the body.
+The subject line should be limited to less than 10 words. This is an extension of the subject\_limit criterion in \ref{subject_limit}, which might rarely allow 10 or more words. The reasoning behind this criterion is again, that many words hint at more than one logical change set in one commit. Also, concision should help making a message more easily understandable and scanning a log for a particular commit takes less effort. If there is need for longer explanations, they should be moved to the body.
 
 It should be noted that the 10 words limit was arbitrarily chosen and might not yield ideal results.
 
 \subsubsection{no\_bulk\_change}
 \label{subs:no_bulk_change}
-Large changesets hint at a commit with more than one logical changeset. If 10 or more files are changed by a commit, chances are that that commit should have been divided into multiple commits. Furthermore, even a commit with 10 or more changes only contains one logical changeset, this hints at bad software architecture, altough this should maybe not be reflected in the evaluation of commits.
+Large change sets hint at a commit with more than one logical change set. If 10 or more files are changed by a commit, chances are that that commit should have been divided into multiple commits. Furthermore, even a commit with 10 or more changes only contains one logical change set, this hints at bad software architecture, although this should maybe not be reflected in the evaluation of commits.
 
 One big problem with this criterion is, that there may very well be reasonable logical changes that have to touch 10 or more files, such as the refactoring of a class name. Also, as with the no\_long\_message-criterion in \ref{subs:no_long_message}, the chosen limit is only our best guess.
 
@@ -167,7 +173,7 @@ Checking for vulgarity is done with a Perl module that matches offensive words\f
 \label{subs:no_misspelling}
 Of course, spelling is important. Correct or at least consistent spelling makes commit messages easier to read and scan, and makes them searchable.
 
-This criterion is hugely problematic. In principle, spell checking is easily done with one of many libraries \footnote{We use GNU Aspell, via \url{https://metacpan.org/pod/Text::Aspell}}, but such libraries will report technical terms as errors and since we cannot manualy whitelist all of those, we need to allow a certain number of ``errors'' per message, which we have set to 2. This will of course sometimes hide real errors. Maybe further research could provide an adequate solution to this problem or at least analyse the precision of applying a standard spell checker to very domain specific texts.
+This criterion is hugely problematic. In principle, spell checking is easily done with one of many libraries \footnote{We use GNU Aspell, via \url{https://metacpan.org/pod/Text::Aspell}}, but such libraries will report technical terms as errors and since we cannot manually whitelist all of those, we need to allow a certain number of ``errors'' per message, which we have set to 2. This will of course sometimes hide real errors. Maybe further research could provide an adequate solution to this problem or at least analyse the precision of applying a standard spell checker to very domain specific texts.
 
 \subsubsection{no\_duplicate}
 \label{subs:no_duplicate}
@@ -210,7 +216,7 @@ Under the assumption that our synthesis results are metrics for the ``goodness''
   \item Per repository-level: This level would aggregate the metrics of all authors in a repository and create a ranking for the whole team.
 \end{itemize}
 
-On each level, it is furthermore possible to analyse either the results of all criteria-checks or only the check/checks for one criterion. These six possibilities will be discussed below.
+On each level, it is furthermore possible to analyse either the results of all criteria checks or only the check/checks for one criterion. These six possibilities will be discussed below.
 
 \subsubsection{Commit-level}
 \label{subs:Commit-level}
@@ -222,14 +228,14 @@ See section \ref{sec:results2} for a detailed explanation of our machine learnin
 \label{subs:Author-level}
 Analysis on this level evaluates the metrics-triples that were described in \ref{sec:data-synthesis}, where each author has a triple $(pass, fail, undef)$ for each criterion with $pass$ the number of commits that \emph{pass} the test for the criterion, $fail$ the number of commits that \emph{fail} the test for the criterion and $undef$ the number of commits that could not be tested against the criterion.
 
-The rate of how many of the commits pass a certain criterion may be interpreted as the rate with wich the author adheres the corresponding rule. The rate is calculated with the following formula:
+The rate of how many of the commits pass a certain criterion may be interpreted as the rate with which the author adheres the corresponding rule. The rate is calculated with the following formula:
 
 \begin{equation}
   \label{eq:rate}
   rate(triple) = \frac{triple_{pass}}{triple_{pass} + triple_{fail}}
 \end{equation}
 
-The important thing to note about this formula is, that it excludes $undef$. This means, that for instance authors who rarely use the body (see \ref{subs:body_used}) still have a useful refelction on how many of their commits with body were limited to 72 characters per line (\ref{subs:body_limit}).
+The important thing to note about this formula is, that it excludes $undef$. This means, that for instance authors who rarely use the body (see \ref{subs:body_used}) still have a useful reflection on how many of their commits with body were limited to 72 characters per line (\ref{subs:body_limit}).
 
 An example: A author with the triple $(190, 10, 0)$ for the subject limit (\ref{subs:subject_limit}) successfully limits his subject lines to 50 characters in 95\% of his commits. It could therefore furthermore be concluded that he is aware of the guideline, but has no tool in place that would prevent accidentally writing more than 50 characters.
 
@@ -253,9 +259,9 @@ This kind of analysis may be helpful for individual developers who seek to impro
 \TODO{Insert Screenshot of Commit Rater Web, maybe describe a little bit more}
 
 \subsubsection{Repository-level}
-The analysis on this level is very similar to the analyis on the author-level. It would have been easy to just aggregate the triples of all authors in a repo and apply equation \ref{eq:weightedAverage} to reiceive an average for the whole repository. But we decided that this would serve no practical purpose, since the distribution over the behaviour of many authors across all criteria would likely have a very high variance and only very general trends could be infered from the results.
+The analysis on this level is very similar to the analysis on the author-level. It would have been easy to just aggregate the triples of all authors in a repo and apply equation \ref{eq:weightedAverage} to receive an average for the whole repository. But we decided that this would serve no practical purpose, since the distribution over the behaviour of many authors across all criteria would likely have a very high variance and only very general trends could be inferred from the results.
 
-Instead, on this level we opted to create boxplots with the rates for each criterion for all authors. Since each author has one triple per ciriterion, this means that for example a repository with 100 authors has 100 datapoints (rates) for a boxplot. The boxplots will be shown and discussed in \ref{sec:results}.
+Instead, on this level we opted to create boxplots with the rates for each criterion for all authors. Since each author has one triple per criterion, this means that for example a repository with 100 authors has 100 data points (rates) for a boxplot. The boxplots will be shown and discussed in \ref{sec:results}.
 
 \subsubsection{Above repository-level}
-It may be of further interest to look at the averages of adherance to guidelines across multiple repos and thereby extrapolate some general statistics about ueage of the guidelines in the Git community. But we did not concern ourselves with this level, since we found it to be unrelated to our research questions.
+It may be of further interest to look at the averages of adherence to guidelines across multiple repos and thereby extrapolate some general statistics about usage of the guidelines in the Git community. But we did not concern ourselves with this level, since we found it to be unrelated to our research questions.

@@ -18,7 +18,7 @@ This subsection focuses solely on repository-level analysis of our metrics, sinc
     \label{fig:bp_subject_limit}
 \end{figure}
 
-Figure \ref{fig:bp_subject_limit} shows the repository-level boxplots for the subject limit criterion for all 4 repositories. The number behind the labels denotes the number of authors that were evaluated in the graph. Surprisingly, the linux kernel has the worst results, followed by the badgekit and the perl5 and then the 101worker with the best results.
+Figure \ref{fig:bp_subject_limit} shows the repository-level boxplots for the subject limit criterion for all 4 repositories. The number behind the labels denotes the number of authors that were evaluated in the graph. Surprisingly, the Linux kernel has the worst results, followed by the BadgeKit, perl and then the 101worker with the best results.
 
 \begin{figure}[p]
     \centering
@@ -34,7 +34,7 @@ Figure \ref{fig:bp_subject_limit} shows the repository-level boxplots for the su
     \label{fig:bp_no_short_message}
 \end{figure}
 
-On the other hand, figure \ref{fig:bp_imperative_subject} shows that authors of the linux kernel use the imperative mood for the subject the most, while the authors of the 101worker rarely do. Additionally, figure \ref{fig:bp_no_short_message} shows that linux kernel authors do not write short commit messages, while the authors of the 101worker do. This observation coincides with our estimations for the worker, since that criterion was inspired by a prevalence for 1-word commits in that repo.
+On the other hand, figure \ref{fig:bp_imperative_subject} shows that authors of the Linux kernel use the imperative mood for the subject the most, while the authors of the 101worker rarely do. Additionally, figure \ref{fig:bp_no_short_message} shows that linux kernel authors do not write short commit messages, while the authors of the 101worker do. This observation coincides with our estimations for the worker, since that criterion was inspired by a prevalence for 1-word commits in that repo.
 
 \begin{figure}[p]
     \centering
@@ -43,7 +43,7 @@ On the other hand, figure \ref{fig:bp_imperative_subject} shows that authors of 
     \label{fig:bp_body_used}
 \end{figure}
 
-One significant difference between the two small repos (badgekit and 101worker) and the big repos (perl and linux kernel) stands out in figure \ref{fig:bp_body_used}. The big repos both make heavy use of the body, while it is almost never used by the worker and only sometimes by the badgekit.
+One significant difference between the two small repos (BadgeKit and 101worker) and the big repos (perl and Linux kernel) stands out in figure \ref{fig:bp_body_used}. The big repos both make heavy use of the body, while it is almost never used by the worker and only sometimes by the BadgeKit.
 
 \begin{figure}[p]
     \centering
@@ -56,9 +56,9 @@ Finally, figure \ref{fig:bp_no_period_subject} shows that generally none of the 
 
 The boxplots for the other criteria are available in our Git and were not included here in order to save space.
 
-Based on these results, it is surprisingly hard to draw justified conclusions and answer our first research question positively. While the linux kernel is certainly the most high-profile Git repository in our selection and one might expect a high commit quality from the contributing authors, considering the median it is outperformed in four of thirteen criteria by the other repositories.
+Based on these results, it is surprisingly hard to draw justified conclusions and answer our first research question positively. While the Linux kernel is certainly the most high-profile Git repository in our selection and one might expect a high commit quality from the contributing authors, considering the median it is outperformed in four of thirteen criteria by the other repositories.
 
-Since we lack further objective judgements on the ``goodnes'' of commits or repositories, we can not evaluate if meeting our criteria means having ``good'' commits.
+Since we lack further objective judgements on the ``goodness'' of commits or repositories, we can not evaluate if meeting our criteria means having ``good'' commits.
 
 On the other hand, it can be argued that meeting the seven official criteria means having good commits \emph{per definition}, since they have been taken from the official guidelines, and are therefore themselves the missing objective judgement.
 
@@ -84,13 +84,13 @@ As an attempt to validate our own criteria, we performed association analysis us
 
 To find an appropriate algorithm, we chose a set of obvious correlations, listed in table \ref{tab:expect}. An algorithm detecting these correctly should also be suitable to detect other non-obvious correlations in our data set.
 
-While almost all attributers built into Weka provided useful output regarding above criteria, we eventuall chose to use the ``Apriori'' attributer\cite{FastWeka,ClassWeka}, as it correctly handled boolean values and did not require the results to be classified. No special parameters are used to call the attributer, only the number of output results has been increased from 10 to 300\footnote{The code to call the attributer can be found at \url{https://github.com/hartenfels/Commit-Rater/blob/master/runweka\#L9}}. The results have been ordered by confidence of their correctness and can be found at \url{https://github.com/hartenfels/Commit-Rater/blob/master/samples/sample\_repos.arff.weka}.
+While almost all associator built into Weka provided useful output regarding above criteria, we eventually chose to use the ``Apriori'' attributer\cite{FastWeka,ClassWeka}, as it correctly handled boolean values and did not require the results to be classified. No special parameters are used to call the attributer, only the number of output results has been increased from 10 to 300\footnote{The code to call the attributer can be found at \url{https://github.com/hartenfels/Commit-Rater/blob/master/runweka\#L9}}. The results have been ordered by confidence of their correctness and can be found at \url{https://github.com/hartenfels/Commit-Rater/blob/master/samples/sample\_repos.arff.weka}.
 
-However, only one of our expected criteria can be found in the result set. Two thirds of all results also relate to the no\_misspelling criterion, which, as predicted in section \ref{subs:no_misspelling}, has proven problematic. The same occurs with the no\_vulgarity predictate, which is simply too often true and therefore not a useful criterion. Additionally, some criteria, such as no\_bulk\_changes, cannot be correlated with any other criteria, as they have no connection with any of them.
+However, only one of our expected criteria can be found in the result set. Two thirds of all results also relate to the no\_misspelling criterion, which, as predicted in section \ref{subs:no_misspelling}, has proven problematic. The same occurs with the no\_vulgarity predicate, which is simply too often true and therefore not a useful criterion. Additionally, some criteria, such as no\_bulk\_changes, cannot be correlated with any other criteria, as they have no connection with any of them.
 
 Due to this sobering result, the research question ``Is Our Personally Chosen Criteria Valid?'' from section \ref{sec:rq2} can clearly be answered by ``no''. The implementation of spell checking does not provide correct results and the vulgarity checking is not actually useful, as there aren't enough commits that fail the check. On the upside, the process of performing this attribution has revealed these issues very clearly, allowing us to correct them and test our corrections by another round of attributions.
 
-Additionally, this machine learning process is not useful for all criteria, as not all of them have a relation to at least one other criterion. Therefore, either more criteria is needed to fill these gaps, or a different way of validiation needs to be used.
+Additionally, this machine learning process is not useful for all criteria, as not all of them have a relation to at least one other criterion. Therefore, either more criteria is needed to fill these gaps, or a different way of validation needs to be used.
 
 
 %\noindent
