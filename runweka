@@ -1,0 +1,71 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+use autodie;
+use JSON;
+
+
+my %DEFAULTS = (
+    ASSOCIATOR    => 'weka.associations.Apriori -N 100',
+    JAVA_CMD      => 'java',
+    JAVA_ARGS     => '-Xmx4098m',
+    TRAINING_FILE => 'samples/sample_repos.arff',
+);
+
+while (my ($k, $v) = each %DEFAULTS)
+{   $ENV{$k} = $v if not exists $ENV{$k} }
+
+
+open my $raw,  '>', "$ENV{TRAINING_FILE}.weka";
+open my $json, '>', "$ENV{TRAINING_FILE}.weka.json";
+open my $sh,  '-|', qw(sh -c), <<'END_OF_SH_CODE';
+    . /usr/lib/java-wrappers/java-wrappers.sh
+    find_jars weka.jar
+    run_java $ASSOCIATOR -t "$TRAINING_FILE"
+END_OF_SH_CODE
+
+
+my $regex = qr/
+    ^\s*\d+\.              # initial ordinal
+    \s*                    # separator
+    (\D+?)                 # premises
+    \s*\d+\s*==>\s*        # separator
+    (\D+?)                 # conclusions
+    \s*\d+\s*              # separator
+    conf:\((\d+(\.\d+)?)\) # confidence
+/x;
+
+
+sub unweka
+{
+    my %result;
+
+    for (split ' ', shift)
+    {
+        my ($k, $v) = split /=/, $_, 2;
+        $result{$k} = $v eq 'TRUE' ? JSON::true : JSON::false;
+    }
+
+    return \%result
+}
+
+
+my @json;
+
+while (<$sh>)
+{
+    print {$raw} $_;
+    if ($_ =~ $regex)
+    {
+        push @json, {
+            premises    => unweka($1),
+            conclusions => unweka($2),
+            confidence  => $3,
+        };
+    }
+}
+
+print {$json} JSON->new->utf8->pretty->canonical->encode(\@json);
+
+
+close $_ for $sh, $json, $raw;
