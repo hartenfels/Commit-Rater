@@ -241,6 +241,7 @@ An example: A author with the triple $(190, 10, 0)$ for the subject limit (\ref{
 An average of these rates over all criteria can be seen as a general rating of an author's commit behaviour. Because of the $undef$s, two averages have to be considered: The standard average, which is just the average over the rates described above. And an average over the rates where each rate is weighted according to how many of all commits constituted to the rate. An author with a triple $(5, 5, 90)$ has a rate of 50\% according to equation \ref{eq:rate}, but should factor less into the average since only 10\% of all commits could be evaluated. Thus, the weighted average is calculated as follows:
 
 \begin{equation}
+  \label{eq:weightedAverage}
   wa(triples) = \frac{1}{|triples|} \times \sum{t \element triples} rate(t) \times weight(t)
 \end{equation}
 
@@ -256,4 +257,7 @@ This kind of analysis may be helpful for individual developers who seek to impro
 
 \TODO{Insert Screenshot of Commit Rater Web, maybe describe a little bit more}
 
-\TODO{Level 3: Boxplots}
+\subsubsection{Repository-level}
+The analysis on this level is very similar to the analyis on the author-level. It would have been easy to just aggregate the triples of all authors in a repo and apply equation \ref{eq:weightedAverage} to reiceive an average for the whole repository. But we decided that this would serve no practical purpose, since the distribution over the behaviour of many authors across all criteria would likely have a very high variance and only very general trends could be infered from the results.
+
+Instead, on this level we opted to create boxplots with the rates for each criterion for all authors. Since each author has one triple per ciriterion, this means that for example a repository with 100 authors has 100 datapoints (rates) for a boxplot. The boxplots will be shown and discussed in \ref{sec:results}.
