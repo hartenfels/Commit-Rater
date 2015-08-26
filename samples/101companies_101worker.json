@@ -25,9 +25,39 @@
          "pass" : 57,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 13,
+         "pass" : 288,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 7,
+         "pass" : 294,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 27,
+         "pass" : 274,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 17,
+         "pass" : 284,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 286,
          "pass" : 15,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 36,
+         "pass" : 265,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 1,
+         "pass" : 300,
          "undef" : 0
       },
       "subject_limit" : {
@@ -62,7 +92,37 @@
          "pass" : 0,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 1,
          "undef" : 0
@@ -99,9 +159,39 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 2,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 3,
          "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 1,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 4,
          "undef" : 0
       },
       "subject_limit" : {
@@ -136,7 +226,37 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 2,
          "undef" : 0
@@ -173,7 +293,37 @@
          "pass" : 52,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 17,
+         "pass" : 405,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 227,
+         "pass" : 195,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 4,
+         "pass" : 418,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 421,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 422,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 176,
+         "pass" : 246,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 422,
          "undef" : 0
@@ -210,7 +360,37 @@
          "pass" : 13,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 25,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 3,
+         "pass" : 22,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 25,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 2,
+         "pass" : 23,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 25,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 9,
+         "pass" : 16,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 25,
          "undef" : 0
@@ -247,7 +427,37 @@
          "pass" : 14,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 3,
+         "pass" : 32,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 4,
+         "pass" : 31,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 35,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 5,
+         "pass" : 30,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 35,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 9,
+         "pass" : 26,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 35,
          "undef" : 0
@@ -284,7 +494,37 @@
          "pass" : 5,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 4,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 1,
+         "pass" : 6,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 7,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 6,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 7,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 7,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 7,
          "undef" : 0
@@ -321,7 +561,37 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 1,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 3,
          "undef" : 0
@@ -358,7 +628,37 @@
          "pass" : 0,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 1,
          "undef" : 0
@@ -395,9 +695,39 @@
          "pass" : 26,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 6,
+         "pass" : 95,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 2,
+         "pass" : 99,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 5,
+         "pass" : 96,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 7,
+         "pass" : 94,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 76,
          "pass" : 25,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 15,
+         "pass" : 86,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 101,
          "undef" : 0
       },
       "subject_limit" : {
@@ -432,7 +762,37 @@
          "pass" : 33,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 15,
+         "pass" : 135,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 33,
+         "pass" : 117,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 2,
+         "pass" : 148,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 7,
+         "pass" : 143,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 150,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 33,
+         "pass" : 117,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 150,
          "undef" : 0
@@ -469,7 +829,37 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 1,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 1,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 3,
          "undef" : 0
@@ -506,7 +896,37 @@
          "pass" : 0,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 2,
          "undef" : 0
@@ -543,9 +963,39 @@
          "pass" : 4,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 1,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 3,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 3,
          "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 4,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 4,
          "undef" : 0
       },
       "subject_limit" : {
@@ -580,7 +1030,37 @@
          "pass" : 0,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 1,
          "undef" : 0
@@ -617,9 +1097,39 @@
          "pass" : 86,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 29,
+         "pass" : 314,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 31,
+         "pass" : 312,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 31,
+         "pass" : 312,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 47,
+         "pass" : 296,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 3,
          "pass" : 340,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 45,
+         "pass" : 298,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 1,
+         "pass" : 342,
          "undef" : 0
       },
       "subject_limit" : {
@@ -654,7 +1164,37 @@
          "pass" : 0,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 1,
          "undef" : 0
@@ -691,9 +1231,39 @@
          "pass" : 14,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 8,
+         "pass" : 79,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 31,
+         "pass" : 56,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 17,
+         "pass" : 70,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 11,
+         "pass" : 76,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 4,
          "pass" : 83,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 33,
+         "pass" : 54,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 87,
          "undef" : 0
       },
       "subject_limit" : {
@@ -728,7 +1298,37 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 11,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 8,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 11,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 11,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 11,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 9,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 11,
          "undef" : 0
@@ -765,7 +1365,37 @@
          "pass" : 4,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 26,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 14,
+         "pass" : 12,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 2,
+         "pass" : 24,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 26,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 26,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 6,
+         "pass" : 20,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 26,
          "undef" : 0
@@ -802,9 +1432,39 @@
          "pass" : 44,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 29,
+         "pass" : 191,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 78,
+         "pass" : 142,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 10,
+         "pass" : 210,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 11,
+         "pass" : 209,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 42,
          "pass" : 178,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 104,
+         "pass" : 116,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 220,
          "undef" : 0
       },
       "subject_limit" : {
@@ -839,7 +1499,37 @@
          "pass" : 2,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 2,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 5,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 5,
          "undef" : 0
@@ -876,7 +1566,37 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 0,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 1,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 1,
          "undef" : 0
@@ -913,7 +1633,37 @@
          "pass" : 4,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 12,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 2,
+         "pass" : 10,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 12,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 0,
+         "pass" : 12,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 12,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 7,
+         "pass" : 5,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 12,
          "undef" : 0
@@ -950,9 +1700,39 @@
          "pass" : 49,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 4,
+         "pass" : 280,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 178,
+         "pass" : 106,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 284,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 4,
+         "pass" : 280,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 3,
          "pass" : 281,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 111,
+         "pass" : 173,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 284,
          "undef" : 0
       },
       "subject_limit" : {
@@ -987,9 +1767,39 @@
          "pass" : 5,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 18,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 2,
+         "pass" : 16,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 1,
+         "pass" : 17,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 17,
+         "undef" : 0
+      },
       "no_period_subject" : {
          "fail" : 1,
          "pass" : 17,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 6,
+         "pass" : 12,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
+         "fail" : 0,
+         "pass" : 18,
          "undef" : 0
       },
       "subject_limit" : {
@@ -1024,7 +1834,37 @@
          "pass" : 1,
          "undef" : 0
       },
+      "no_bulk_change" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_duplicate" : {
+         "fail" : 1,
+         "pass" : 2,
+         "undef" : 0
+      },
+      "no_long_message" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_misspelling" : {
+         "fail" : 1,
+         "pass" : 2,
+         "undef" : 0
+      },
       "no_period_subject" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_short_message" : {
+         "fail" : 0,
+         "pass" : 3,
+         "undef" : 0
+      },
+      "no_vulgarity" : {
          "fail" : 0,
          "pass" : 3,
          "undef" : 0
