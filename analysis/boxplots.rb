@@ -25,6 +25,7 @@ criteria.each do |criterion|
     repos.each do |repo, authors|
       repo_criterion_rates = Array.new
       authors.each do |author, triples|
+        next if triples['subject_limit']['pass'] + triples['subject_limit']['fail'] < 10
         triple = triples[criterion]
         total = triple['pass'] + triple['fail']
         rate = total == 0 ? 1 : triple['pass'].to_f / total
