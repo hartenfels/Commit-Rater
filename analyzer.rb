@@ -54,7 +54,6 @@ end
 result['averageRating'] = result['authors'].values.inject(0){|acc, a| acc + a['average']} / result['authors'].length
 result['averageWeightedRating'] = result['authors'].values.inject(0){|acc, a| acc + a['weightedAverage']} / result['authors'].length
 criteria.each do |criterion|
-  puts criterion
   criterionAverage = result['authors'].values.inject(0){|acc, a| acc + a['passRates'][criterion]} \
                    / result['authors'].length
   result["average_#{criterion}"] = criterionAverage
