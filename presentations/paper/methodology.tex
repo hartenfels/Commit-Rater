@@ -94,13 +94,7 @@ However, to keep the prototype website usable for multiple users at once, we dec
 %
 % The typical MSR paper picks either metrics or machine learning or IR.
 
-<<<<<<< HEAD
-For synthesis, after extracting the raw commit data, each commit of an author is tested against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be appliccable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit if there is no body at all. In those cases, the criterion-test will count as \emph{undefined}.
-=======
-% TODO: Maybe mention, that our synthesis contains actions that may have belonged into extraction, but we found the terms more fitting to our implementation
-
 Each commit of an author is tested against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be applicable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit if there is no body at all. In those cases, the criterion test will count as \emph{undefined}.
->>>>>>> 2f0745a9e5561029b4e9353ed03912182e672566
 
 The results of our tests are counted in a triple $(pass, fail, undef)$ for each criterion per author. These triples will be used as a metric for the analysis in \ref{sec:data-analysis}.
 
@@ -254,9 +248,7 @@ Where triples is the collection of triples of an author and a weight is calculat
 
 When working on this level, it turned out to be useful to exclude authors with few commits (maybe 10 or less), since the analysis results for these authors are not representative enough to infer any interpretations.
 
-This kind of analysis may be helpful for individual developers who seek to improve their Git etiquette. Because of this, we developed a web-frontend to our commit rater with integrated analysis. The source-code can be found on GitHub: \url{https://github.com/hartenfels/Commit-Rater-Web}
-
-\TODO{Insert Screenshot of Commit Rater Web, maybe describe a little bit more}
+This kind of analysis may be helpful for individual developers who seek to improve their Git etiquette. Our aforementioned Web-Frontend exposes this kind of functionality in an easily accessible way.
 
 \subsubsection{Repository-level}
 The analysis on this level is very similar to the analysis on the author-level. It would have been easy to just aggregate the triples of all authors in a repo and apply equation \ref{eq:weightedAverage} to receive an average for the whole repository. But we decided that this would serve no practical purpose, since the distribution over the behaviour of many authors across all criteria would likely have a very high variance and only very general trends could be inferred from the results.
