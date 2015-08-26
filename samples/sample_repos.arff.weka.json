@@ -1,0 +1,1056 @@
+[
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_short_message" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false,
+         "no_short_message" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_short_message" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true,
+         "no_short_message" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_short_message" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "no_short_message" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "no_bulk_change" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "no_bulk_change" : true,
+         "no_short_message" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "no_bulk_change" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "no_bulk_change" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_misspelling" : false
+      },
+      "confidence" : "1",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true,
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_bulk_change" : true,
+         "no_duplicate" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_bulk_change" : true,
+         "no_duplicate" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_bulk_change" : true,
+         "no_duplicate" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_bulk_change" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_bulk_change" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_bulk_change" : true,
+         "no_duplicate" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_period_subject" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true,
+         "no_misspelling" : false,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_misspelling" : false,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_bulk_change" : true,
+         "no_misspelling" : false,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_bulk_change" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_bulk_change" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_bulk_change" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false,
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_misspelling" : false,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_bulk_change" : true,
+         "no_misspelling" : false,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_bulk_change" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true,
+         "no_misspelling" : false,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true,
+         "no_misspelling" : false,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_duplicate" : true,
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_duplicate" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_bulk_change" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_short_message" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true,
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_short_message" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "no_bulk_change" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "body_used" : true,
+         "empty_second_line" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true,
+         "no_misspelling" : false,
+         "no_vulgarity" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "empty_second_line" : true
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_bulk_change" : true,
+         "no_misspelling" : false
+      }
+   },
+   {
+      "conclusions" : {
+         "body_used" : true
+      },
+      "confidence" : "0.99",
+      "premises" : {
+         "no_misspelling" : false
+      }
+   }
+]

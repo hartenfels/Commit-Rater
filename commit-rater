@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use strict;
 use warnings;
+use feature qw(say);
 use Getopt::Long;
 use Pod::Usage;
 use JSON;
@@ -10,6 +11,10 @@ use CommitRater;
 my %opts;
 GetOptions \%opts, qw(
      remote|r=s
+       weka|w
+ true-value|t=s
+false-value|f=s
+  data-type|d=s
        help|h
 ) or pod2usage(2);
 
@@ -26,7 +31,21 @@ my $remote = $opts{remote} or pod2usage(1);
 
 
 my $rater = CommitRater->new(repo => CommitRater::Repo->new(remote => $remote));
-print JSON->new->utf8->pretty->canonical->encode($rater->rate);
+if ($opts{weka})
+{
+    my $t    = $opts{ 'true-value'} // 'TRUE';
+    my $f    = $opts{'false-value'} // 'FALSE';
+    my $type = $opts{ 'data-type' } // "{$t,$f}";
+
+    say '@RELATION ', $remote =~ s/\W/_/gr;
+    say "\@ATTRIBUTE $_ $type" for CommitRater::ALL_KEYS;
+    say '@DATA';
+    say join ',', map { $_ ? $t : $f } @$_ for @{$rater->rate_independent};
+}
+else
+{
+    print JSON->new->utf8->pretty->canonical->encode($rater->rate);
+}
 
 
 __END__
