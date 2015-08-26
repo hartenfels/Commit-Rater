@@ -96,7 +96,7 @@ However, to keep the prototype website usable for multiple users at once, we dec
 
 % TODO: Maybe mention, that our synthesis contains actions that may have belonged into extraction, but we found the terms more fitting to our implementation
 
-Each commit of an author is tested against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be appliccable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit if there is no body at all. In those cases, the criterion-test will count as \emph{undefined}.
+Each commit of an author is tested against the criteria below. While most tests either \emph{fail} or \emph{pass}, some criteria may not be applicable in certain situations, e.g. a commit message's body cannot be tested for a per-line character limit if there is no body at all. In those cases, the criterion test will count as \emph{undefined}.
 
 The results of our tests are counted in a triple $(pass, fail, undef)$ for each criterion per author. These triples will be used as a metric for the analysis in \ref{sec:data-analysis}.
 
@@ -128,7 +128,7 @@ This criterion requires natural language processing of the commit message. For t
 
 \subsubsection{body\_used}
 \label{subs:body_used}
-In addition to the subject line, there should be a body that further explains what the commit does and why it does what it does (\cite{OffGuide}). The body consists of multiple lines and multiple paragraphs can be used, separated by blank lines. It is also acceptable to use bullet points. This criterion only checks if there is a body.
+In addition to the subject line, there should be a body that further explains what the commit does and why it does what it does\cite{OffGuide}. The body consists of multiple lines and multiple paragraphs can be used, separated by blank lines. It is also acceptable to use bullet points. This criterion only checks if there is a body.
 
 As the Git manual \cite{OffGuide} and Linus Torvalds \cite{SR} seem to disagree on this, we decided to make the usage of the body mandatory.
 
@@ -138,7 +138,7 @@ The lines of the body should be limited to 72 characters (originally stated in \
 
 \subsubsection{empty\_second\_line}
 \label{subs:empty_second_line}
-The subject line and the body should be separated by an empty line (\cite{TP}). This is how programs (including git itself) parsing the commit message know, which part is the subject line and which the body, so if a body is used, meeting this criterion is crucial. If no body is used, the test on this criterion will be undefined.
+The subject line and the body should be separated by an empty line\cite{TP}. This is how programs (including git itself) parsing the commit message know, which part is the subject line and which the body, so if a body is used, meeting this criterion is crucial. If no body is used, the test on this criterion will be undefined.
 
 \par\bigskip
 The following six criteria have been chosen by the authors. Some state the obvious and most should be easy to meet, but failing to meet them should be a strong indicator of a bad commit.
@@ -217,7 +217,7 @@ Under the assumption that our synthesis results are metrics for the ``goodness''
   \item Per repository-level: This level would aggregate the metrics of all authors in a repository and create a ranking for the whole team.
 \end{itemize}
 
-On each level, it is furthermore possible to analyse either the results of all criteria-checks or only the check/checks for one criterion. These six possibilities will be discussed below.
+On each level, it is furthermore possible to analyse either the results of all criteria checks or only the check/checks for one criterion. These six possibilities will be discussed below.
 
 \subsubsection{Commit-level}
 \label{subs:Commit-level}
