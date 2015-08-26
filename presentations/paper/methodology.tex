@@ -208,3 +208,59 @@ If a commit has the same commit message as a commit that has been processed befo
 % * Weka
 % * Some Boxplots including averages for all metrics
 % TODO: Introduce the analysis tools we used
+
+Under the assumption that our synthesis results are metrics for the ``goodness'' of commits, we need to analyse them in order to aggregate a measure of ``goodness''. This analysis can be performed on three levels:
+
+\begin{itemize}
+  \item Per commit-level: Analysis could be done on the results of checking an individual commit against our criteria.
+  \item Per author-level: This level would aggregate the metrics for all commits of an author in a repository and create a rating of the authors commit behaviour.
+  \item Per repository-level: This level would aggregate the metrics of all authors in a repository and create a ranking for the whole team.
+\end{itemize}
+
+On each level, it is furthermore possible to analyse either the results of all criteria-checks or only the check/checks for one criterion. These six possibilities will be discussed below.
+
+\subsubsection{Commit-level}
+\label{subs:Commit-level}
+Although looking at the results of a single commit might be interesting for debugging the criteria tests, there are not many options for analysis. The percentage of passed tests could serve as a rating for the commit, where 100\% means having passed all tests, but no further conclusions could be drawn from this level. Therefore, we did not concern ourselves with this level.
+
+\subsubsection{Author-level}
+\label{subs:Author-level}
+Analysis on this level evaluates the metrics-triples that were described in \ref{sec:data-synthesis}, where each author has a triple $(pass, fail, undef)$ for each criterion with $pass$ the number of commits that \emph{pass} the test for the criterion, $fail$ the number of commits that \emph{fail} the test for the criterion and $undef$ the number of commits that could not be tested against the criterion.
+
+The rate of how many of the commits pass a certain criterion may be interpreted as the rate with wich the author adheres the corresponding rule. The rate is calculated with the following formula:
+
+\begin{equation}
+  \label{eq:rate}
+  rate(triple) = \frac{triple_{pass}}{triple_{pass} + triple_{fail}}
+\end{equation}
+
+The important thing to note about this formula is, that it excludes $undef$. This means, that for instance authors who rarely use the body (see \ref{subs:body_used}) still have a useful refelction on how many of their commits with body were limited to 72 characters per line (\ref{subs:body_limit}).
+
+An example: A author with the triple $(190, 10, 0)$ for the subject limit (\ref{subs:subject_limit}) successfully limits his subject lines to 50 characters in 95\% of his commits. It could therefore furthermore be concluded that he is aware of the guideline, but has no tool in place that would prevent accidentally writing more than 50 characters.
+
+An average of these rates over all criteria can be seen as a general rating of an author's commit behaviour. Because of the $undef$s, two averages have to be considered: The standard average, which is just the average over the rates described above. And an average over the rates where each rate is weighted according to how many of all commits constituted to the rate. An author with a triple $(5, 5, 90)$ has a rate of 50\% according to equation \ref{eq:rate}, but should factor less into the average since only 10\% of all commits could be evaluated. Thus, the weighted average is calculated as follows:
+
+\begin{equation}
+  \label{eq:weightedAverage}
+  wa(triples) = \frac{1}{|triples|} \times \sum{t \element triples} rate(t) \times weight(t)
+\end{equation}
+
+Where triples is the collection of triples of an author and a weight is calculated as follows:
+
+\begin{equation}
+  weight(triple) = \frac{triple_{pass} + triple_{fail}}{triple_{pass} + triple_{fail} + triple_{undef}}
+\end{equation}
+
+When working on this level, it turned out to be useful to exclude authors with few commits (maybe 10 or less), since the analysis results for these authors are not representative enough to infer any interpretations.
+
+This kind of analysis may be helpful for individual developers who seek to improve their Git etiquette. Because of this, we developed a web-frontend to our commit rater with integrated analysis. The source-code can be found on GitHub: \url{https://github.com/hartenfels/Commit-Rater-Web}
+
+\TODO{Insert Screenshot of Commit Rater Web, maybe describe a little bit more}
+
+\subsubsection{Repository-level}
+The analysis on this level is very similar to the analyis on the author-level. It would have been easy to just aggregate the triples of all authors in a repo and apply equation \ref{eq:weightedAverage} to reiceive an average for the whole repository. But we decided that this would serve no practical purpose, since the distribution over the behaviour of many authors across all criteria would likely have a very high variance and only very general trends could be infered from the results.
+
+Instead, on this level we opted to create boxplots with the rates for each criterion for all authors. Since each author has one triple per ciriterion, this means that for example a repository with 100 authors has 100 datapoints (rates) for a boxplot. The boxplots will be shown and discussed in \ref{sec:results}.
+
+\subsubsection{Above repository-level}
+It may be of further interest to look at the averages of adherance to guidelines across multiple repos and thereby extrapolate some general statistics about ueage of the guidelines in the Git community. But we did not concern ourselves with this level, since we found it to be unrelated to our research questions.
