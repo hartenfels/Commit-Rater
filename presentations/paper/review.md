@@ -12,9 +12,9 @@
 
 - ~~Data synthesis: Describing more in detail why those chosen criterias benefit the RQ1 to obtain a good commit would improve this chapter even more. The chosen criterias are good and are well described why they were chosen.~~ Ich denke es muss reichen dass wir gesagt haben, dass die Kriterien entweder offiziell sind, oder durch common sense ausgedacht wurden.
 
-- Data analysis: Avoid using the keyword can and could in the data anylsis e.g. analysis could be done... if you are doing it in your research maybe replacing this words would make the reader more confident in your research.
+- ~~Data analysis: Avoid using the keyword can and could in the data anylsis e.g. analysis could be done... if you are doing it in your research maybe replacing this words would make the reader more confident in your research.~~ Finde ich nicht so schlimm das manchmal so vorsichtig auszudrücken.
 
-- Data analysis: ~~Why are there 6 possibilities if your are only stating 3 and describing 4?~~ Hab ich etwas klarer gemacht
+- ~~Data analysis: Why are there 6 possibilities if your are only stating 3 and describing 4?~~ Hab ich etwas klarer gemacht
 
 ### Results
 The result section of your research is very clear and you answer your research questions. Although the first research question is answered implicit. Although i think it's okay. Overall i think the machine learning section was only introduced because of the requirement of this course to use a machine learning approach. You even stated that this machine learning approach is not suited for all criterias. Improving this section by integrating this machine learning approach more with your RQ2 would improve the whole section. In your last sentence you state that a different way of validation needs to be used. It would be good to point out some alternatives or point to future work/conclusion.
