@@ -6,7 +6,9 @@
 ~~Overall the research questions are good but i am missing the point why the excursion is moving to sentiment analysis. Although its very clear that the personal mood contributes largely to the commit message i think describing this aspect would improve this section even more.~~ Er hat den Teil anscheinend nicht verstanden und ich würde ihn so lassen
 
 ### Methodology
-- Why were especially those repos chosen and how is the level of awareness measured for authors of each repository? Giving an example of a certain commit message and why its bad or good practice would improve this section.
+- Why were especially those repos chosen and how is the level of awareness measured for authors of each repository?
+
+- ~~Giving an example of a certain commit message and why its bad or good practice would improve this section.~~ Beispiele jetzt in introduction
 
 - Data synthesis: Describing more in detail why those chosen criterias benefit the RQ1 to obtain a good commit would improve this chapter even more. The chosen criterias are good and are well described why they were chosen.
 
