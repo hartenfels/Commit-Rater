@@ -1,6 +1,6 @@
 ### Research Questions
 - ~~What are the best practices and how could such a set of criterias be achieved. Maybe an example of a good and a bad commit would help the reader to understand how a best practice could help them maintain their software even better.~~ Habe ein paar dumme Beispiele eingefügt.
-- ~~Why is there a lack of availability for those criterias stated in RQ1? You stated in your abstract that the official Git documentation states very clear guidelines regarding the commit messages. ~~ Ich denke es ist klar dass die Kriterien aus den offiziellen Guidelines limitiert sind.
+- ~~Why is there a lack of availability for those criterias stated in RQ1? You stated in your abstract that the official Git documentation states very clear guidelines regarding the commit messages.~~ Ich denke es ist klar dass die Kriterien aus den offiziellen Guidelines limitiert sind.
 - ~~Maybe you could say some sentences why every developer does not keep to these guidelines.~~ Finde zwar das muss man eigentlich nicht sagen aber ich hab noch nen Paragraphen dazu geschrieben.
 Overall the research questions are good but i am missing the point why the excursion is moving to sentiment analysis. Although its very clear that the personal mood contributes largely to the commit message i think describing this aspect would improve this section even more.
 
