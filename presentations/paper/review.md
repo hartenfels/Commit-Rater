@@ -6,7 +6,7 @@
 ~~Overall the research questions are good but i am missing the point why the excursion is moving to sentiment analysis. Although its very clear that the personal mood contributes largely to the commit message i think describing this aspect would improve this section even more.~~ Er hat den Teil anscheinend nicht verstanden und ich würde ihn so lassen
 
 ### Methodology
-- Why were especially those repos chosen and how is the level of awareness measured for authors of each repository?
+- ~~Why were especially those repos chosen~~ and how is the level of awareness measured for authors of each repository? Habe "arbitrarily" in den Satz eingebaut. Keine Ahnung was das mit der awareness meint.
 
 - ~~Giving an example of a certain commit message and why its bad or good practice would improve this section.~~ Beispiele jetzt in introduction
 
