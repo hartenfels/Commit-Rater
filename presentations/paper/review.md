@@ -10,7 +10,7 @@
 
 - ~~Giving an example of a certain commit message and why its bad or good practice would improve this section.~~ Beispiele jetzt in introduction
 
-- Data synthesis: Describing more in detail why those chosen criterias benefit the RQ1 to obtain a good commit would improve this chapter even more. The chosen criterias are good and are well described why they were chosen.
+- ~~Data synthesis: Describing more in detail why those chosen criterias benefit the RQ1 to obtain a good commit would improve this chapter even more. The chosen criterias are good and are well described why they were chosen.~~ Ich denke es muss reichen dass wir gesagt haben, dass die Kriterien entweder offiziell sind, oder durch common sense ausgedacht wurden.
 
 - Data analysis: Avoid using the keyword can and could in the data anylsis e.g. analysis could be done... if you are doing it in your research maybe replacing this words would make the reader more confident in your research. Why are there 6 possibilities if your are only stating 3 and describing 4?
 
