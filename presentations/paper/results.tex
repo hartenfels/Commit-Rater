@@ -23,14 +23,16 @@ Based on these results, it is surprisingly hard to draw justified conclusions an
 
 Since we lack further objective judgements on the ``goodness'' of commits or repositories, we can not evaluate if meeting our criteria means having ``good'' commits.
 
-On the other hand, it can be argued that meeting the seven official criteria means having good commits \emph{per definition}, since they have been taken from the official guidelines, and are therefore themselves the missing objective judgement.
+On the other hand, it can be argued that meeting the seven official criteria means having good commits \emph{per definition}, since they have been taken from the official guidelines, and are therefore themselves the missing objective judgement. Additionally, our criteria is certainly incomplete and could be expanded arbitrarily large.
 
 In summary, while the analysis results are certainly interesting to look at, they offer no unambiguous answer to our first research question.
 
 \subsection{Machine Learning}
 \label{sec:results2}
 
-As an attempt to validate our own criteria, we performed association analysis using the data mining and machine learning software Weka\cite{Weka}. The data set is a commit-level view (see section \ref{subs:Commit-level}) of all rated commits of our sample repositories (see section \ref{sec:data-extraction}). The raw ARFF\footnote{\url{http://www.cs.waikato.ac.nz/ml/weka/arff.html}} data can be found at \url{https://github.com/hartenfels/Commit-Rater/tree/master/samples}.
+As an attempt to validate our own criteria, we performed association analysis using the data mining and machine learning software Weka\cite{Weka}. Using the correlations gained between official criteria and our own would help us prove or disprove the validity of each criterion. Furthermore, with a way to validate new criteria, we would be able to expand our Commit Rater's criteria pool.
+
+The data set is a commit-level view (see section \ref{subs:Commit-level}) of all rated commits of our sample repositories (see section \ref{sec:data-extraction}). The raw ARFF\footnote{\url{http://www.cs.waikato.ac.nz/ml/weka/arff.html}} data can be found at \url{https://github.com/hartenfels/Commit-Rater/tree/master/samples}.
 
 \begin{table}[t]
     \begin{tabularx}{\textwidth}{|c|X|}\hline
@@ -53,7 +55,7 @@ However, only one of our expected criteria can be found in the result set. Two t
 
 Due to this sobering result, the research question ``Is Our Personally Chosen Criteria Valid?'' from section \ref{sec:rq2} can clearly be answered by ``no''. The implementation of spell checking does not provide correct results and the vulgarity checking is not actually useful, as there aren't enough commits that fail the check. On the upside, the process of performing this attribution has revealed these issues very clearly, allowing us to correct them and test our corrections by another round of attributions.
 
-Additionally, this machine learning process is not useful for all criteria, as not all of them have a relation to at least one other criterion. Therefore, either more criteria is needed to fill these gaps, or a different way of validation needs to be used.
+Additionally, this machine learning process is not useful for all criteria, as not all of them have a relation to at least one other criterion. Therefore, either more criteria is needed to fill these gaps, or a different way of validation needs to be used, such as an expert analysis or a comparison with another commit rating system that might appear in the future.
 
 
 %\noindent
